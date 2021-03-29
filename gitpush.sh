@@ -1,3 +1,3 @@
 git add .
 git commit -m "`date`"
-git push origin master
+git push https://cyano-automaton:Pyszczek94@gitlab.com/cyano-automaton/repository.git master
