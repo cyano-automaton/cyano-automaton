@@ -3,8 +3,6 @@ from datetime import datetime
 from os import listdir
 """
 
-NEW NEW LINE
-
 def avg (list):
 	list_sum = 0
 	for i in list:
@@ -12,13 +10,13 @@ def avg (list):
 	avg = list_sum / len(list)
 	return avg
 
-files = listdir(/home/pi/cyano-automaton/data)
+files = listdir(/home/pi/cyano-automaton.github.io/data)
 files.remove("right_now.json")
 
 objects=[]
 
 for i in files:
-    with open ("/home/pi/cyano-automaton/data/"+files[i], "r") as infile:
+    with open ("/home/pi/cyano-automaton.github.io/data/"+files[i], "r") as infile:
         object[i]=json.load(infile)
 
 object[0].temp = [object[0].temp]
