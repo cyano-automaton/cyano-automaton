@@ -2,6 +2,9 @@ import json
 from datetime import datetime
 from os import listdir
 """
+
+additional line
+
 def avg (list):
 	list_sum = 0
 	for i in list:
