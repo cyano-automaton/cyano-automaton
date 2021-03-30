@@ -3,9 +3,9 @@
     "month": 3,
     "day": 30,
     "hour": 13,
-    "minute": 40,
-    "temp": 25.06,
-    "tds": 0.0,
+    "minute": 26,
+    "temp": 25.0,
+    "tds": 1188.37,
     "ph": 0.0,
     "ntu": 3000.0
 }

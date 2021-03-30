@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 from os import listdir
-
+"""
 def avg (list):
 	list_sum = 0
 	for i in list:
@@ -25,3 +25,5 @@ object[0].ntu = [object[0].temp]
 
 for i in objects:
         object[0].temp = [object[0].temp, object[1].temp]
+
+"""
