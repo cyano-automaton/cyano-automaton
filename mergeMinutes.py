@@ -3,7 +3,7 @@ from datetime import datetime
 from os import listdir
 """
 
-additional line
+NEW NEW LINE
 
 def avg (list):
 	list_sum = 0
