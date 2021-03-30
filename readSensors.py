@@ -67,11 +67,11 @@ right_now = {
 
 print(right_now)
 
-location = "./data/"
+location = "/home/pi/cyano-automaton/data/"
 filename =str(year)+"_"+str(month)+"_"+str(day)+"_"+str(hour)+"_"+str(minute)
 extension = ".json"
 
-with open ('./data/right_now.json', "w") as outfile:
+with open ('/home/pi/cyano-automaton/data/right_now.json', "w") as outfile:
 	json.dump(right_now, outfile,  indent=4)
         
 with open (location+filename+extension, "w") as outfile:
