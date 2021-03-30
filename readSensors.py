@@ -1,7 +1,6 @@
 import serial
 from datetime import datetime, timedelta
 import json
-from shutil import copyfile
 
 ser= serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 ser.flush()
@@ -45,13 +44,13 @@ tds_avg = avg(tds)
 ph_avg = avg(ph)
 ntu_avg = avg(ntu)
 
-print("Average values from last minute are:" + str(temp_avg) +", " + str(tds_avg) + ", " + str(ph_avg) + ", " + str(ntu_avg))	
+print("Average values from last minute are:" + str(temp_avg) +", " + str(tds_avg) + ", " + str(ph_avg) + ", " + str(ntu_avg))
 
 year = start.year
 month = start.month
 day = start.day
 hour = start.hour
-minute = start.minute 
+minute = start.minute
 
 right_now = {
         "year" : year,
@@ -73,6 +72,6 @@ extension = ".json"
 
 with open ('./data/right_now.json', "w") as outfile:
 	json.dump(right_now, outfile,  indent=4)
-        
+
 with open (location+filename+extension, "w") as outfile:
 	json.dump(right_now, outfile,  indent=4)
