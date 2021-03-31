@@ -1,5 +1,5 @@
 {
-  "name": "demo",
+  "name": "cyano-automaton",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -17,5 +17,30 @@
   "devDependencies": {
     "mocha": "^5.1.1",
     "supertest": "^3.0.0"
-  }
+  },
+  "description": "This project is based on a GitLab [Project Template](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyano-automaton/cyano-automaton.github.io.git"
+  },
+  "keywords": [
+    "bot",
+    "cyanobacteria",
+    "algae",
+    "colonialism",
+    "twitter",
+    "space",
+    "exploration",
+    "mars"
+  ],
+  "author": "Super Eclectic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cyano-automaton/cyano-automaton.github.io/issues"
+  },
+  "homepage": "https://github.com/cyano-automaton/cyano-automaton.github.io#readme"
 }
