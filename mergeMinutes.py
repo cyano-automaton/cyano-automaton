@@ -1,7 +1,6 @@
 import json
-from datetime import datetime
-from os import listdir
-"""
+from os import listdir, remove
+
 def avg (list):
 	list_sum = 0
 	for i in list:
@@ -15,7 +14,6 @@ def byMinute(e):
 files = listdir("./data")
 files.remove("right_now.json")
 print (files)
-
 objects=[]
 
 for i in files:
@@ -25,22 +23,24 @@ for i in files:
 
 objects.sort(key=byMinute)
 
+keys = ["temp", "tds", "ph", "ntu"]
+indexes = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
 
-for i in objects:
-	counter = 0
-	objects[counter]["temp"] = [objects[counter]["temp"]]
+for i in indexes:
+	for j in keys:
+		objects[i][j] = [objects[i][j]]
+		objects[i][j].append(objects[i+1][j])
+		objects[i][j].append(objects[i+2][j])
+		objects[i][j].append(objects[i+3][j])
+		objects[i][j].append(objects[i+4][j])
+		objects[i][j+"_avg"]=avg(objects[i][j])
+	location = "./data/"
+	filename =str(objects[i]["year"])+"_"+str(objects[i]["month"])+"_"+str(objects[i]["day"])+"_"+str(objects[i]["hour"])+"_"+str(objects[i]["minute"])
+	extension = ".json"
+	print(location+filename+extension)
+	files.remove(filename+extension)
+	with open (location+filename+extension, "w") as outfile:
+		json.dump(objects[i], outfile,  indent=4)
 
-	objects[0]["temp"].append(objects[1]["temp"])
-	print(objects[0]["temp"])
-
-for i in objects:
-
-
-object[0].temp = [object[0].temp]
-object[0].tds = [object[0].temp]
-object[0].ph = [object[0].temp]
-object[0].ntu = [object[0].temp]
-
-for i in objects:
-        object[0].temp = [object[0].temp, object[1].temp]
-"""
+for y in files:
+	remove("./data/"+y)
