@@ -34,11 +34,9 @@ for i in indexes:
 		objects[i][j].append(objects[i+3][j])
 		objects[i][j].append(objects[i+4][j])
 		objects[i][j+"_avg"]=avg(objects[i][j])
-	location = "./data/"
+	location = "./minutes/"
 	filename =str(objects[i]["year"])+"_"+str(objects[i]["month"])+"_"+str(objects[i]["day"])+"_"+str(objects[i]["hour"])+"_"+str(objects[i]["minute"])
 	extension = ".json"
-	print(location+filename+extension)
-	files.remove(filename+extension)
 	with open (location+filename+extension, "w") as outfile:
 		json.dump(objects[i], outfile,  indent=4)
 
