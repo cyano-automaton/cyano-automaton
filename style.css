@@ -4,13 +4,16 @@ html, body {
 }
 canvas {
   display: block;
+  margin: 3em;
 }
 
 body {
-  background-image: linear-gradient(rgb(255,255,223), rgb(0,128,64));
+  background-image: linear-gradient(rgb(255,255,255), rgb(0,128,64));
+  height: 100vh;
 }
 
 h1 {
+    margin-left: 3em;
     font-family: 'Roboto Mono', monospace;
     font-size: 3em;
 }
