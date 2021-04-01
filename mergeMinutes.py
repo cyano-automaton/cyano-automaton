@@ -31,6 +31,8 @@ for i in indexes:
 		objects[i][j] = [objects[i][j]]
 		objects[i][j].append(objects[i+1][j])
 		objects[i][j].append(objects[i+2][j])
+		print(i)
+		print(j)
 		objects[i][j].append(objects[i+3][j])
 		objects[i][j].append(objects[i+4][j])
 		objects[i][j+"_avg"]=avg(objects[i][j])
