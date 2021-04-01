@@ -22,7 +22,6 @@ for i in files:
 		objects.append(x)
 
 objects.sort(key=byMinute)
-
 keys = ["temp", "tds", "ph", "ntu"]
 indexes = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
 
@@ -31,8 +30,6 @@ for i in indexes:
 		objects[i][j] = [objects[i][j]]
 		objects[i][j].append(objects[i+1][j])
 		objects[i][j].append(objects[i+2][j])
-		print(i)
-		print(j)
 		objects[i][j].append(objects[i+3][j])
 		objects[i][j].append(objects[i+4][j])
 		objects[i][j+"_avg"]=avg(objects[i][j])
