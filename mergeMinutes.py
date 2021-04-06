@@ -11,6 +11,9 @@ def avg (list):
 def byMinute(e):
   return e['minute']
 
+def byHour(e):
+  return e['hour']
+
 files = listdir("./data")
 files.remove("right_now.json")
 print (files)
@@ -20,6 +23,7 @@ for i in files:
 	with open ("./data/"+i, "r") as f:
 		x=json.loads(f.read())
 		objects.append(x)
+
 
 objects.sort(key=byMinute)
 keys = ["temp", "tds", "ph", "ntu"]
