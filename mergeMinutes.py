@@ -14,13 +14,13 @@ def byMinute(e):
 def byHour(e):
   return e['hour']
 
-files = listdir("./data")
+files = listdir("/home/pi/cyano-automaton.github.io/data/")
 files.remove("right_now.json")
 print (files)
 objects=[]
 
 for i in files:
-	with open ("./data/"+i, "r") as f:
+	with open ("/home/pi/cyano-automaton.github.io/data/"+i, "r") as f:
 		x=json.loads(f.read())
 		objects.append(x)
 
@@ -37,11 +37,11 @@ for i in indexes:
 		objects[i][j].append(objects[i+3][j])
 		objects[i][j].append(objects[i+4][j])
 		objects[i][j+"_avg"]=avg(objects[i][j])
-	location = "./minutes/"
+	location = "/home/pi/cyano-automaton.github.io/minutes/"
 	filename =str(objects[i]["year"])+"_"+str(objects[i]["month"])+"_"+str(objects[i]["day"])+"_"+str(objects[i]["hour"])+"_"+str(objects[i]["minute"])
 	extension = ".json"
 	with open (location+filename+extension, "w") as outfile:
 		json.dump(objects[i], outfile,  indent=4)
 
 for y in files:
-	remove("./data/"+y)
+	remove("/home/pi/cyano-automaton.github.io/data/"+y)
