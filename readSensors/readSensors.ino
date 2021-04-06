@@ -60,10 +60,10 @@ void loop(void)
 float temp = readTemp();
 Serial.print(temp);
 Serial.print(", ");
-if (temp > 28 ) {
+if (temp > 29 ) {
     digitalWrite(8, HIGH);
   }
-if (temp < 25) {
+if (temp < 26) {
     digitalWrite(8, LOW);
   };
 
