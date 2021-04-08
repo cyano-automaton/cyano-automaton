@@ -8,6 +8,9 @@ def avg (list):
 	avg = list_sum / len(list)
 	return avg
 
+def byMinute(e):
+  return e['minute']
+
 def byHour(e):
   return e['hour']
 
@@ -20,11 +23,13 @@ for i in files:
 		x=json.loads(f.read())
 		objects.append(x)
 
-print(objects[0])
-"""
+objects.sort(key=byMinute)
 objects.sort(key=byHour)
+
+
 keys = ["temp", "tds", "ph", "ntu"]
 indexes = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
+"""
 
 for i in indexes:
 	for j in keys:
