@@ -17,23 +17,29 @@ tds=[]
 ph=[]
 ntu=[]
 
+counter = 0
+
 while True:
 	start = datetime.now()
-	counter = 0
-	if start.second == 0:
-		while True:
-			if ser.in_waiting > 0:
-				line = ser.readline().decode('utf-8').rstrip()
-				print (line)
-				counter = counter + 1
-				if counter == 3:
-					values = line.split(", ")
-					temp.append(float(values[0]))
-					tds.append(float(values[1]))
-					ph.append(float(values[2]))
-					ntu.append(float(values[3]))
-					if start.second == 59:
-						break
+	print(start.second)
+	if start.second < 5:
+		break
+		
+while True:
+	if ser.in_waiting > 0:
+		line = ser.readline().decode('utf-8').rstrip()
+		print (line)
+		counter = counter + 1
+		if counter > 5:
+			values = line.split(", ")
+			temp.append(float(values[0]))
+			tds.append(float(values[1]))
+			ph.append(float(values[2]))
+			ntu.append(float(values[3]))
+		now = datetime.now()
+		print(now.second)
+		if now.second > 55:
+			break
 
 temp_avg = avg(temp)
 tds_avg = avg(tds)
