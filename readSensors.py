@@ -2,17 +2,6 @@ import serial
 from datetime import datetime, timedelta
 import json
 
-ser= serial.Serial('/dev/ttyACM0', 9600, timeout=1)
-ser.flush()
-
-start = datetime.now()
-print (start)
-
-temp=[]
-tds=[]
-ph=[]
-ntu=[]
-
 def avg (list):
 	list_sum = 0
 	for i in list:
@@ -20,24 +9,31 @@ def avg (list):
 	avg = list_sum / len(list)
 	return avg
 
-counter = 0
+ser= serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+ser.flush()
+
+temp=[]
+tds=[]
+ph=[]
+ntu=[]
+
 while True:
-	if ser.in_waiting > 0:
-			now = datetime.now()
-			if now.second == 0:
+	start = datetime.now()
+	counter = 0
+	if start.second == 0:
+		while True:
+			if ser.in_waiting > 0:
 				line = ser.readline().decode('utf-8').rstrip()
 				print (line)
 				counter = counter + 1
 				if counter == 3:
 					values = line.split(", ")
 					temp.append(float(values[0]))
-					if type(values[1]) == str:
-						tds.append(float(values[1]))
+					tds.append(float(values[1]))
 					ph.append(float(values[2]))
 					ntu.append(float(values[3]))
-				duration = now - start
-				if (duration.total_seconds() > 59):
-					break
+					if start.second == 59:
+						break
 
 temp_avg = avg(temp)
 tds_avg = avg(tds)
