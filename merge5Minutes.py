@@ -25,9 +25,6 @@ for i in files:
 
 objects.sort(key=byMinute)
 objects.sort(key=byHour)
-print(objects[0])
-print(objects[1])
-print(objects[2])
 
 
 keys = ["temp", "tds", "ph", "ntu"]
