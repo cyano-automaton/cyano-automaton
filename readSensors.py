@@ -21,23 +21,23 @@ def avg (list):
 	return avg
 
 counter = 0
-
 while True:
 	if ser.in_waiting > 0:
-		line = ser.readline().decode('utf-8').rstrip()
-		print (line)
-		counter = counter + 1
-		if counter == 3:
-			values = line.split(", ")
-			temp.append(float(values[0]))
-			if type(values[1]) == str:
-				tds.append(float(values[1]))
-			ph.append(float(values[2]))
-			ntu.append(float(values[3]))
-		now = datetime.now()
-		duration = now - start
-		if (duration.total_seconds() > 59):
-			break
+			now = datetime.now()
+			if now.second == 0:
+				line = ser.readline().decode('utf-8').rstrip()
+				print (line)
+				counter = counter + 1
+				if counter == 3:
+					values = line.split(", ")
+					temp.append(float(values[0]))
+					if type(values[1]) == str:
+						tds.append(float(values[1]))
+					ph.append(float(values[2]))
+					ntu.append(float(values[3]))
+				duration = now - start
+				if (duration.total_seconds() > 59):
+					break
 
 temp_avg = avg(temp)
 tds_avg = avg(tds)
@@ -46,14 +46,14 @@ ntu_avg = avg(ntu)
 
 print("Average values from last minute are:" + str(temp_avg) +", " + str(tds_avg) + ", " + str(ph_avg) + ", " + str(ntu_avg))
 
-year = start.year
-month = start.month
-day = start.day
-hour = start.hour
-minute = start.minute
+year = now.year
+month = now.month
+day = now.day
+hour = now.hour
+minute = now.minute
 
 right_now = {
-        "year" : year,
+    "year" : year,
 	"month":  month,
 	"day": day,
 	"hour": hour,

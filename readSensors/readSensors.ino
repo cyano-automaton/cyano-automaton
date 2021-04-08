@@ -31,39 +31,27 @@ int pHArrayIndex = 0;
 
 void setup(void)
 {
-  /*
-    DEV_ModuleInit();
-    TSL2591_Init();
-  */
-
   Serial.begin(9600);
 
   pinMode(tempPin, INPUT);
   pinMode(8, OUTPUT);
   digitalWrite(8, HIGH);
-  
+
   pinMode (A5, INPUT);
   pinMode(tdsPin, INPUT);
-  pinMode (phPin, INPUT); 
+  pinMode (phPin, INPUT);
   tempSensor.begin();
 }
 
 void loop(void)
 {
-  /*
-    lux = TSL2591_Read_Lux();
-    Serial.print("Lux = ");
-    Serial.println(lux);
-    TSL2591_SET_LuxInterrupt(50,200);
-  */
-
 float temp = readTemp();
 Serial.print(temp);
 Serial.print(", ");
-if (temp > 29 ) {
+if (temp > 30 ) {
     digitalWrite(8, HIGH);
   }
-if (temp < 26) {
+if (temp < 27) {
     digitalWrite(8, LOW);
   };
 
@@ -79,13 +67,12 @@ float ntu = readTurb();
 Serial.print(ntu);
 
 Serial.println();
- 
 }
 
 float readTemp() {
   tempSensor.requestTemperatures();
   float temp = tempSensor.getTempCByIndex(0);
-  
+
   if (temp != DEVICE_DISCONNECTED_C) {
     return temp;
   }
