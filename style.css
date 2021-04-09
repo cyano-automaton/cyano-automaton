@@ -19,11 +19,3 @@ h1 {
     font-family: 'Roboto Mono', monospace;
     font-size: 3em;
 }
-
-.naglowek {
-  order: 1;
-}
-
-.right_now {
-  order 2;
-}
