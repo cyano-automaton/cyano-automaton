@@ -19,3 +19,7 @@ h1 {
     font-family: 'Roboto Mono', monospace;
     font-size: 3em;
 }
+
+div {
+  margin: 3em;
+}
