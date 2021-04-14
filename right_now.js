@@ -1,4 +1,6 @@
-var right_now = d3.json("./data/right_now.json");
+var right_now = d3.json("./data/right_now.json", function() {
+  console.log(json["temp"])
+});
 
 var svgContainer = d3.select("#right_now")
                             .append("p")
