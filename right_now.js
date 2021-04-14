@@ -1,5 +1,5 @@
 let right_now;
-var font_size = 20;
+let font_size = 20;
 
 function preload() {
   let adres = "./data/right_now.json";
