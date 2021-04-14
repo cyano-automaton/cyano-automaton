@@ -34,7 +34,8 @@ function draw() {
   text(last_hour[0].hour+":"+last_hour[0].minute+"0"+" "+last_hour[0].day+"."+last_hour[0].month+"." +last_hour[0].year,width-padding, font_size+ padding)
   translate(padding, height-padding);
 
-  stroke(255,0,0)
+  stroke(255,0,0);
+  noFill();
   beginShape();
   for (i=0; i<12; i++) {
     for (j=0; j<5; j++) {
