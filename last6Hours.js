@@ -1,13 +1,14 @@
-let right_now;
+let last6Hours;
 let font_size = 20;
 
 function preload() {
-  let adres = "./hours/right_now.json";
-  right_now = loadJSON(adres);
+  let adres = "./hours/";
+  right_now = loadJSON(adres+);
 }
 
 function setup() {
-  createCanvas(400, 400);
+  canvas = createCanvas(960, font_size*12);
+  canvas.parent('last6Hours');
   textFont("Roboto Mono");
   noLoop();
 }
