@@ -1,0 +1,27 @@
+{
+  "name": "cyano-automaton.github.io",
+  "version": "1.0.0",
+  "description": "cyano-automaton bot",
+  "main": "bot.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyano-automaton/cyano-automaton.github.io.git"
+  },
+  "keywords": [
+    "bot",
+    "cyanobacteria",
+    "colonialism",
+    "space",
+    "exploration",
+    "mars"
+  ],
+  "author": "Super Eclectic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cyano-automaton/cyano-automaton.github.io/issues"
+  },
+  "homepage": "https://github.com/cyano-automaton/cyano-automaton.github.io#readme"
+}
