@@ -5,7 +5,7 @@ var right_now = d3.json("./data/right_now.json", function(error, data) {
                       .text(data["temp"])
 } else {
   window.alert('Something wrong happened while loading the data from JSON file. Try again.');
-});
+}});
 
 
 
