@@ -8,50 +8,42 @@ def avg (list):
 	avg = list_sum / len(list)
 	return avg
 
-def byMinute(e):
-    return e['minute']
-
 def byHour(e):
-    return e['hour']
+    return e[0]['hour']
 
 def byDay(e):
-    return e['day']
+    return e[0]['day']
 
 files = listdir("./hours/")
 
-
-
-for f in list(files):
-	if not(f.endswith("5.json") or f.endswith("0.json")):
-		files.remove(f)
-		remove("/home/pi/cyano-automaton.github.io/minutes/"+f)
-
+print(files)
 
 objects=[]
 
 for i in files:
-	with open ("/home/pi/cyano-automaton.github.io/minutes/"+i, "r") as f:
+	with open ("./hours/"+i, "r") as f:
 		x=json.loads(f.read())
 		objects.append(x)
 
 objects.sort(key=byHour)
 objects.sort(key=byDay)
 
-hour = []
-for i in range(12):
-	hour.append(objects[i])
-location = "/home/pi/cyano-automaton.github.io/hours/"
-filename =str(objects[0]["year"])+"_"+str(objects[0]["month"])+"_"+str(objects[0]["day"])+"_"+str(objects[0]["hour"])
+day = []
+
+for i in range(24):
+	day.append(objects[i])
+location = "./days/"
+filename =str(objects[i][0]["year"])+"_"+str(objects[i][0]["month"])+"_"+str(objects[i][0]["day"])
 extension = ".json"
 with open (location+filename+extension, "w") as outfile:
-	json.dump(hour, outfile, indent=4)
+	json.dump(day, outfile, indent=4)
 
-for i in range(12):
-	location = "/home/pi/cyano-automaton.github.io/minutes/"
-	filename =str(objects[i]["year"])+"_"+str(objects[i]["month"])+"_"+str(objects[i]["day"])+"_"+str(objects[i]["hour"])+"_"+str(objects[i]["minute"])
+for i in range(24):
+	location = "./hours/"
+	filename =str(objects[i][0]["year"])+"_"+str(objects[i][0]["month"])+"_"+str(objects[i][0]["day"])+"_"+str(objects[i][0]["hour"])
 	extension = ".json"
 	remove(location+filename+extension)
 	print(location+filename+extension)
 
-for i in range(12):
+for i in range(24):
 	objects.pop(i)
