@@ -1,5 +1,4 @@
-const fs = require("fs");
-var json = JSON.parse(fs.readFileSync("./data/right_now.json"));
+var json = d3.json("./data/right_now.json");
 
 var svgContainer = d3.select("body").append("svg")
                                     .attr("width", 960)
