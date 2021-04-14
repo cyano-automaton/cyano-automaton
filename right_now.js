@@ -1,12 +1,10 @@
 var json = d3.json("./data/right_now.json");
 
-var svgContainer = d3.select("body").append("svg")
-                                    .attr("width", 960)
-                                    .attr("height", 540);
-
-
-var right_now = svgContainer.selectAll("p")
-                            .data(json)
-                            .enter()
+var svgContainer = d3.select("#right_now")
                             .append("p")
-                            .text("coś")
+                            .text(json[temp])
+
+
+/*var right_now = svgContainer.select("#right_now")
+                            .append("p")
+                            .text("coś")*/
