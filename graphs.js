@@ -2,6 +2,8 @@ let right_now;
 let last_hour;
 let font_size = 20;
 let padding = 40;
+let graph_height = 540;
+let graph_width = 960;
 
 function preload() {
   right_now = loadJSON("./data/right_now.json");
@@ -11,7 +13,7 @@ function preload() {
 
 function setup() {
   canvas = createCanvas(960, 540*2);
-  canvas.parent('graphs');
+  canvas.parent("graphs")
   textFont("Roboto Mono");
   noLoop();
 }
@@ -29,21 +31,23 @@ function draw() {
 
   strokeWeight(3);
   translate(0, font_size*12)
-  text("Last hour:",padding, font_size+padding)
+  textAlign(LEFT);
+  text("Last hour:",0, font_size+padding)
   textAlign(RIGHT);
-  text(last_hour[0].hour+":"+last_hour[0].minute+"0"+" "+last_hour[0].day+"."+last_hour[0].month+"." +last_hour[0].year,width-padding, font_size+ padding)
-  translate(padding, height-padding);
+  text(last_hour[0].hour+":"+last_hour[0].minute+"0"+" "+last_hour[0].day+"."+last_hour[0].month+"." +last_hour[0].year,graph_width, font_size+ padding)
+  translate(padding, graph_height-padding);
 
   stroke(255,0,0);
   noFill();
   beginShape();
   for (i=0; i<12; i++) {
     for (j=0; j<5; j++) {
-      vertex(((width-(padding*5))/60)*(i*6+j), -map(last_hour[i].temp[j], 29, 30, 0, height));
+      vertex(((graph_width-(padding*5))/60)*(i*6+j), -map(last_hour[i].temp[j], 28, 30, 0, graph_height));
     }
   }
   endShape();
-  axisLeft(29, 30, 0.1);
+  fill(0);
+  axisLeft(28, 30, 0.1);
   axisBottom();
 
 }
@@ -52,12 +56,12 @@ function draw() {
 function axisLeft(min, max, step) {
   stroke(0,0,0)
   strokeWeight(1);
-  line(0, 0, 0, -(height-(padding*4)));
+  line(0, 0, 0, -(graph_height-(padding*4)));
   noStroke();
-  textSize(8);
+  textSize(10);
   textAlign(LEFT)
   podzialka = (max-min)/step
-  offset = (height-(padding*4)-0)/podzialka
+  offset = (graph_height-(padding*4)-0)/podzialka
   for (i = 0; i <= podzialka; i++) {
     text (min+(step*i), padding/4, -offset*i);
     strokeWeight(1);
@@ -67,15 +71,14 @@ function axisLeft(min, max, step) {
 function axisBottom() {
   stroke(0,0,0)
   strokeWeight(1);
-  line(0, 0, (width-(padding*2)), 0);
+  line(0, 0, (graph_width-(padding*2)), 0);
   noStroke();
-  textSize(8);
+  textSize(10);
   textAlign(LEFT)
   for (i = 0; i < 12; i++) {
-    console.log(last_hour[0].hour+":"+last_hour[i].minute);
     push();
     rotate(PI/2);
-    text (last_hour[0].hour+":"+last_hour[i].minute, padding/4,  -i*((width-(padding))/12));
+    text (last_hour[0].hour+":"+last_hour[i].minute, padding/4,  -i*((graph_width-(padding))/12));
     pop();
   }
 }
