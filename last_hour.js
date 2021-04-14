@@ -1,6 +1,6 @@
 let last_hour;
-let font_size = 20;
-let padding = 40;
+var font_size = 20;
+var padding = 40;
 function preload() {
   let adres = "./hours/lastHour.json";
   last_hour = loadJSON(adres);
