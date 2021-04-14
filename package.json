@@ -2,9 +2,9 @@
   "name": "cyano-automaton.github.io",
   "version": "1.0.0",
   "description": "cyano-automaton bot",
-  "main": "bot.js",
+  "main": "server.js",
   "scripts": {
-    "test": "test"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/cyano-automaton/cyano-automaton.github.io/issues"
   },
-  "homepage": "https://github.com/cyano-automaton/cyano-automaton.github.io#readme"
+  "homepage": "https://github.com/cyano-automaton/cyano-automaton.github.io#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
