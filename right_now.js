@@ -7,7 +7,7 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(960, 540);
+  canvas = createCanvas(960, font_size*12);
   canvas.parent('right_now');
   textFont("Roboto Mono");
   noLoop();
