@@ -43,6 +43,12 @@ extension = ".json"
 with open (location+filename+extension, "w") as outfile:
 	json.dump(hour, outfile, indent=4)
 
+location = "/home/pi/cyano-automaton.github.io/hours/"
+filename ="lastHour"
+extension = ".json"
+with open (location+filename+extension, "w") as outfile:
+	json.dump(hour, outfile, indent=4)
+
 for i in range(12):
 	location = "/home/pi/cyano-automaton.github.io/minutes/"
 	filename =str(objects[i]["year"])+"_"+str(objects[i]["month"])+"_"+str(objects[i]["day"])+"_"+str(objects[i]["hour"])+"_"+str(objects[i]["minute"])

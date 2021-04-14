@@ -1,14 +1,18 @@
-let last6Hours;
+let lastHour;
 let font_size = 20;
 
 function preload() {
-  let adres = "./hours/";
-  right_now = loadJSON(adres+);
+  let year = year();
+  let month = month();
+  let day = day();
+  let hour = hour() - 2;
+  let adres = "./hours/"+year+"_"+month+"_"+day+"_"+hour;
+  lastHour = loadJSON(adres);
 }
 
 function setup() {
   canvas = createCanvas(960, font_size*12);
-  canvas.parent('last6Hours');
+  canvas.parent('lastHour');
   textFont("Roboto Mono");
   noLoop();
 }
