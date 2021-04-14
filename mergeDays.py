@@ -38,12 +38,7 @@ extension = ".json"
 with open (location+filename+extension, "w") as outfile:
 	json.dump(day, outfile, indent=4)
 
-for i in range(24):
-	day.append(objects[i])
-location = "/home/pi/cyano-automaton.github.io/days/"
-filename ="lastDay"
-extension = ".json"
-with open (location+filename+extension, "w") as outfile:
+with open (location+"lastDay"+extension, "w") as outfile:
 	json.dump(day, outfile, indent=4)
 
 for i in range(24):

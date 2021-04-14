@@ -43,10 +43,7 @@ extension = ".json"
 with open (location+filename+extension, "w") as outfile:
 	json.dump(hour, outfile, indent=4)
 
-location = "/home/pi/cyano-automaton.github.io/hours/"
-filename ="lastHour"
-extension = ".json"
-with open (location+filename+extension, "w") as outfile:
+with open (location+"lastHour"+extension, "w") as outfile:
 	json.dump(hour, outfile, indent=4)
 
 for i in range(12):
