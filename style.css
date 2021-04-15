@@ -29,6 +29,10 @@ p {
   font-size: 1em;
 }
 
+#naglowek {
+  height: 3em;
+}
+
 #opis {
   width: 540px;
 }
