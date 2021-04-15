@@ -25,7 +25,10 @@ div {
 }
 
 p {
-  width: 21em;
   font-family: 'Roboto Mono', monospace;
   font-size: 1em;
+}
+
+#opis {
+  width: 21em;
 }
