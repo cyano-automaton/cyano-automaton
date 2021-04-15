@@ -8,7 +8,7 @@ canvas {
 
 body {
   /*padding: 3em;*/
-  background-image: linear-gradient(rgb(255,255,255), rgb(0,128,64));
+  background-image: linear-gradient(rgb(255,255,255), rgb(0,64,32));
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
