@@ -42,7 +42,7 @@ function draw() {
   beginShape();
   for (i=0; i<12; i++) {
     for (j=0; j<5; j++) {
-      vertex(((graph_width-(padding*5))/60)*(i*6+j), -map(last_hour[i].temp[j], 27, 30, 0, (graph_height-padding*2)));
+      vertex(((graph_width-(padding*5))/60)*(i*6+j), -map(last_hour[i].temp[j], 27, 30, 0, (graph_height-font_size*7)));
     }
   }
   endShape();
