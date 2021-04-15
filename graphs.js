@@ -41,7 +41,7 @@ function draw() {
   drawHourGraph("temp", 27, 30)
 
   stroke(255,255,0);
-  drawHourGraph("tds", 1168, 1187)
+  drawHourGraph("tds", 1038, 1190)
 
   stroke(0,0,255);
   drawHourGraph("ph", 5, 7)
@@ -61,7 +61,7 @@ function drawHourGraph (param, min, max) {
   beginShape();
   for (i=0; i<12; i++) {
     for (j=0; j<5; j++) {
-      vertex(((graph_width-(padding*5))/60)*(i*6+j), -map(last_hour[i][this.param][j], this.min, this.max, 0, (graph_height-font_size*7)));
+      vertex(((graph_width-(padding*5))/60)*(i*6+j), -map(last_hour[i][param][j], min, max, 0, (graph_height-font_size*7)));
     }
   }
   endShape();
