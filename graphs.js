@@ -38,18 +38,33 @@ function draw() {
   translate(padding, graph_height-padding);
 
   stroke(255,0,0);
-  noFill();
-  beginShape();
-  for (i=0; i<12; i++) {
-    for (j=0; j<5; j++) {
-      vertex(((graph_width-(padding*5))/60)*(i*6+j), -map(last_hour[i].temp[j], 27, 30, 0, (graph_height-font_size*7)));
-    }
-  }
-  endShape();
+  drawHourGraph("temp", 27, 30)
+
+  stroke(255,255,0);
+  drawHourGraph("tds", 1168, 1187)
+
+  stroke(0,0,255);
+  drawHourGraph("ph", 5, 7)
+
+  stroke(0,0,0);
+  drawHourGraph("ntu", 3000, 3000)
+
+
   fill(0);
   axisLeft(27, 30, 0.5);
   axisBottom();
 
+}
+
+function drawHourGraph (param, min, max) {
+  noFill();
+  beginShape();
+  for (i=0; i<12; i++) {
+    for (j=0; j<5; j++) {
+      vertex(((graph_width-(padding*5))/60)*(i*6+j), -map(last_hour[i][this.param][j], this.min, this.max, 0, (graph_height-font_size*7)));
+    }
+  }
+  endShape();
 }
 
 
