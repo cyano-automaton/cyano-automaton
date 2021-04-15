@@ -34,7 +34,7 @@ function draw() {
   textAlign(LEFT);
   text("Last hour:",0, font_size+padding)
   textAlign(RIGHT);
-  text(last_hour[0].hour+":"+last_hour[0].minute+"0"+" "+last_hour[0].day+"."+last_hour[0].month+"." +last_hour[0].year,graph_width, font_size+ padding)
+  text(last_hour[0].hour+":"+last_hour[0].minute+"0"+"—"+last_hour[0].hour+":"+"59"+" "+last_hour[0].day+"."+last_hour[0].month+"." +last_hour[0].year,graph_width, font_size+ padding)
   translate(padding, graph_height-padding);
 
   stroke(255,0,0);
