@@ -24,6 +24,8 @@ div {
   margin: 3em;
 }
 
-#opis {
-  width: 540px;
+p {
+  width: 21em;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1em;
 }
