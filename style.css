@@ -13,11 +13,17 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+
+  font-family: 'Roboto Mono', monospace;
+
 }
 
 h1 {
-    font-family: 'Roboto Mono', monospace;
     font-size: 5em;
+}
+
+h2 {
+    font-size: 3em;
 }
 
 div {
@@ -25,7 +31,6 @@ div {
 }
 
 p {
-  font-family: 'Roboto Mono', monospace;
   font-size: 1em;
 }
 
