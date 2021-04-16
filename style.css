@@ -36,3 +36,7 @@ p {
 #opis {
   width: 540px;
 }
+
+.timeline-Widget {
+  background-color: transparent;
+}
