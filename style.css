@@ -16,13 +16,12 @@ body {
 }
 
 h1 {
-    font-size: 5em;
+  font-size: 5em;
 }
 
 h2 {
-    font-size: 3em;
-    font-family: 'Roboto Mono', monospace;
-
+  font-size: 3em;
+  font-family: 'Roboto Mono', monospace;
 }
 
 div {
