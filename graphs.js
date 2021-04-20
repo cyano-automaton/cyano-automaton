@@ -12,7 +12,7 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(960, 540*2);
+  canvas = createCanvas(960, 540*3);
   canvas.parent("graphs")
   textFont("Roboto Mono");
   noLoop();
@@ -51,11 +51,16 @@ function draw() {
 
   fill(0);
   axisLeft(27, 30, 0.5);
-  axisBottom();
+  axisBottomHour();
 
   translate(0, font_size*24);
+
+  stroke(255,0,0);
   drawDayGraph ("temp_avg", 27, 30);
 
+  fill(0);
+  axisLeft(27, 30, 0.5);
+  axisBottomDay();
 }
 
 function drawHourGraph (param, min, max) {
@@ -74,7 +79,7 @@ function drawDayGraph (param, min, max) {
   beginShape();
   for (i=0; i<24; i++) {
     for (j=0; j<12; j++) {
-      vertex(((graph_width-(padding*5))/288)*(i*6+j), -map(last_day[i][j][param], min, max, 0, (graph_height-font_size*7)));
+      vertex(((graph_width-(padding*5))/288)*(i*12+j), -map(last_day[i][j][param], min, max, 0, (graph_height-font_size*7)));
     }
   }
   endShape();
@@ -101,7 +106,7 @@ function axisLeft(min, max, step) {
   pop()
 }
 
-function axisBottom() {
+function axisBottomHour() {
   push()
     translate(0, padding/2)
   stroke(0,0,0)
@@ -115,6 +120,27 @@ function axisBottom() {
     push();
     rotate(PI/2);
     text (last_hour[0].hour+":"+last_hour[i].minute, padding/4,  -i*((graph_width-(padding))/12)-5);
+    pop();
+    stroke(0);
+    line(i*((graph_width-(padding))/12), 0, i*((graph_width-(padding))/12), 10)
+  }
+  pop()
+}
+
+function axisBottomDay() {
+  push()
+    translate(0, padding/2)
+  stroke(0,0,0)
+  strokeWeight(1);
+  line(0, 0, (graph_width-(padding*2)), 0);
+  noStroke();
+  textSize(10);
+  textAlign(LEFT)
+  for (i = 0; i < 24; i++) {
+    noStroke(0);
+    push();
+    rotate(PI/2);
+    text (last_day[i][0].hour, padding/4,  -i*((graph_width-(padding))/12) -5);
     pop();
     stroke(0);
     line(i*((graph_width-(padding))/12), 0, i*((graph_width-(padding))/12), 10)
