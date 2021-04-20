@@ -8,7 +8,7 @@ let graph_width = 960;
 function preload() {
   right_now = loadJSON("./data/right_now.json");
   last_hour = loadJSON("./hours/lastHour.json");
-
+  last_day = loadJSON("./days/lastDay.json");
 }
 
 function setup() {
@@ -41,18 +41,20 @@ function draw() {
   drawHourGraph("temp", 27, 30)
 
   stroke(255,255,0);
-  drawHourGraph("tds", 1038, 1190)
+  drawHourGraph("tds", 1000, 1200)
 
   stroke(0,0,255);
-  drawHourGraph("ph", 5, 7)
+  drawHourGraph("ph", 2, 7)
 
   stroke(0,0,0);
   drawHourGraph("ntu", 3000, 3000)
 
-
   fill(0);
   axisLeft(27, 30, 0.5);
   axisBottom();
+
+  translate(0, font_size*24);
+  drawDayGraph ("temp_avg", 27, 30);
 
 }
 
@@ -62,6 +64,17 @@ function drawHourGraph (param, min, max) {
   for (i=0; i<12; i++) {
     for (j=0; j<5; j++) {
       vertex(((graph_width-(padding*5))/60)*(i*6+j), -map(last_hour[i][param][j], min, max, 0, (graph_height-font_size*7)));
+    }
+  }
+  endShape();
+}
+
+function drawDayGraph (param, min, max) {
+  noFill();
+  beginShape();
+  for (i=0; i<24; i++) {
+    for (j=0; j<12; j++) {
+      vertex(((graph_width-(padding*5))/288)*(i*6+j), -map(last_day[i][j][param], min, max, 0, (graph_height-font_size*7)));
     }
   }
   endShape();
