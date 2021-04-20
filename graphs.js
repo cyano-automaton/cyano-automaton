@@ -140,10 +140,10 @@ function axisBottomDay() {
     noStroke(0);
     push();
     rotate(PI/2);
-    text (last_day[i][0].hour, padding/4,  -i*((graph_width-(padding))/12) -5);
+    text (last_day[i][0].hour, padding/4,  -i*((graph_width-(padding))/24) -5);
     pop();
     stroke(0);
-    line(i*((graph_width-(padding))/12), 0, i*((graph_width-(padding))/12), 10)
+    line(i*((graph_width-(padding))/24), 0, i*((graph_width-(padding))/24), 10)
   }
   pop()
 }
