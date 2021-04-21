@@ -38,7 +38,7 @@ function draw() {
   translate(padding, graph_height-padding);
 
   stroke(255,0,0);
-  drawHourGraph("temp", 27, 30)
+  drawHourGraph("temp", 25, 35)
 
   stroke(255,255,0);
   drawHourGraph("tds", 1000, 1200)
@@ -50,16 +50,16 @@ function draw() {
   drawHourGraph("ntu", 3000, 3000)
 
   fill(0);
-  axisLeft(27, 30, 0.5);
+  axisLeft(25, 35, 1);
   axisBottomHour();
 
   translate(0, font_size*24);
 
   stroke(255,0,0);
-  drawDayGraph ("temp_avg", 27, 30);
+  drawDayGraph ("temp_avg", 25, 35);
 
   fill(0);
-  axisLeft(27, 30, 0.5);
+  axisLeft(25, 35, 1);
   axisBottomDay();
 }
 
@@ -79,7 +79,7 @@ function drawDayGraph (param, min, max) {
   beginShape();
   for (i=0; i<24; i++) {
     for (j=0; j<12; j++) {
-      vertex(((graph_width-(padding*5))/288)*(i*12+j), -map(last_day[i][j][param], min, max, 0, (graph_height-font_size*7)));
+      vertex(((graph_width-(padding*5))/288)*(i*14+j), -map(last_day[i][j][param], min, max, 0, (graph_height-font_size*7)));
     }
   }
   endShape();
