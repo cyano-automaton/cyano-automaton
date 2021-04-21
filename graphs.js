@@ -12,7 +12,7 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(960, 540*3);
+  canvas = createCanvas(960, 270*5);
   canvas.parent("graphs")
   textFont("Roboto Mono");
   noLoop();
@@ -26,19 +26,26 @@ function draw() {
   text("TDS: "+right_now.tds+" ppm",0, font_size*6)
   text("pH: "+right_now.ph,0, font_size*8)
   text("Turbidity: "+right_now.ntu+" ntu",0, font_size*10)
+
+  text("Last hour:",0, font_size*14+padding)
+  text("Last day:",0, font_size*42+padding)
+
   textAlign(RIGHT);
+
   text(right_now.hour+":"+right_now.minute+" "+right_now.day+"."+right_now.month+"." +right_now.year,width, font_size)
+
+  text(last_hour[0].hour+":"+last_hour[0].minute+"0"+"—"+last_hour[0].hour+":"+"59"+" "+last_hour[0].day+"."+last_hour[0].month+"." +last_hour[0].year,graph_width, font_size*14+ padding)
+
+  text(last_hour[0].day+"."+last_hour[0].month+"." +last_hour[0].year,graph_width, font_size*42 + padding)
 
   strokeWeight(3);
   translate(0, font_size*12)
-  textAlign(LEFT);
-  text("Last hour:",0, font_size+padding)
   textAlign(RIGHT);
-  text(last_hour[0].hour+":"+last_hour[0].minute+"0"+"—"+last_hour[0].hour+":"+"59"+" "+last_hour[0].day+"."+last_hour[0].month+"." +last_hour[0].year,graph_width, font_size+ padding)
+
   translate(padding, graph_height-padding);
 
   stroke(255,0,0);
-  drawHourGraph("temp", 27, 30)
+  drawHourGraph("temp", 25, 35)
 
   stroke(255,255,0);
   drawHourGraph("tds", 1000, 1200)
@@ -47,19 +54,21 @@ function draw() {
   drawHourGraph("ph", 2, 7)
 
   stroke(0,0,0);
-  drawHourGraph("ntu", 3000, 3000)
-
+  drawHourGraph("ntu", 2999, 3008);
   fill(0);
-  axisLeft(27, 30, 0.5);
+  axisLeft(25, 35, 1);
   axisBottomHour();
 
-  translate(0, font_size*24);
+  translate(0, graph_height+padding/2);
 
   stroke(255,0,0);
-  drawDayGraph ("temp_avg", 27, 30);
+  drawDayGraph ("temp_avg", 25, 35);
+
+  stroke(0,0,0);
+  drawDayGraph ("ntu_avg", 2999, 3008);
 
   fill(0);
-  axisLeft(27, 30, 0.5);
+  axisLeft(25, 35, 1);
   axisBottomDay();
 }
 
@@ -79,7 +88,7 @@ function drawDayGraph (param, min, max) {
   beginShape();
   for (i=0; i<24; i++) {
     for (j=0; j<12; j++) {
-      vertex(((graph_width-(padding*5))/288)*(i*12+j), -map(last_day[i][j][param], min, max, 0, (graph_height-font_size*7)));
+      vertex(((graph_width-(padding*5))/288)*(i*14+j), -map(last_day[i][j][param], min, max, 0, (graph_height-font_size*7)));
     }
   }
   endShape();
