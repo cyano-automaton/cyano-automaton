@@ -13,8 +13,8 @@ ser= serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 ser.flush()
 
 temp=[]
-tds=[]
-ph=[]
+#tds=[]
+#ph=[]
 ntu=[]
 
 counter = 0
@@ -33,20 +33,20 @@ while True:
 		if counter > 5:
 			values = line.split(", ")
 			temp.append(float(values[0]))
-			tds.append(float(values[1]))
-			ph.append(float(values[2]))
-			ntu.append(float(values[3]))
+			#tds.append(float(values[1]))
+			#ph.append(float(values[2]))
+			ntu.append(float(values[1]))
 		now = datetime.now()
 		print(now.second)
 		if now.second > 55:
 			break
 
 temp_avg = avg(temp)
-tds_avg = avg(tds)
-ph_avg = avg(ph)
+#tds_avg = avg(tds)
+#ph_avg = avg(ph)
 ntu_avg = avg(ntu)
 
-print("Average values from last minute are:" + str(temp_avg) +", " + str(tds_avg) + ", " + str(ph_avg) + ", " + str(ntu_avg))
+print("Average values from last minute are:" + str(temp_avg) +", "+ str(ntu_avg))
 
 year = now.year
 month = now.month
@@ -61,8 +61,8 @@ right_now = {
 	"hour": hour,
 	"minute": minute,
 	"temp": temp_avg,
-	"tds": tds_avg,
-	"ph": ph_avg,
+	#"tds": tds_avg,
+	#"ph": ph_avg,
 	"ntu": ntu_avg
 }
 
