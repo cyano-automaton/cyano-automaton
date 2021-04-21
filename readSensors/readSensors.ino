@@ -10,15 +10,6 @@ DallasTemperature tempSensor(&oneWire);
   UWORD lux = 0;
 */
 
-#define tdsPin A3
-#define VREF 5.0      // analog reference voltage(Volt) of the ADC
-#define SCOUNT  30           // sum of sample point
-int analogBuffer[SCOUNT];    // store the analog value in the array, read from ADC
-int analogBufferTemp[SCOUNT];
-int analogBufferIndex = 0, copyIndex = 0;
-float averageVoltage = 0, tdsValue = 0;
-
-
 #define phPin A2            //pH meter Analog output to Arduino Analog Input 0
 #define Offset 0.00            //deviation compensate
 #define samplingInterval 20
@@ -63,7 +54,7 @@ float ph = readPH();
 Serial.print(ph);
 Serial.print(", ");
 
-float ntu = readTurb();
+float ntu = readTurb(A5);
 Serial.print(ntu);
 
 Serial.println();
@@ -188,16 +179,19 @@ double avergearray(int* arr, int number) {
   return avg;
 }
 
-float readTurb () {
-  float volt = 0;
-  for (int i = 0; i < 100; i++) {
-    volt += ((float)analogRead(A5) / 1023) * 5;
+float readTurb (int sensorPin) {
+  float ntu;
+  float volt;
+  for (int i = 0; i < 800; i++) {
+    volt += ((float)analogRead(sensorPin) / 1023) * 5;
   }
-  volt = volt / 100;
+  volt = volt / 800 - 0.5;
   float ntu = -1120.4 * square(volt) + 5742.3 * volt - 4352.9;
 
   if (volt < 2.5) {
     ntu = 3000;
-  }
+  } else{
+      ntu = -1120.4*square(volt)+5742.3*volt-4353.8; 
+   }
   return ntu;
 }
