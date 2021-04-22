@@ -23,9 +23,9 @@ function draw() {
   textSize(font_size);
   text("Right now:",0, font_size)
   text("Temperature: "+right_now.temp+"°C",0, font_size*4)
-  text("TDS: "+right_now.tds+" ppm",0, font_size*6)
-  text("pH: "+right_now.ph,0, font_size*8)
-  text("Turbidity: "+right_now.ntu+" ntu",0, font_size*10)
+  text("Turbidity: "+right_now.ntu+" ntu",0, font_size*6)
+  //text("TDS: "+right_now.tds+" ppm",0, font_size*8)
+  //text("pH: "+right_now.ph,0, font_size*10)
 
   text("Last hour:",0, font_size*14+padding)
   text("Last day:",0, font_size*42+padding)
@@ -48,13 +48,13 @@ function draw() {
   drawHourGraph("temp", 25, 35)
 
   stroke(255,255,0);
-  drawHourGraph("tds", 1000, 1200)
+  //drawHourGraph("tds", 1000, 1200)
 
   stroke(0,0,255);
-  drawHourGraph("ph", 2, 7)
+  //drawHourGraph("ph", 2, 7)
 
   stroke(0,0,0);
-  drawHourGraph("ntu", 2999, 3008);
+  drawHourGraph("ntu", 1000, 3000);
   fill(0);
   axisLeft(25, 35, 1);
   axisBottomHour();
@@ -65,7 +65,7 @@ function draw() {
   drawDayGraph ("temp_avg", 25, 35);
 
   stroke(0,0,0);
-  drawDayGraph ("ntu_avg", 2999, 3008);
+  drawDayGraph ("ntu_avg", 1000, 3000);
 
   fill(0);
   axisLeft(25, 35, 1);
