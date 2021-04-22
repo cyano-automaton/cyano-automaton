@@ -31,8 +31,8 @@ void setup(void)
   pinMode(6, OUTPUT);
   digitalWrite(6, HIGH);
 
-  pinMode(2, INPUT)
-  pinMode(3, INPUT)
+  pinMode(2, INPUT);
+  pinMode(3, INPUT);
 
   pinMode (A5, INPUT);
   tempSensor.begin();
