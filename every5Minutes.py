@@ -14,26 +14,26 @@ def byMinute(e):
 def byHour(e):
   return e['hour']
 
-files = listdir("/home/pi/cyano-automaton.github.io/data/")
+files = listdir("./tmp/")
 files.remove("right_now.json")
+files.remove("lastHour.json")
+files.remove("lastDay.json")
+
 print (files)
 objects=[]
 
 for i in files:
-	with open ("/home/pi/cyano-automaton.github.io/data/"+i, "r") as f:
+	with open ("./tmp/"+i, "r") as f:
 		x=json.loads(f.read())
 		objects.append(x)
 
-
 objects.sort(key=byMinute)
-objects.sort(key=byHour)
+print (objects)
 
-#keys = ["temp", "tds", "ph", "ntu"]
-keys = ["temp", "ntu"]
+keys = ["temp", "tds", "ph", "ntu"]
 
-indexes = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
-
-for i in indexes:
+five_minutes=[]
+for i in range(5):
 	for j in keys:
 		objects[i][j] = [objects[i][j]]
 		objects[i][j].append(objects[i+1][j])
@@ -41,11 +41,28 @@ for i in indexes:
 		objects[i][j].append(objects[i+3][j])
 		objects[i][j].append(objects[i+4][j])
 		objects[i][j+"_avg"]=avg(objects[i][j])
-	location = "/home/pi/cyano-automaton.github.io/minutes/"
-	filename =str(objects[i]["year"])+"_"+str(objects[i]["month"])+"_"+str(objects[i]["day"])+"_"+str(objects[i]["hour"])+"_"+str(objects[i]["minute"])
+print(objects)
+
+
+"""
+if files["lastHours.json"] {
+
+}
+
+for i in range(5):
+	for j in keys:
+		objects[i][j] = [objects[i][j]]
+		objects[i][j].append(objects[i+1][j])
+		objects[i][j].append(objects[i+2][j])
+		objects[i][j].append(objects[i+3][j])
+		objects[i][j].append(objects[i+4][j])
+		objects[i][j+"_avg"]=avg(objects[i][j])
+	location = "./tmp/"
+	filename =str(objects[i]["year"])+"_"+str(objects[i]["month"])+"_"+str(objects[i]["day"])+"_"+str(objects[i]["hour"]))
 	extension = ".json"
 	with open (location+filename+extension, "w") as outfile:
 		json.dump(objects[i], outfile,  indent=4)
 
 for y in files:
-	remove("/home/pi/cyano-automaton.github.io/data/"+y)
+	remove("./tmp/"+y)
+"""
