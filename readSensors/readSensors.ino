@@ -17,12 +17,22 @@ void setup(void)
 {
   Serial.begin(9600);
 
+
+
+
   pinMode(tempPin, INPUT);
+
   pinMode(8, OUTPUT);
   digitalWrite(8, HIGH);
 
   pinMode(7, OUTPUT);
-  digitalWrite(7, LOW);
+  digitalWrite(7, HIGH);
+
+  pinMode(6, OUTPUT);
+  digitalWrite(6, HIGH);
+
+  pinMode(2, INPUT)
+  pinMode(3, INPUT)
 
   pinMode (A5, INPUT);
   tempSensor.begin();
@@ -39,6 +49,14 @@ if (temp > 30 ) {
 if (temp < 27) {
     digitalWrite(8, LOW);
   };
+
+if (digitalRead(2) == HIGH) {
+  digitalWrite(6, LOW);
+} else {digitalWrite(6, HIGH);}
+
+if (digitalRead(3) == HIGH) {
+  digitalWrite(7, LOW);
+} else {  digitalWrite(7, HIGH);}
 
 
 float ntu = readTurb();
@@ -69,7 +87,7 @@ float readTurb () {
   if (volt < 2.5) {
     ntu = 3000;
   } else{
-      ntu = -1120.4*square(volt)+5742.3*volt-4353.8; 
+      ntu = -1120.4*square(volt)+5742.3*volt-4353.8;
    }
   return ntu;
 }
