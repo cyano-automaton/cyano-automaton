@@ -21,6 +21,7 @@ function setup() {
 function draw() {
   background(255, 0);
   textSize(font_size);
+  fill(224, 192, 192);
   text("Right now:",0, font_size)
   text("Temperature: "+right_now.temp+"°C",0, font_size*4)
   text("Turbidity: "+right_now.ntu+" ntu",0, font_size*6)
@@ -44,7 +45,7 @@ function draw() {
 
   translate(padding, graph_height-padding);
 
-  stroke(255,0,0);
+  stroke(255,0,255);
   drawHourGraph("temp", 25, 35)
 
   stroke(255,255,0);
@@ -53,21 +54,22 @@ function draw() {
   stroke(0,0,255);
   //drawHourGraph("ph", 2, 7)
 
-  stroke(0,0,0);
+  stroke(0,255,255);
   drawHourGraph("ntu", 1000, 3000);
-  fill(0);
+
+  fill(0, 255, 0);
   axisLeft(25, 35, 1);
   axisBottomHour();
 
   translate(0, graph_height+padding/2);
 
-  stroke(255,0,0);
+  stroke(255,0,255);
   drawDayGraph ("temp_avg", 25, 35);
 
-  stroke(0,0,0);
+  stroke(0,255,255);
   drawDayGraph ("ntu_avg", 1000, 3000);
 
-  fill(0);
+  fill(0, 255, 0);
   axisLeft(25, 35, 1);
   axisBottomDay();
 }
@@ -97,8 +99,8 @@ function drawDayGraph (param, min, max) {
 
 function axisLeft(min, max, step) {
   push()
-  translate(-padding/2, 0)
-  stroke(0,0,0)
+  translate(-padding/2, 0);
+  stroke(224, 192, 192);
   strokeWeight(1);
   line(0, 0, 0, -(graph_height-(padding*4)));
   noStroke();
@@ -109,7 +111,7 @@ function axisLeft(min, max, step) {
   for (i = 0; i <= podzialka; i++) {
     noStroke(0);
     text (min+(step*i), 5, -offset*i-5);
-    stroke(0);
+    stroke(224, 192, 192);
     line(0, -offset*i, 10, -offset*i)
   }
   pop()
@@ -117,8 +119,8 @@ function axisLeft(min, max, step) {
 
 function axisBottomHour() {
   push()
-    translate(0, padding/2)
-  stroke(0,0,0)
+    translate(0, padding/2);
+  stroke(224, 192, 192);
   strokeWeight(1);
   line(0, 0, (graph_width-(padding*2)), 0);
   noStroke();
@@ -130,7 +132,7 @@ function axisBottomHour() {
     rotate(PI/2);
     text (last_hour[0].hour+":"+last_hour[i].minute, padding/4,  -i*((graph_width-(padding))/12)-5);
     pop();
-    stroke(0);
+    stroke(224, 192, 192);
     line(i*((graph_width-(padding))/12), 0, i*((graph_width-(padding))/12), 10)
   }
   pop()
@@ -139,7 +141,7 @@ function axisBottomHour() {
 function axisBottomDay() {
   push()
     translate(0, padding/2)
-  stroke(0,0,0)
+  stroke(224, 192, 192);
   strokeWeight(1);
   line(0, 0, (graph_width-(padding*2)), 0);
   noStroke();
@@ -151,7 +153,7 @@ function axisBottomDay() {
     rotate(PI/2);
     text (last_day[i][0].hour, padding/4,  -i*((graph_width-(padding))/24) -5);
     pop();
-    stroke(0);
+    stroke(224, 192, 192);
     line(i*((graph_width-(padding))/24), 0, i*((graph_width-(padding))/24), 10)
   }
   pop()
