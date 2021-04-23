@@ -140,7 +140,7 @@ function axisBottomHour() {
 function axisBottomDay() {
   push()
     translate(0, padding/2)
-  stroke(0,0,0)
+  stroke(0,255,0)
   strokeWeight(1);
   line(0, 0, (graph_width-(padding*2)), 0);
   noStroke();
