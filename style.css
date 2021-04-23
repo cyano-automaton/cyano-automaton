@@ -13,16 +13,14 @@ body {
   justify-content: space-evenly;
   align-items: center;
   font-family: 'Roboto Mono', monospace;
-  color: rgb(0, 255, 0);
+  color: rgb(255, 224, 224);
 }
 
 h1 {
-  color: rgb(0, 255, 0);
   font-size: 5em;
 }
 
 h2 {
-  color: rgb(0, 255, 0);
   font-size: 3em;
   font-family: 'Roboto Mono', monospace;
 }
@@ -32,7 +30,6 @@ div {
 }
 
 p {
-  color: rgb(0, 255, 0);
   font-size: 1em;
 }
 
