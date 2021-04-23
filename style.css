@@ -8,6 +8,7 @@ canvas {
 
 body {
   background-color: rgb(0, 0, 0);
+  background-image: none;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
