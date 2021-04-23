@@ -56,7 +56,7 @@ function draw() {
 
   stroke(0,255,255);
   drawHourGraph("ntu", 1000, 3000);
-  fill(0, 255, 0);
+  fill(224, 192, 192);
   axisLeft(25, 35, 1);
   axisBottomHour();
 
