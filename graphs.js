@@ -21,7 +21,7 @@ function setup() {
 function draw() {
   background(255, 0);
   textSize(font_size);
-  fill(0, 255, 0);
+  fill(255, 224, 224);
   text("Right now:",0, font_size)
   text("Temperature: "+right_now.temp+"°C",0, font_size*4)
   text("Turbidity: "+right_now.ntu+" ntu",0, font_size*6)
@@ -98,8 +98,8 @@ function drawDayGraph (param, min, max) {
 
 function axisLeft(min, max, step) {
   push()
-  translate(-padding/2, 0)
-  stroke(0,255,0)
+  translate(-padding/2, 0);
+  stroke(255, 224, 224);
   strokeWeight(1);
   line(0, 0, 0, -(graph_height-(padding*4)));
   noStroke();
@@ -118,8 +118,8 @@ function axisLeft(min, max, step) {
 
 function axisBottomHour() {
   push()
-    translate(0, padding/2)
-  stroke(0,255,0)
+    translate(0, padding/2);
+  stroke(255, 224, 224);
   strokeWeight(1);
   line(0, 0, (graph_width-(padding*2)), 0);
   noStroke();
@@ -140,7 +140,7 @@ function axisBottomHour() {
 function axisBottomDay() {
   push()
     translate(0, padding/2)
-  stroke(0,255,0)
+  stroke(255, 224, 224);
   strokeWeight(1);
   line(0, 0, (graph_width-(padding*2)), 0);
   noStroke();
