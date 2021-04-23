@@ -45,7 +45,7 @@ function draw() {
 
   translate(padding, graph_height-padding);
 
-  stroke(255,0,0);
+  stroke(255,0,255);
   drawHourGraph("temp", 25, 35)
 
   stroke(255,255,0);
@@ -54,7 +54,7 @@ function draw() {
   stroke(0,0,255);
   //drawHourGraph("ph", 2, 7)
 
-  stroke(0,0,255);
+  stroke(0,255,255);
   drawHourGraph("ntu", 1000, 3000);
   fill(0, 255, 0);
   axisLeft(25, 35, 1);
@@ -62,10 +62,10 @@ function draw() {
 
   translate(0, graph_height+padding/2);
 
-  stroke(255,0,0);
+  stroke(255,0,255);
   drawDayGraph ("temp_avg", 25, 35);
 
-  stroke(0,0,255);
+  stroke(0,255,255);
   drawDayGraph ("ntu_avg", 1000, 3000);
 
   fill(0, 255, 0);
