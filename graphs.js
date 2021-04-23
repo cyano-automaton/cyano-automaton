@@ -56,7 +56,8 @@ function draw() {
 
   stroke(0,255,255);
   drawHourGraph("ntu", 1000, 3000);
-  fill(224, 192, 192);
+
+  fill(0, 255, 0);
   axisLeft(25, 35, 1);
   axisBottomHour();
 
@@ -110,7 +111,7 @@ function axisLeft(min, max, step) {
   for (i = 0; i <= podzialka; i++) {
     noStroke(0);
     text (min+(step*i), 5, -offset*i-5);
-    stroke(0);
+    stroke(224, 192, 192);
     line(0, -offset*i, 10, -offset*i)
   }
   pop()
@@ -131,7 +132,7 @@ function axisBottomHour() {
     rotate(PI/2);
     text (last_hour[0].hour+":"+last_hour[i].minute, padding/4,  -i*((graph_width-(padding))/12)-5);
     pop();
-    stroke(0);
+    stroke(224, 192, 192);
     line(i*((graph_width-(padding))/12), 0, i*((graph_width-(padding))/12), 10)
   }
   pop()
@@ -152,7 +153,7 @@ function axisBottomDay() {
     rotate(PI/2);
     text (last_day[i][0].hour, padding/4,  -i*((graph_width-(padding))/24) -5);
     pop();
-    stroke(0);
+    stroke(224, 192, 192);
     line(i*((graph_width-(padding))/24), 0, i*((graph_width-(padding))/24), 10)
   }
   pop()
