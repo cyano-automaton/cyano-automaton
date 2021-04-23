@@ -18,9 +18,9 @@ while True:
 
 
     if (now.hour < 6) or (now.hour > 22):
-        if (now.minute == 0) and (now.second < 11):
+        if (now.minute == 0) and (now.second < 21):
             bubbles.on()
-    if (now.minute%5 == 0) and (now.second < 11):
+    if (now.minute%5 == 0) and (now.second < 21):
         bubbles.on()
     else:
         bubbles.off()

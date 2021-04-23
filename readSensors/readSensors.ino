@@ -1,9 +1,20 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 
+#define abovePin A0
+#define underPin A1
+
+#define lightPin 6
+#define bubblesPin 7
+#define heaterPin 8
+
+#define tempMax 31
+#define tempMin 28
 #define tempPin A4
 OneWire oneWire(tempPin);
 DallasTemperature tempSensor(&oneWire);
+
+
 
 /*#include "DEV_Config.h"
   #include "TSL2591.h"
@@ -17,19 +28,19 @@ void setup(void)
 {
   Serial.begin(9600);
 
-
-
+  pinMode (abovePin, INPUT);
+  pinMode (underPin, INPUT);
 
   pinMode(tempPin, INPUT);
 
-  pinMode(8, OUTPUT);
-  digitalWrite(8, HIGH);
+  pinMode(heaterPin, OUTPUT);
+  digitalWrite(heaterPin, HIGH);
 
-  pinMode(7, OUTPUT);
-  digitalWrite(7, HIGH);
+  pinMode(bubblesPin, OUTPUT);
+  digitalWrite(bubblesPin, HIGH);
 
-  pinMode(6, OUTPUT);
-  digitalWrite(6, HIGH);
+  pinMode(lightPin, OUTPUT);
+  digitalWrite(lightPin, HIGH);
 
   pinMode(2, INPUT);
   pinMode(3, INPUT);
@@ -41,28 +52,44 @@ void setup(void)
 void loop(void)
 {
 float temp = readTemp();
+
+int above = analogRead(abovePin);
+int under = analogRead(underPin);
+int photoresistor = above - under;
+
 Serial.print(temp);
 Serial.print(", ");
-if (temp > 30 ) {
-    digitalWrite(8, HIGH);
+Serial.print(photoresistor);
+Serial.println();
+
+if (temp > tempMax ) {
+    digitalWrite(heaterPin, HIGH);
   }
-if (temp < 27) {
-    digitalWrite(8, LOW);
+if (temp < tempMin) {
+    digitalWrite(heaterPin, LOW);
   };
 
 if (digitalRead(2) == HIGH) {
-  digitalWrite(6, LOW);
-} else {digitalWrite(6, HIGH);}
+  digitalWrite(lightPin, LOW);
+} else {digitalWrite(lightPin, HIGH);}
 
 if (digitalRead(3) == HIGH) {
-  digitalWrite(7, LOW);
-} else {  digitalWrite(7, HIGH);}
+  digitalWrite(bubblesPin, LOW);
+} else {  digitalWrite(bubblesPin, HIGH);}
 
 
+
+/*
 float ntu = readTurb();
 Serial.print(ntu);
 Serial.println();
+*/
+
 }
+
+
+
+
 
 float readTemp() {
   tempSensor.requestTemperatures();
