@@ -1,0 +1,368 @@
+[
+    {
+        "year": 1959,
+        "price": 311.28,
+        "spendings": 433.9,
+        "production": 1130
+    },
+    {
+        "year": 1960,
+        "price": 306.03,
+        "spendings": 652.3,
+        "production": 1190
+    },
+    {
+        "year": 1961,
+        "price": 302.96,
+        "spendings": 1150.8,
+        "production": 1230
+    },
+    {
+        "year": 1962,
+        "price": 299.95,
+        "spendings": 1967.0,
+        "production": 1290
+    },
+    {
+        "year": 1963,
+        "price": 296.03,
+        "spendings": 2617.0,
+        "production": 1340
+    },
+    {
+        "year": 1964,
+        "price": 292.21,
+        "spendings": 3004.4,
+        "production": 1390
+    },
+    {
+        "year": 1965,
+        "price": 287.57,
+        "spendings": 2908.5,
+        "production": 1440
+    },
+    {
+        "year": 1966,
+        "price": 279.58,
+        "spendings": 2874.7,
+        "production": 1450
+    },
+    {
+        "year": 1967,
+        "price": 271.21,
+        "spendings": 2133.0,
+        "production": 1420
+    },
+    {
+        "year": 1968,
+        "price": 291.98,
+        "spendings": 1455.2,
+        "production": 1440
+    },
+    {
+        "year": 1969,
+        "price": 292.73,
+        "spendings": 889.3,
+        "production": 1450
+    },
+    {
+        "year": 1970,
+        "price": 242.87,
+        "spendings": 1333.3,
+        "production": 1480
+    },
+    {
+        "year": 1971,
+        "price": 263.6,
+        "spendings": 1331.0,
+        "production": 1450
+    },
+    {
+        "year": 1972,
+        "price": 362.83,
+        "spendings": 2349.6,
+        "production": 1390
+    },
+    {
+        "year": 1973,
+        "price": 570.14,
+        "spendings": 2695.5,
+        "production": 1350
+    },
+    {
+        "year": 1974,
+        "price": 838.59,
+        "spendings": 2942.1,
+        "production": 1250
+    },
+    {
+        "year": 1975,
+        "price": 776.87,
+        "spendings": 1646.2,
+        "production": 1200
+    },
+    {
+        "year": 1976,
+        "price": 570.02,
+        "spendings": 1559.8,
+        "production": 1210
+    },
+    {
+        "year": 1977,
+        "price": 633.4,
+        "spendings": 1079.1,
+        "production": 1210
+    },
+    {
+        "year": 1978,
+        "price": 768.3,
+        "spendings": 676.9,
+        "production": 1210
+    },
+    {
+        "year": 1979,
+        "price": 1096.2,
+        "spendings": 744.7,
+        "production": 1210
+    },
+    {
+        "year": 1980,
+        "price": 1924.0,
+        "spendings": 811.0,
+        "production": 1220
+    },
+    {
+        "year": 1981,
+        "price": 1308.69,
+        "spendings": 588.3,
+        "production": 1280
+    },
+    {
+        "year": 1982,
+        "price": 1008.18,
+        "spendings": 636.9,
+        "production": 1340
+    },
+    {
+        "year": 1983,
+        "price": 1101.77,
+        "spendings": 526.9,
+        "production": 1400
+    },
+    {
+        "year": 1984,
+        "price": 898.39,
+        "spendings": 602.4,
+        "production": 1460
+    },
+    {
+        "year": 1985,
+        "price": 764.07,
+        "spendings": 779.6,
+        "production": 1530
+    },
+    {
+        "year": 1986,
+        "price": 869.57,
+        "spendings": 920.1,
+        "production": 1610
+    },
+    {
+        "year": 1987,
+        "price": 1020.55,
+        "spendings": 917.6,
+        "production": 1660
+    },
+    {
+        "year": 1988,
+        "price": 958.91,
+        "spendings": 778.0,
+        "production": 1870
+    },
+    {
+        "year": 1989,
+        "price": 798.52,
+        "spendings": 954.9,
+        "production": 2010
+    },
+    {
+        "year": 1990,
+        "price": 762.24,
+        "spendings": 1072.8,
+        "production": 2180
+    },
+    {
+        "year": 1991,
+        "price": 690.33,
+        "spendings": 1239.3,
+        "production": 2160
+    },
+    {
+        "year": 1992,
+        "price": 636.37,
+        "spendings": 1180.9,
+        "production": 2260
+    },
+    {
+        "year": 1993,
+        "price": 646.42,
+        "spendings": 913.7,
+        "production": 2280
+    },
+    {
+        "year": 1994,
+        "price": 673.08,
+        "spendings": 1428.8,
+        "production": 2260
+    },
+    {
+        "year": 1995,
+        "price": 654.67,
+        "spendings": 1488.7,
+        "production": 2230
+    },
+    {
+        "year": 1996,
+        "price": 641.81,
+        "spendings": 1467.5,
+        "production": 2290
+    },
+    {
+        "year": 1997,
+        "price": 535.99,
+        "spendings": 1175.1,
+        "production": 2450
+    },
+    {
+        "year": 1998,
+        "price": 468.78,
+        "spendings": 1196.2,
+        "production": 2500
+    },
+    {
+        "year": 1999,
+        "price": 434.84,
+        "spendings": 1302.2,
+        "production": 2570
+    },
+    {
+        "year": 2000,
+        "price": 420.98,
+        "spendings": 1450.5,
+        "production": 2590
+    },
+    {
+        "year": 2001,
+        "price": 398.04,
+        "spendings": 1786.4,
+        "production": 2600
+    },
+    {
+        "year": 2002,
+        "price": 447.89,
+        "spendings": 1518.7,
+        "production": 2550
+    },
+    {
+        "year": 2003,
+        "price": 513.12,
+        "spendings": 2247.5,
+        "production": 2540
+    },
+    {
+        "year": 2004,
+        "price": 562.45,
+        "spendings": 2694.3,
+        "production": 2420
+    },
+    {
+        "year": 2005,
+        "price": 591.04,
+        "spendings": 2355.5,
+        "production": 2470
+    },
+    {
+        "year": 2006,
+        "price": 777.97,
+        "spendings": 2259.7,
+        "production": 2370
+    },
+    {
+        "year": 2007,
+        "price": 872.51,
+        "spendings": 1813.2,
+        "production": 2350
+    },
+    {
+        "year": 2008,
+        "price": 1050.62,
+        "spendings": 1619.9,
+        "production": 2300
+    },
+    {
+        "year": 2009,
+        "price": 1176.21,
+        "spendings": 1559.9,
+        "production": 2490
+    },
+    {
+        "year": 2010,
+        "price": 1456.33,
+        "spendings": 1630.5,
+        "production": 2590
+    },
+    {
+        "year": 2011,
+        "price": 1808.72,
+        "spendings": 1706.1,
+        "production": 2680
+    },
+    {
+        "year": 2012,
+        "price": 1916.33,
+        "spendings": 1746.1,
+        "production": 2740
+    },
+    {
+        "year": 2013,
+        "price": 1572.04,
+        "spendings": 1395.3,
+        "production": 2960
+    },
+    {
+        "year": 2014,
+        "price": 1387.33,
+        "spendings": 1512.6,
+        "production": 3050
+    },
+    {
+        "year": 2015,
+        "price": 1269.94,
+        "spendings": 1594.3,
+        "production": 3120
+    },
+    {
+        "year": 2016,
+        "price": 1350.09,
+        "spendings": 1769.6,
+        "production": 3180
+    },
+    {
+        "year": 2017,
+        "price": 1330.38,
+        "spendings": 1949.9,
+        "production": 3230
+    },
+    {
+        "year": 2018,
+        "price": 1308.96,
+        "spendings": 2308.8,
+        "production": 3300
+    },
+    {
+        "year": 2019,
+        "price": 1407.15,
+        "spendings": 2801.6,
+        "production": 3300
+    }
+]

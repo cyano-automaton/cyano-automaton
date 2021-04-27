@@ -1,4 +1,18 @@
 import csv
+import json
+from random import randrange
+
+with open("./goldStrings.json", mode="r") as f:
+    strings = json.loads(f.read())
+
+first_sentence = strings["first_sentence"][randrange(19)]
+second_sentence = strings["second_sentence"][randrange(19)]
+third_sentence = strings["third_sentence"][randrange(19)]
+fourth_sentence = strings["fourth_sentence"][randrange(19)]
+fifth_sentence = strings["fifth_sentence"][randrange(19)]
+
+content = first_sentence + second_sentence + third_sentence + fourth_sentence + fifth_sentence
+
 
 with open('./gold/prices.csv', mode='r') as f:
     price = dict(filter(None, csv.reader(f)))
@@ -6,10 +20,11 @@ with open('./gold/prices.csv', mode='r') as f:
 #ceny podane są w U.S. dollars per fine ounce, która 1 wynosi tyle gramów:
 uncja = 31.1034768
 
+
+#All values are in metric tons (t) gold content
 with open('./gold/production.csv', mode='r') as f:
     production = dict(filter(None, csv.reader(f)))
 
-#All values are in metric tons (t) gold content
 #jedna tona to tyle gramów:
 t = 1000000
 
@@ -17,26 +32,44 @@ t = 1000000
 #czyli 1 tona to tyle uncji:
 uncji_w_tonie = 31103.4768
 
-#“One kg of Spirulina will create 1.8 kg of oxygen and will sequester 1.8 kg of CO2”
 
+#“One kg of Spirulina will create 1.8 kg of oxygen and will sequester 1.8 kg of CO2”
+tona_spiruliny_pochlania_tyle_ton_CO2 = 1.8
 
 #all dollar amounts are in millions, inflation adjusted
 with open('./nasa/spendings.csv', mode='r') as f:
     spendings = dict(filter(None, csv.reader(f)))
 
 #“Gold mines emitted on average 0.8 tonnes of CO2 equivalent for every ounce of gold that was produced in 2019”
-co2_tonnes_per_gram = uncja * 0.8
+co2_tonnes_per_ounce = 0.8
 
 
 
 year = input("Which year interests you?\n")
 
-
-wydatki_w_dolarach = float(spendings[year]) * 1000000
+wydatki_w_dolarach = int(float(spendings[year]) * 1000000)
 calkowita_wartosc = float(production[year]) * float(price[year]) * uncji_w_tonie
 
 wydatki_nasa_jako_ulamek_wartosci_zlota = wydatki_w_dolarach / calkowita_wartosc
 
+tony_CO2_wyprodukowane_na_uncje = float(production[year]) * uncji_w_tonie * co2_tonnes_per_ounce
+
+tony_spiruliny_potrzebne = tony_CO2_wyprodukowane_na_uncje / tona_spiruliny_pochlania_tyle_ton_CO2
+
+template = {
+    "year" : year,
+    "spendings" : str(wydatki_w_dolarach),
+    "percentage" : str(int(round(wydatki_nasa_jako_ulamek_wartosci_zlota, 2)*100)),
+    "CO2_produced": str(int(tony_CO2_wyprodukowane_na_uncje)),
+    "spirulina_required": str(int(tony_spiruliny_potrzebne)),
+    "spirulina_produced" : "1"
+}
+
+print(co2_tonnes_per_ounce*uncji_w_tonie)
+
+print (content.format(**template))
+
+"""
 print("In year " + year + " the price of gold was: " + price[year] +" U.S dollars (inflation adjusted) per fine ounce.")
 print("We produced: " + production[year] + " metric tones of gold world wide.")
 print("NASA spent " + spendings[year] + " millions of dollars that year (inflation adjusted).")
@@ -44,7 +77,9 @@ print("")
 print("The total value of gold produced in " + year + " is: " + str(round(calkowita_wartosc, 2)) +" U.S dollars.")
 print("Which means that NASA projects consumed " + str(round(wydatki_nasa_jako_ulamek_wartosci_zlota, 2)) + " of gold produced globally that year." )
 
+print(strings)
 
+"""
 """
 
 price_per_gram = float(price[year])*uncja
@@ -62,4 +97,5 @@ print("The total value of gold produced in " + year + " is: " + str(round(total_
 print("NASA spent " + spendings[year] + " millions of dollars that year (inflation adjusted).")
 print("Which means that NASA projects consumed " + str(round(gold_spent, 2)) + " of gold produced globally that year." )
 """
+
 quit()

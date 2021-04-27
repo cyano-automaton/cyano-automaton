@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/cyano-automaton/cyano-automaton.github.io#readme",
   "dependencies": {
+    "csv-parser": "^3.0.0",
     "express": "^4.17.1",
     "twit": "^2.2.11"
   }
