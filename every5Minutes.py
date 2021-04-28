@@ -21,11 +21,12 @@ counter = 0
 while True:
 	start = datetime.now()
 	print(start.minute % 5)
-	if (start.minute % 5) == 1:
+	if (start.minute % 5) == 0:
 		minute_start = start.minute
 		break
 
 while True:
+	start = datetime.now()
 	if ser.in_waiting > 0:
 		line = ser.readline().decode('utf-8').rstrip()
 		print (line)
@@ -36,7 +37,7 @@ while True:
 			ntu.append(float(values[1]))
 		now = datetime.now()
 		print(now.minute - minute_start)
-		if ((now.minute - minute_start)%5) == 0:
+		if (now.minute - minute_start) <= 5 or (now.minute - minute_start) == -55:
 			break
 
 temp_avg = avg(temp)
