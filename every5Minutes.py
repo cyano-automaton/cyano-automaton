@@ -65,17 +65,6 @@ right_now = {
 
 print(right_now)
 
-last5 = {}
-last5[str(year)]={}
-last5[str(year)][str(month)]={}
-last5[str(year)][str(month)][str(day)]={}
-last5[str(year)][str(month)][str(day)][str(hour)]={}
-last5[str(year)][str(month)][str(day)][str(hour)][str(minute)] = {"temp": temp_avg, "ntu": ntu_avg}
-
-
-print(last5)
-
-
 with open ("/home/pi/cyano-automaton.github.io/data/right_now.json", "w") as file:
 	json.dump(right_now, file,  indent=4)
 
@@ -110,5 +99,16 @@ with open ("/home/pi/cyano-automaton.github.io/data/archive.json", "r") as file:
 	dictionary = json.loads(file.read())
 	
 with open ("/home/pi/cyano-automaton.github.io/data/archive.json", "w") as file:
-	dictionary.update(last5)
+	last5 = {}
+	last5[str(year)]={}
+	dictionary.update(last5[str(year)])
+	last5[str(year)][str(month)]={}
+	dictionary.update(last5[str(year)][str(month)])
+	last5[str(year)][str(month)][str(day)]={}
+	dictionary.update(last5[str(year)][str(month)][str(day)])
+	last5[str(year)][str(month)][str(day)][str(hour)]={}
+	dictionary.update(last5[str(year)][str(month)][str(day)][str(hour)])
+	last5[str(year)][str(month)][str(day)][str(hour)][str(minute)] = {"temp": temp_avg, "ntu": ntu_avg}
+	dictionary.update(last5[str(year)][str(month)][str(day)][str(hour)][str(minute)])
+	print(last5)
 	json.dump(dictionary, file,  indent=4)
