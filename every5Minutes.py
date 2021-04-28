@@ -84,7 +84,7 @@ with open ("/home/pi/cyano-automaton.github.io/data/last24.json", "w") as file:
 
 with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "r") as file:
 	last7 = json.loads(file.read())
-	
+
 with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "w") as file:
 	if len(last7) < 2016:
 		last7.append(right_now)
@@ -96,19 +96,17 @@ with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "w") as file:
 
 
 with open ("/home/pi/cyano-automaton.github.io/data/archive.json", "r") as file:
-	dictionary = json.loads(file.read())
-	
+	last5 = json.loads(file.read())
+
 with open ("/home/pi/cyano-automaton.github.io/data/archive.json", "w") as file:
-	last5 = {}
-	last5[str(year)]={}
-	dictionary.update(last5[str(year)])
-	last5[str(year)][str(month)]={}
-	dictionary.update(last5[str(year)][str(month)])
-	last5[str(year)][str(month)][str(day)]={}
-	dictionary.update(last5[str(year)][str(month)][str(day)])
-	last5[str(year)][str(month)][str(day)][str(hour)]={}
-	dictionary.update(last5[str(year)][str(month)][str(day)][str(hour)])
-	last5[str(year)][str(month)][str(day)][str(hour)][str(minute)] = {"temp": temp_avg, "ntu": ntu_avg}
-	dictionary.update(last5[str(year)][str(month)][str(day)][str(hour)][str(minute)])
-	print(last5)
-	json.dump(dictionary, file,  indent=4)
+	if str(year) not in last5:
+		last5[str(year)] = {}
+	if str(month) not in last5[str(year)]:
+		last5[str(year)][str(month)] = {}
+	if str(day) not in last5[str(year)][str(month)]:
+		last5[str(year)][str(month)][str(day)]={}
+	if str(hour) not in last5[str(year)][str(month)][str(day)]:
+		last5[str(year)][str(month)][str(day)][str(hour)]={}
+	if str(minute) not in last5[str(year)][str(month)][str(day)][str(hour)]:
+		 last5[str(year)][str(month)][str(day)][str(hour)][str(minute)] = {"temp": temp_avg, "ntu": ntu_avg}
+	json.dump(last5, file,  indent=4)
