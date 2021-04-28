@@ -10,25 +10,17 @@ def avg (list):
 	avg = list_sum / len(list)
 	return avg
 
-def byMinute(e):
-  return e['minute']
-
-def byHour(e):
-  return e['hour']
-
 ser= serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 ser.flush()
 
 temp=[]
-#tds=[]
-#ph=[]
 ntu=[]
 
 counter = 0
 
 while True:
 	start = datetime.now()
-	print(start.minute)
+	print(start.minute % 5)
 	if (start.minute % 5) == 0:
 		minute_start = start.minute
 		break
@@ -41,8 +33,6 @@ while True:
 		if counter > 5:
 			values = line.split(", ")
 			temp.append(float(values[0]))
-			#tds.append(float(values[1]))
-			#ph.append(float(values[2]))
 			ntu.append(float(values[1]))
 		now = datetime.now()
 		print(now.minute - minute_start)
@@ -50,8 +40,6 @@ while True:
 			break
 
 temp_avg = avg(temp)
-#tds_avg = avg(tds)
-#ph_avg = avg(ph)
 ntu_avg = avg(ntu)
 
 print("Average values from last 5 minutes are:" + str(temp_avg) +", "+ str(ntu_avg))
@@ -76,17 +64,20 @@ right_now = {
 
 print(right_now)
 
-"""
-location = "/home/pi/cyano-automaton.github.io/data/"
-filename =str(year)+"_"+str(month)+"_"+str(day)+"_"+str(hour)+"_"+str(minute)
-extension = ".json"
-"""
+last5 = {}
+last5[year][month][day][hour][minute] = {"temp": temp_avg, "ntu": ntu_avg}
+
+print(last5)
+
 
 with open ("/home/pi/cyano-automaton.github.io/data/right_now.json", "w") as file:
 	json.dump(right_now, file,  indent=4)
 
-with open ("/home/pi/cyano-automaton.github.io/data/last24.json", "w") as file:
+
+with open ("/home/pi/cyano-automaton.github.io/data/last24.json", "r") as file:
 	last24 = json.loads(file.read())
+
+with open ("/home/pi/cyano-automaton.github.io/data/last24.json", "w") as file:
 	if len(last24) < 288:
 		last24.append(right_now)
 		json.dump(last24, file,  indent=4)
@@ -95,8 +86,11 @@ with open ("/home/pi/cyano-automaton.github.io/data/last24.json", "w") as file:
 		last24.append(right_now)
 		json.dump(last24, file,  indent=4)
 
-with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "w") as file:
+
+with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "r") as file:
 	last7 = json.loads(file.read())
+	
+with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "w") as file:
 	if len(last7) < 288:
 		last7.append(right_now)
 		json.dump(last7, file,  indent=4)
@@ -105,17 +99,10 @@ with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "w") as file:
 		last7.append(right_now)
 		json.dump(last7, file,  indent=4)
 
-with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "w") as file:
+
+with open ("/home/pi/cyano-automaton.github.io/data/archive.json", "r") as file:
 	dictionary = json.loads(file.read())
-	dictionary.update(last5)
-	json.dump(dictionary, file,  indent=4)
-
-last5 = {}
-last5[year][month][day][hour][minute] = {"temp": temp_avg, "ntu": ntu_avg}
-
-print(last5)
-
+	
 with open ("/home/pi/cyano-automaton.github.io/data/archive.json", "w") as file:
-	dictionary = json.loads(file.read())
 	dictionary.update(last5)
 	json.dump(dictionary, file,  indent=4)
