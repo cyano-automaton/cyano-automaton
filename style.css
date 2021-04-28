@@ -1,13 +1,15 @@
 @font-face {
-  font-family: "OCR";
-  src: url('./assets/OCR.ttf') format('truetype');
+  font-family: "Data";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Data"), url('./assets/Data.otf') format('opentype');
 }
 
 body {
   display: flex;
   flex-flow: column nowrap;
   background-color: rgb(16, 16, 16);
-  font-family: "OCR", monospace;
+  font-family: "Data", monospace;
   color: rgb(224, 192, 192);
 }
 
