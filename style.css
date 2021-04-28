@@ -29,14 +29,14 @@ main {
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+#twitter {
+  filter: brightness(1) contrast(1) grayscale(0) hue-rotate(0deg) invert(0) opacity(1) saturate(100) sepia(0); 
 }
 
 #youtube {
-  align-self: center;
-}
-
-#opis {
   align-self: center;
 }
 
@@ -47,5 +47,6 @@ main {
 }
 
 #opis {
+  align-self: center;
   width: 540px;
 }
