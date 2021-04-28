@@ -1,5 +1,4 @@
 #!/bin/bash
-python3 every5Minutes.py
 git pull
 git add .
 git commit -m "`date`"
