@@ -29,7 +29,7 @@ counter = 0
 while True:
 	start = datetime.now()
 	print(start.minute)
-	if start.minute % 5 == 0:
+	if (start.minute % 5) == 0:
 		minute_start = start.minute
 		break
 
@@ -46,7 +46,7 @@ while True:
 			ntu.append(float(values[1]))
 		now = datetime.now()
 		print(now.minute - minute_start)
-		if (now.minute - minute_start)  > 5:
+		if (now.minute - minute_start)  >= 5:
 			break
 
 temp_avg = avg(temp)
@@ -112,6 +112,8 @@ with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "w") as file:
 
 last5 = {}
 last5[year][month][day][hour][minute] = {"temp": temp_avg, "ntu": ntu_avg}
+
+print(last5)
 
 with open ("/home/pi/cyano-automaton.github.io/data/archive.json", "w") as file:
 	dictionary = json.loads(file.read())
