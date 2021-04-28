@@ -37,7 +37,7 @@ while True:
 			ntu.append(float(values[1]))
 		now = datetime.now()
 		print(now.minute - minute_start)
-		if (now.minute - minute_start) <= 5 or (now.minute - minute_start) == -55:
+		if (now.minute - minute_start) >= 5 or (now.minute - minute_start) == -55:
 			break
 
 temp_avg = avg(temp)
