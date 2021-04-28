@@ -43,14 +43,11 @@ main {
 
 main.center{
   align-items: center;
+  justify-content: center;
 }
 
 #twitter {
   filter: brightness(1) contrast(1) grayscale(0) hue-rotate(0deg) invert(1) opacity(1) saturate(1) sepia(0);
-}
-
-#youtube {
-  align-self: center;
 }
 
 #menu {
@@ -60,6 +57,5 @@ main.center{
 }
 
 #opis {
-  align-self: center;
   width: 540px;
 }
