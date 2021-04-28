@@ -66,7 +66,12 @@ right_now = {
 print(right_now)
 
 last5 = {}
+last5[str(year)]={}
+last5[str(year)][str(month)]={}
+last5[str(year)][str(month)][str(day)]={}
+last5[str(year)][str(month)][str(day)][str(hour)]={}
 last5[str(year)][str(month)][str(day)][str(hour)][str(minute)] = {"temp": temp_avg, "ntu": ntu_avg}
+
 
 print(last5)
 
