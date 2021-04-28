@@ -97,7 +97,7 @@ with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "r") as file:
 	last7 = json.loads(file.read())
 	
 with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "w") as file:
-	if len(last7) < 288:
+	if len(last7) < 2016:
 		last7.append(right_now)
 		json.dump(last7, file,  indent=4)
 	else:
