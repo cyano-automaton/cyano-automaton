@@ -22,12 +22,14 @@ p {
 header {
   display: flex;
   flex-flow: row wrap;
+  align-items: center;
 }
 
 main {
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
+  justify-content: space-between;
 }
 
 #menu {
