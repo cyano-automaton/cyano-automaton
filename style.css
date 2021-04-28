@@ -19,8 +19,8 @@ h1 {
 }
 
 h2 {
-  font-size: 2em;
-  margin: 0 3em;
+  font-size: 1.5em;
+  margin: 0 1em;
 }
 
 p {
@@ -31,7 +31,7 @@ header {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 main {
