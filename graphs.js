@@ -1,5 +1,5 @@
 let right_now;
-let last_hour;
+let last24;
 let font_size = 20;
 let padding = 40;
 let graph_height = 540;
@@ -7,14 +7,14 @@ let graph_width = 960;
 
 function preload() {
   right_now = loadJSON("./data/right_now.json");
-  last_hour = loadJSON("./hours/lastHour.json");
-  last_day = loadJSON("./days/lastDay.json");
+  last24 = loadJSON("./data/last24.json");
+  last7 = loadJSON("./data/last7.json");
 }
 
 function setup() {
   canvas = createCanvas(640, 270*5);
   canvas.parent("graphs")
-  textFont("Roboto Mono");
+  textFont("Helvetica");
   noLoop();
 }
 
@@ -34,10 +34,10 @@ function draw() {
   textAlign(RIGHT);
 
   text(right_now.hour+":"+right_now.minute+" "+right_now.day+"."+right_now.month+"." +right_now.year,width, font_size)
+/*
+  text(last24[0].hour+":"+last24[0].minute+"0"+"—"+last24[0].hour+":"+"59"+" "+last24[0].day+"."+last24[0].month+"." +last24[0].year,graph_width, font_size*14+ padding)
 
-  text(last_hour[0].hour+":"+last_hour[0].minute+"0"+"—"+last_hour[0].hour+":"+"59"+" "+last_hour[0].day+"."+last_hour[0].month+"." +last_hour[0].year,graph_width, font_size*14+ padding)
-
-  text(last_hour[0].day+"."+last_hour[0].month+"." +last_hour[0].year,graph_width, font_size*42 + padding)
+  text(last24[0].day+"."+last24[0].month+"." +last24[0].year,graph_width, font_size*42 + padding)
 
   strokeWeight(3);
   translate(0, font_size*12)
@@ -72,6 +72,7 @@ function draw() {
   fill(0, 255, 0);
   axisLeft(25, 35, 1);
   axisBottomDay();
+  */
 }
 
 function drawHourGraph (param, min, max) {
@@ -79,7 +80,7 @@ function drawHourGraph (param, min, max) {
   beginShape();
   for (i=0; i<12; i++) {
     for (j=0; j<5; j++) {
-      vertex(((graph_width-(padding*5))/60)*(i*6+j), -map(last_hour[i][param][j], min, max, 0, (graph_height-font_size*7)));
+      vertex(((graph_width-(padding*5))/60)*(i*6+j), -map(last24[i][param][j], min, max, 0, (graph_height-font_size*7)));
     }
   }
   endShape();
@@ -130,7 +131,7 @@ function axisBottomHour() {
     noStroke(0);
     push();
     rotate(PI/2);
-    text (last_hour[0].hour+":"+last_hour[i].minute, padding/4,  -i*((graph_width-(padding))/12)-5);
+    text (last24[0].hour+":"+last24[i].minute, padding/4,  -i*((graph_width-(padding))/12)-5);
     pop();
     stroke(224, 192, 192);
     line(i*((graph_width-(padding))/12), 0, i*((graph_width-(padding))/12), 10)
