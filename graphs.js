@@ -12,7 +12,7 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(960, 270*5);
+  canvas = createCanvas(640, 270*5);
   canvas.parent("graphs")
   textFont("Roboto Mono");
   noLoop();
