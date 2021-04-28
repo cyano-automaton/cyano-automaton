@@ -1,9 +1,8 @@
 body {
-  background-color: rgb(16, 16, 16);
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-evenly;
-  align-items: center;
+
+  background-color: rgb(16, 16, 16);
   font-family: 'Roboto Mono', monospace;
   color: rgb(224, 192, 192);
 }
@@ -23,23 +22,16 @@ p {
 header {
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: center;
 }
 
 main {
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
-  justify-content: space-evenly;
-
 }
 
 #menu {
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
-  justify-content: flex-end;
 }
 
 #opis {
