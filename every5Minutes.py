@@ -1,5 +1,7 @@
 import json
 from os import listdir, remove
+import serial
+from datetime import datetime, timedelta
 
 def avg (list):
 	list_sum = 0
@@ -14,55 +16,104 @@ def byMinute(e):
 def byHour(e):
   return e['hour']
 
-files = listdir("/home/pi/cyano-automaton.github.io/data/")
-files.remove("right_now.json")
-files.remove("last24.json")
-files.remove("last7.json")
+ser= serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+ser.flush()
 
-print (files)
-objects=[]
+temp=[]
+#tds=[]
+#ph=[]
+ntu=[]
 
-for i in files:
-	with open ("/home/pi/cyano-automaton.github.io/data/"+i, "r") as f:
-		x=json.loads(f.read())
-		objects.append(x)
+counter = 0
 
-objects.sort(key=byMinute)
-print (objects)
+while True:
+	start = datetime.now()
+	print(start.minute)
+	if start.minute % 5 == 0:
+		minute_start = start.minute
+		break
 
-keys = ["temp", "tds", "ph", "ntu"]
+while True:
+	if ser.in_waiting > 0:
+		line = ser.readline().decode('utf-8').rstrip()
+		print (line)
+		counter = counter + 1
+		if counter > 5:
+			values = line.split(", ")
+			temp.append(float(values[0]))
+			#tds.append(float(values[1]))
+			#ph.append(float(values[2]))
+			ntu.append(float(values[1]))
+		now = datetime.now()
+		print(now.minute - minute_start)
+		if (now.minute - minute_start)  > 5:
+			break
 
-five_minutes=[]
-for i in range(5):
-	for j in keys:
-		objects[i][j] = [objects[i][j]]
-		objects[i][j].append(objects[i+1][j])
-		objects[i][j].append(objects[i+2][j])
-		objects[i][j].append(objects[i+3][j])
-		objects[i][j].append(objects[i+4][j])
-		objects[i][j+"_avg"]=avg(objects[i][j])
-print(objects)
+temp_avg = avg(temp)
+#tds_avg = avg(tds)
+#ph_avg = avg(ph)
+ntu_avg = avg(ntu)
 
+print("Average values from last 5 minutes are:" + str(temp_avg) +", "+ str(ntu_avg))
 
-"""
-if files["lastHours.json"] {
+year = now.year
+month = now.month
+day = now.day
+hour = now.hour
+minute = now.minute
 
+right_now = {
+    "year" : year,
+	"month":  month,
+	"day": day,
+	"hour": hour,
+	"minute": minute,
+	"temp": temp_avg,
+	#"tds": tds_avg,
+	#"ph": ph_avg,
+	"ntu": ntu_avg
 }
 
-for i in range(5):
-	for j in keys:
-		objects[i][j] = [objects[i][j]]
-		objects[i][j].append(objects[i+1][j])
-		objects[i][j].append(objects[i+2][j])
-		objects[i][j].append(objects[i+3][j])
-		objects[i][j].append(objects[i+4][j])
-		objects[i][j+"_avg"]=avg(objects[i][j])
-	location = "/home/pi/cyano-automaton.github.io/tmp/"
-	filename =str(objects[i]["year"])+"_"+str(objects[i]["month"])+"_"+str(objects[i]["day"])+"_"+str(objects[i]["hour"]))
-	extension = ".json"
-	with open (location+filename+extension, "w") as outfile:
-		json.dump(objects[i], outfile,  indent=4)
+print(right_now)
 
-for y in files:
-	remove("/home/pi/cyano-automaton.github.io/tmp/"+y)
 """
+location = "/home/pi/cyano-automaton.github.io/data/"
+filename =str(year)+"_"+str(month)+"_"+str(day)+"_"+str(hour)+"_"+str(minute)
+extension = ".json"
+"""
+
+with open ("/home/pi/cyano-automaton.github.io/data/right_now.json", "w") as file:
+	json.dump(right_now, file,  indent=4)
+
+with open ("/home/pi/cyano-automaton.github.io/data/last24.json", "w") as file:
+	last24 = json.loads(file.read())
+	if len(last24) < 288:
+		last24.append(right_now)
+		json.dump(last24, file,  indent=4)
+	else:
+		last24.pop(0)
+		last24.append(right_now)
+		json.dump(last24, file,  indent=4)
+
+with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "w") as file:
+	last7 = json.loads(file.read())
+	if len(last7) < 288:
+		last7.append(right_now)
+		json.dump(last7, file,  indent=4)
+	else:
+		last7.pop(0)
+		last7.append(right_now)
+		json.dump(last7, file,  indent=4)
+
+with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "w") as file:
+	dictionary = json.loads(file.read())
+	dictionary.update(last5)
+	json.dump(dictionary, file,  indent=4)
+
+last5 = {}
+last5[year][month][day][hour][minute] = {"temp": temp_avg, "ntu": ntu_avg}
+
+with open ("/home/pi/cyano-automaton.github.io/data/archive.json", "w") as file:
+	dictionary = json.loads(file.read())
+	dictionary.update(last5)
+	json.dump(dictionary, file,  indent=4)
