@@ -1,4 +1,5 @@
 const fs = require('fs');
+require('dotenv').config();
 
 let strings_json = fs.readFileSync('./assets/tweetStrings.json');
 let strings = JSON.parse(strings_json);
@@ -25,7 +26,7 @@ fifth_sentence = strings["fifth_sentence"][getRandomInt(0, 18)];
 content = first_sentence + second_sentence + third_sentence + fourth_sentence + fifth_sentence;
 array = content.split("&");
 
-year = 1959;
+year = 1961;
 kolejnosc= year-1959;
 
 spendings = data[kolejnosc]["spendings"];
@@ -49,18 +50,17 @@ for (i in array) {
   } else {
     text = text + eval(array[i]);
   }
-}
+};
 
 console.log(text);
-
 
 const Twit = require("twit"),
   config = {
     twitter: {
-      consumer_key: "D1BCZ4xdDOtDv8r7gfjs1erRF",
-      consumer_secret: "nFmlSQgXnUCiAsJzxenaFD0NmIhoOQVqZN4inbZ3ngePVqDt98",
-      access_token: "1376797607851360257-2cabZaYENBvOEWDBGCl2Kd5Z3C9IDD",
-      access_token_secret: "K90vBvsqDqsrZbjWZwoJ1kBQG1SkH7TwwRsV6byqeV6Sy"
+      consumer_key: process.env["TWITTER_CONSUMER_KEY"],
+      consumer_secret: process.env["TWITTER_CONSUMER_SECRET"],
+      access_token: process.env["TWITTER_ACCESS_TOKEN"],
+      access_token_secret: process.env["TWITTER_ACCESS_TOKEN_SECRET"]
     }
   },
   T = new Twit(config.twitter);
