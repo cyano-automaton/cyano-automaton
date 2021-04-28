@@ -9,11 +9,12 @@ body {
   display: flex;
   flex-flow: column nowrap;
   background-color: rgb(16, 16, 16);
-  font-family: "Data", monospace;
+  font-family: Helvetica,Roboto,"Segoe UI",Calibri,sans-serif;;
   color: rgb(224, 192, 192);
 }
 
 h1 {
+  font-family: "Data";
   font-size: 5em;
 }
 
