@@ -24,8 +24,8 @@ function draw() {
   textSize(font_size);
   fill(224, 192, 192);
   text("Right now:", font_size, font_size * 2)
-  text("Temperature: " + right_now.temp + "°C", font_size, font_size * 4)
-  text("Turbidity: " + right_now.ntu, font_size, font_size * 6)
+  text("Temperature: " + right_now.temp + "°C", font_size, font_size * 5)
+  text("Turbidity: " + right_now.ntu, font_size, font_size * 7)
 
   text("Last 24 hours:", 0, font_size * 14 + padding)
   text("Last 7 days:", 0, font_size * 42 + padding)
