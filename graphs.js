@@ -1,75 +1,110 @@
-let right_now;
-let last24;
 let font_size = 20;
 let padding = 40;
-let graph_height = 270
+let graph_height = 360
+
+let right_now;
+let last24 = [];
+let last7 = [];
+
+
 
 function preload() {
   right_now = loadJSON("./data/right_now.json");
-  last24 = loadJSON("./data/last24.json");
-  last7 = loadJSON("./data/last7.json");
+  last24_json = loadJSON("./data/last24.json");
+  last7_json = loadJSON("./data/last7.json");
 }
 
 function setup() {
+
   canvas = createCanvas(640, graph_height * 5);
   canvas.parent("graphs")
   textFont("Helvetica");
   noLoop();
+
+  for (let x in last24_json) {
+    last24.push(last24_json[x]);
+  }
+  for (let x in last7_json) {
+    last7.push(last7_json[x]);
+  }
 }
 
 function draw() {
   background(255, 0);
-  fill(0, 62, 32);
-  rect(0, 0, 640, font_size * 8, 10);
   textSize(font_size);
-  fill(224, 192, 192);
+  strokeWeight(1);
+
+
+  fill(0, 96, 64);
+  rect(0, 0, width, font_size * 8, 10);
+
+  fill(255, 128, 0);
   text("Right now:", font_size, font_size * 2)
   text("Temperature: " + right_now.temp + "°C", font_size, font_size * 5)
   text("Turbidity: " + right_now.ntu, font_size, font_size * 7)
-
-  text("Last 24 hours:", 0, font_size * 14 + padding)
-  text("Last 7 days:", 0, font_size * 42 + padding)
-
   textAlign(RIGHT);
-
   text(right_now.hour + ":" + right_now.minute + " " + right_now.day + "." + right_now.month + "." + right_now.year, width - font_size, font_size * 2)
 
-  text(last24[0].hour+":"+last24[0].minute+"0"+"—"+last24[last24.length-1].hour+":"+"59"+" "+last24[0].day+"."+last24[0].month+"." +last24[0].year, width, font_size*14+ padding)
 
-  text(last7[0].day+"."+last7[0].month+"." +last7[0].year, width, font_size*42 + padding)
+  translate(padding, font_size * 6);
 
-    strokeWeight(3);
-    translate(0, font_size*12)
-    textAlign(RIGHT);
 
-    translate(padding, graph_height-padding);
+  translate(0, graph_height);
+  TitleWithTimeOrDate ("Last 24 hours:", "time")
 
-    stroke(255,0,255);
-    drawHourGraph("temp", 25, 35)
+  stroke(255, 0, 255);
+  draw24Graph("temp", 25, 35)
 
-    stroke(0,255,255);
-    drawHourGraph("ntu", 1000, 3000);
+  fill(0, 255, 0);
+  axisLeftLines(25, 35, 1);
+  axisBottom24();
 
-    fill(0, 255, 0);
-    axisLeftLines(25, 35, 1);
-    axisBottomHour();
+  translate(0, graph_height-padding*2);
 
-    translate(0, graph_height+padding/2);
+  stroke(0, 255, 255);
+  draw24Graph("ntu", 0, 1024);
 
-    stroke(255,0,255);
-    drawDayGraph ("temp", 25, 35);
+  fill(0, 255, 0);
+  axisLeftLines(0, 1024, 128);
+  axisBottom24();
 
-    stroke(0,255,255);
-    drawDayGraph ("ntu", 1000, 3000);
+  translate(0, graph_height);
 
-    fill(0, 255, 0);
-    axisLeft(25, 35, 1);
-    axisBottomDay();
+  TitleWithTimeOrDate ("Last 7 days:", "date")
+
+  stroke(255, 0, 255);
+  draw7Graph("temp", 25, 35);
+
+  fill(0, 255, 0);
+  axisLeft(25, 35, 1);
+  axisBottom7();
+
+
+  translate(0, graph_height-padding*2);
+
+  stroke(0, 255, 255);
+  draw7Graph("ntu", 0, 1024);
+
+  fill(0, 255, 0);
+  axisLeft(0, 1024, 128);
+  axisBottom7();
 }
 
+function TitleWithTimeOrDate (title, timeordate) {
+  fill(255, 128, 0);
+  noStroke();
+  textAlign(LEFT);
+  text(title, -font_size, -graph_height+padding*3)
+  textAlign(RIGHT);
+  if (timeordate == "time") {
+      text(last24[0].hour + ":" + last24[0].minute + "—" + last24[last24.length - 1].hour + ":" + last24[last24.length - 1].minute + " " + last24[0].day + "." + last24[0].month + "." + last24[0].year, width-padding*1.5, -graph_height+padding*3)
+  }
+  if (timeordate == "date") {
+      text(last7[0].day + "." + last7[0].month + "." + last7[0].year, width-padding*1.5, -graph_height+padding*3)
+  }
+}
 
-
-function drawDayGraph(param, min, max) {
+function draw24Graph(param, min, max) {
   noFill();
   beginShape();
   for (i = 0; i < last24.length; i++) {
@@ -78,11 +113,11 @@ function drawDayGraph(param, min, max) {
   endShape();
 }
 
-function drawWeekGraph(param, min, max) {
+function draw7Graph(param, min, max) {
   noFill();
   beginShape();
   for (i = 0; i < last7.length; i++) {
-    vertex(((width - (padding*2)) / last7.length) * i, -map(last7[i][param], min, max, 0, (graph_height - font_size * 7)));
+    vertex(((width - (padding * 2)) / last7.length) * i, -map(last7[i][param], min, max, 0, (graph_height - font_size * 7)));
   }
   endShape();
 }
@@ -100,9 +135,9 @@ function axisLeft(min, max, step) {
   offset = (graph_height - (padding * 4) - 0) / podzialka
   for (i = 0; i <= podzialka; i++) {
     noStroke(0);
-    text(min + (step * i), 5, -offset * i - 5);
+    text(min + (step * i), -15, -offset * i - 5);
     stroke(224, 192, 192);
-    line(0, -offset * i, 10, -offset * i)
+    line(-10, -offset * i, 10, -offset * i)
   }
   pop()
 }
@@ -122,17 +157,17 @@ function axisLeftLines(min, max, step) {
     noStroke(0);
     text(min + (step * i), 5, -offset * i - 5);
     stroke(224, 192, 192);
-    line(0, -offset * i, graph_width, -offset * i)
+    line(0, -offset * i, width-padding, -offset * i)
   }
   pop()
 }
 
-function axisBottomDay() {
+function axisBottom24() {
   push()
   translate(0, padding / 2)
   stroke(224, 192, 192);
   strokeWeight(1);
-  line(0, 0, (graph_width - (padding * 2)), 0);
+  line(0, 0, width-padding*1.5, 0);
   noStroke();
   textSize(10);
   textAlign(LEFT)
@@ -140,31 +175,32 @@ function axisBottomDay() {
     noStroke(0);
     push();
     rotate(PI / 2);
-    text(last_day[i][0].hour, padding / 4, -i * ((graph_width - (padding)) / 24) - 5);
+    text(last24[i].hour, padding / 4, -i * ((width - (padding)) / 24) - 5);
     pop();
     stroke(224, 192, 192);
-    line(i * ((graph_width - (padding)) / 24), 0, i * ((graph_width - (padding)) / 24), 10)
+    line(i * ((width - (padding)) / 24), 0, i * ((width - (padding)) / 24), 10)
   }
   pop()
 }
 
-function axisBottomWeek() {
+function axisBottom7() {
   push()
   translate(0, padding / 2);
   stroke(224, 192, 192);
   strokeWeight(1);
-  line(0, 0, (graph_width - (padding * 2)), 0);
+  line(0, 0, width-padding*1.5, 0);
   noStroke();
   textSize(10);
   textAlign(LEFT)
-  for (i = 0; i < last7.length; i+48) {
+
+  for (i = 0; i < last7.length; i++) {
     noStroke(0);
     push();
-    rotate(PI / 2);
-    text(last7[i].day + "." + last7[i].month, padding / 4, -i * ((graph_width - (padding)) / 7) - 5);
+   // rotate(PI / 2);
+    text(last7[i].day + "." + last7[i].month, i * ((width - (padding*1.5)) / 7)-10, padding / 3);
     pop();
     stroke(224, 192, 192);
-    line(i * ((graph_width - (padding)) / 7), 0, i * ((graph_width - (padding)) / 7), graph_height)
+    line(i * ((width - (padding*1.5)) / 7), 0, i * ((width - (padding*1.5)) / 7), -(graph_height - (padding * 3)));
   }
   pop()
 }
