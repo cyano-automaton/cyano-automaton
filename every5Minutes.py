@@ -81,18 +81,18 @@ with open ("/home/pi/cyano-automaton.github.io/data/last24.json", "w") as file:
 		last24.append(right_now)
 		json.dump(last24, file,  indent=4)
 
+if minute == 0 or minute == 30:
+	with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "r") as file:
+		last7 = json.loads(file.read())
 
-with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "r") as file:
-	last7 = json.loads(file.read())
-
-with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "w") as file:
-	if len(last7) < 2016:
-		last7.append(right_now)
-		json.dump(last7, file,  indent=4)
-	else:
-		last7.pop(0)
-		last7.append(right_now)
-		json.dump(last7, file,  indent=4)
+	with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "w") as file:
+		if len(last7) < 366:
+			last7.append(right_now)
+			json.dump(last7, file,  indent=4)
+		else:
+			last7.pop(0)
+			last7.append(right_now)
+			json.dump(last7, file,  indent=4)
 
 
 with open ("/home/pi/cyano-automaton.github.io/data/archive.json", "r") as file:
