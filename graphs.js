@@ -17,7 +17,7 @@ function preload() {
 function setup() {
 
   canvas = createCanvas(640, graph_height * 5);
-  canvas.parent("graphs")
+  canvas.parent("graphs");
   textFont("Helvetica");
   noLoop();
 
