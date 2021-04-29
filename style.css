@@ -79,7 +79,16 @@ main.center{
   filter: brightness(1) contrast(1) grayscale(0) hue-rotate(0deg) invert(1) opacity(1) saturate(1) sepia(0);
 }
 
-#twitch iframe {
+.twitch {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+.twitch iframe,
+.twitch object,
+.twitch embed {
   position: absolute;
   top: 0;
   left: 0;
