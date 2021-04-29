@@ -25,23 +25,8 @@
   </header>
 
   <main>
-
-    <script src= "https://player.twitch.tv/js/embed/v1.js"></script>
-    <div class="twitch"></div>
-    <script type="text/javascript">
-      var options = {
-        width: 960,
-        height: 540,
-        channel: "cyanoautomaton",
-        muted: true,
-        controls: false
-      };
-      var player = new Twitch.Player("twitch", options);
-      player.setVolume(0);
-      player.setMuted(true);
-    </script>
-
-
+    <div id="twitch"><iframe src="https://player.twitch.tv/?channel=cyanoautomaton&parent=cyano-automaton.monster&muted=true" height="540" width="960" allowfullscreen="false" loading="eager" title="cyanoautomaton livestream" frameborder="0">
+    </iframe></div>
 
     <div id="graphs">
       <script src="graphs.js"></script>
