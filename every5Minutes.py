@@ -86,7 +86,7 @@ if minute == 0 or minute == 30:
 		last7 = json.loads(file.read())
 
 	with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "w") as file:
-		if len(last7) < 366:
+		if len(last7) < 336:
 			last7.append(right_now)
 			json.dump(last7, file,  indent=4)
 		else:
