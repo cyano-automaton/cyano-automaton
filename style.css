@@ -25,6 +25,8 @@ h1 {
   font-family: "Data";
   font-size: 5em;
   color: #ff9200;
+  letter-spacing: 0.5em;
+  line-height: 0;
 }
 
 h2 {
