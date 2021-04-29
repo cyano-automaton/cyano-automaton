@@ -8,7 +8,7 @@ bubbles = gpiozero.DigitalOutputDevice(21)
 while True:
     now = datetime.now()
 
-    if (now.hour > 5) or (now.hour < 23):
+    if (now.hour > 5) and (now.hour < 23):
         if (now.minute < 45):
             light.on()
         else:
