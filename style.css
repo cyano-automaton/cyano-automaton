@@ -28,11 +28,15 @@ h1 {
 }
 
 h2 {
-  text-decoration: none;
   font-size: 1.5em;
   margin: 0 2em;
   color: #ff9200;
-  border: 1px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+a {
+  text-decoration: none;
 }
 
 p {
