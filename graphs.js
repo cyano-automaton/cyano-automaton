@@ -20,13 +20,13 @@ function setup() {
 
 function draw() {
   background(255, 0);
+  fill(0, 32, 16);
+  rect(0, 0, 640, font_size*8, 10);
   textSize(font_size);
   fill(224, 192, 192);
-  text("Right now:",0, font_size)
-  text("Temperature: "+right_now.temp+"°C",0, font_size*4)
-  text("Turbidity: "+right_now.ntu+" ntu",0, font_size*6)
-  //text("TDS: "+right_now.tds+" ppm",0, font_size*8)
-  //text("pH: "+right_now.ph,0, font_size*10)
+  text("Right now:",padding, font_size*2)
+  text("Temperature: "+right_now.temp+"°C",padding, font_size*6)
+  text("Turbidity: "+right_now.ntu,padding, font_size*8)
 
   text("Last hour:",0, font_size*14+padding)
   text("Last day:",0, font_size*42+padding)
