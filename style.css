@@ -8,19 +8,24 @@
 body {
   display: flex;
   flex-flow: column nowrap;
-  background-color: rgb(16, 16, 16);
+  background-color: #292F33;
   font-family: Helvetica,Roboto,"Segoe UI",Calibri,sans-serif;;
   color: rgb(224, 192, 192);
 }
 
 h1 {
+  margin-left: 2em;
   font-family: "Data";
   font-size: 5em;
+  color: #ff9200;
 }
 
 h2 {
+  text-decoration: none;
   font-size: 1.5em;
-  margin: 0 1em;
+  margin: 0 2em;
+  color: #ff9200;
+  border: 1px;
 }
 
 p {
@@ -53,7 +58,7 @@ main.center{
 #menu {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 #opis {
