@@ -20,20 +20,20 @@ function setup() {
 
 function draw() {
   background(255, 0);
-  fill(0, 32, 16);
-  rect(0, 0, 640, font_size*8, 10);
+  fill(0, 62, 32);
+  rect(0, 0, 640, font_size*10, 10);
   textSize(font_size);
   fill(224, 192, 192);
-  text("Right now:",padding, font_size*2)
-  text("Temperature: "+right_now.temp+"°C",padding, font_size*6)
-  text("Turbidity: "+right_now.ntu,padding, font_size*8)
+  text("Right now:",font_size, font_size*2)
+  text("Temperature: "+right_now.temp+"°C",font_size, font_size*6)
+  text("Turbidity: "+right_now.ntu,font_size, font_size*8)
 
   text("Last hour:",0, font_size*14+padding)
   text("Last day:",0, font_size*42+padding)
 
   textAlign(RIGHT);
 
-  text(right_now.hour+":"+right_now.minute+" "+right_now.day+"."+right_now.month+"." +right_now.year,width, font_size)
+  text(right_now.hour+":"+right_now.minute+" "+right_now.day+"."+right_now.month+"." +right_now.year, width-font_size, font_size*2)
 /*
   text(last24[0].hour+":"+last24[0].minute+"0"+"—"+last24[0].hour+":"+"59"+" "+last24[0].day+"."+last24[0].month+"." +last24[0].year,graph_width, font_size*14+ padding)
 
