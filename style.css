@@ -9,16 +9,18 @@ body {
   display: flex;
   flex-flow: column nowrap;
   background-color: rgb(16, 16, 16);
-  font-family: "Data", monospace;
+  font-family: Helvetica,Roboto,"Segoe UI",Calibri,sans-serif;;
   color: rgb(224, 192, 192);
 }
 
 h1 {
+  font-family: "Data";
   font-size: 5em;
 }
 
 h2 {
-  font-size: 3em;
+  font-size: 1.5em;
+  margin: 0 1em;
 }
 
 p {
@@ -29,7 +31,7 @@ header {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 main {
@@ -39,12 +41,13 @@ main {
   justify-content: space-between;
 }
 
-#twitter {
-  filter: brightness(1) contrast(1) grayscale(0) hue-rotate(0deg) invert(1) opacity(1) saturate(1) sepia(0);
+main.center{
+  align-items: center;
+  justify-content: center;
 }
 
-#youtube {
-  align-self: center;
+#twitter {
+  filter: brightness(1) contrast(1) grayscale(0) hue-rotate(0deg) invert(1) opacity(1) saturate(1) sepia(0);
 }
 
 #menu {
@@ -54,6 +57,5 @@ main {
 }
 
 #opis {
-  align-self: center;
   width: 540px;
 }
