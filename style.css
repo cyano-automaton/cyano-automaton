@@ -34,9 +34,11 @@ h2 {
   margin: 0 3em;
   padding: 0.5em;
   color: #ff9200;
+  /*
   border-style: solid;
   border-width: 1px;
   border-radius: 10px;
+  */
 }
 
 h3 {
