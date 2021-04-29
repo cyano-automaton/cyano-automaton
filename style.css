@@ -26,7 +26,7 @@ h1 {
   font-size: 5em;
   color: #ff9200;
   letter-spacing: 0.5em;
-  line-height: 0;
+  line-height: 1;
 }
 
 h2 {
