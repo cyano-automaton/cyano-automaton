@@ -100,7 +100,7 @@ function TitleWithTimeOrDate (title, timeordate) {
       text(last24[0].hour + ":" + last24[0].minute + "—" + last24[last24.length - 1].hour + ":" + last24[last24.length - 1].minute + " " + last24[0].day + "." + last24[0].month + "." + last24[0].year, width-padding*1.5, -graph_height+padding*3)
   }
   if (timeordate == "date") {
-      text(last7[0].day + "." + last7[0].month + "." + last7[0].year, width-padding*1.5, -graph_height+padding*3)
+      text(last7[0].day + "." + last7[0].month + last7[last24.length - 1].day + "." + last7[last24.length - 1].month + "." + last7[0].year, width-padding*1.5, -graph_height+padding*3)
   }
 }
 
