@@ -81,7 +81,7 @@ with open ("/home/pi/cyano-automaton.github.io/data/last24.json", "w") as file:
 		last24.append(right_now)
 		json.dump(last24, file,  indent=4)
 
-if minute == 0 or minute == 30:
+if minute == 5 or minute == 30:
 	with open ("/home/pi/cyano-automaton.github.io/data/last7.json", "r") as file:
 		last7 = json.loads(file.read())
 
