@@ -35,7 +35,7 @@ void setup(void)
 
   pinMode(heaterPin, OUTPUT);
   digitalWrite(heaterPin, HIGH);
-
+/*
   pinMode(bubblesPin, OUTPUT);
   digitalWrite(bubblesPin, HIGH);
 
@@ -46,6 +46,7 @@ void setup(void)
   pinMode(3, INPUT);
 
   pinMode (A5, INPUT);
+  */
   tempSensor.begin();
 }
 
@@ -68,7 +69,7 @@ if (temp > tempMax ) {
 if (temp < tempMin) {
     digitalWrite(heaterPin, LOW);
   };
-
+/*
 if (digitalRead(2) == HIGH) {
   digitalWrite(lightPin, LOW);
 } else {digitalWrite(lightPin, HIGH);}
@@ -76,7 +77,7 @@ if (digitalRead(2) == HIGH) {
 if (digitalRead(3) == HIGH) {
   digitalWrite(bubblesPin, LOW);
 } else {  digitalWrite(bubblesPin, HIGH);}
-
+*/
 
 
 /*
