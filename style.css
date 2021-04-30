@@ -94,6 +94,11 @@ footer {
   filter: brightness(1) contrast(1) grayscale(0) hue-rotate(0deg) invert(1) opacity(1) saturate(1) sepia(0);
 }
 
+#graphs {
+  overflow: scroll;
+  max-height: 720px;
+}
+
 #menu {
   display: flex;
   flex-flow: row wrap;
