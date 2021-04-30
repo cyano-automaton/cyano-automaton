@@ -95,7 +95,7 @@ footer {
 }
 
 #graphs {
-  overflow: scroll;
+  overflow: auto;
   max-height: 720px;
 }
 
