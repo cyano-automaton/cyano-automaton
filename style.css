@@ -117,11 +117,11 @@ footer {
 .opis {
   width: 540px;
 }
-
+/*
 #twitch {
   width: 480px;
   height: 360px;
-}
+}*/
 
 iframe {
     display:block;
