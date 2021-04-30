@@ -24,14 +24,14 @@ body.error {
 
 h1 {
   font-family: "Data";
-  font-size: 5em;
+  font-size: 4em;
   color: #ff9200;
   letter-spacing: 0.5em;
   line-height: 0;
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 2em;
   margin: 0 3em;
   padding: 0.5em;
   color: #ff9200;
