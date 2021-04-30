@@ -96,6 +96,14 @@ footer {
   justify-content: space-between;
 }
 
+.space-around {
+  justify-content: space-around;
+}
+
+.actual-link {
+  text-decoration-line: underline;
+}
+
 .opis {
   width: 540px;
 }
