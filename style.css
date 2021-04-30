@@ -75,6 +75,13 @@ main.center{
   justify-content: center;
 }
 
+footer {
+  display: flex;
+  flex-flow: row-wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
 #twitter {
   filter: brightness(1) contrast(1) grayscale(0) hue-rotate(0deg) invert(1) opacity(1) saturate(1) sepia(0);
 }
