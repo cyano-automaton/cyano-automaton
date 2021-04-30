@@ -92,3 +92,8 @@ main.center{
 #opis {
   width: 540px;
 }
+
+iframe {
+    display:block;
+    width:100%;
+}
