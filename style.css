@@ -69,6 +69,7 @@ main {
   flex-flow: row wrap;
   align-items: flex-start;
   justify-content: space-between;
+  margin-top: 3em;
 }
 
 main.center{
@@ -102,7 +103,6 @@ footer {
 .space-around {
   justify-content: space-around;
   align-items: center;
-  margin-top: 3em;
 }
 
 .actual-link {
