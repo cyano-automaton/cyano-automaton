@@ -15,6 +15,27 @@ body {
   color: rgb(224, 192, 192);
 }
 
+main {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 3em;
+}
+
+main.center{
+  height: 100%;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 body.error {
   background-color: #ffffff;
   align-items: center;
@@ -62,20 +83,6 @@ header {
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-around;
-}
-
-main {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-top: 3em;
-}
-
-main.center{
-  height: 100%;
-  align-items: flex-start;
-  justify-content: center;
 }
 
 footer {
