@@ -104,7 +104,7 @@ float readTemp() {
   };
 }
 
-
+/*
 float readTurb () {
   for (int i = 0; i < 800; i++) {
     volt += ((float)analogRead(A5) / 1023) * 5;
@@ -118,4 +118,4 @@ float readTurb () {
       ntu = -1120.4*square(volt)+5742.3*volt-4353.8;
    }
   return ntu;
-}
+}*/
