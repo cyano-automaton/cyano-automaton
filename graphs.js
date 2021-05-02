@@ -6,7 +6,7 @@ let right_now;
 let last24 = [];
 let last7 = [];
 
-
+blink = 0;
 
 function preload() {
   right_now = loadJSON("./data/right_now.json");
@@ -16,9 +16,10 @@ function preload() {
 
 function setup() {
   canvas = createCanvas(600, graph_height * 7);
-  canvas.parent("graphs");
+  canvas.parent("graphs")
   textFont("Helvetica");
-  noLoop();
+  //noLoop();
+  frameRate(1);
 
   for (let x in last24_json) {
     last24.push(last24_json[x]);
@@ -31,7 +32,6 @@ function setup() {
 function draw() {
   background(255, 0);
   textSize(u);
-  strokeWeight(1);
 
   current_time = right_now.hour + ":" + right_now.minute;
   current_date = right_now.day + "." + right_now.month + "." + right_now.year
@@ -40,8 +40,9 @@ function draw() {
   date7 = [last7[0].day + "." + last7[0].month, last7[last7.length - 1].day + "." + last7[last7.length - 1].month + "." + last7[last7.length - 1].year]
 
   fill(0, 96, 64);
+  noStroke();
   rect(2 * u, 2 * u, graph_width, u * 8, 10);
-
+  textAlign(LEFT);
   fill(255, 128, 0);
   text("Right now:", 3 * u, 4 * u)
   text("Temperature: " + right_now.temp + "°C", 3 * u, u * 7)
@@ -49,6 +50,7 @@ function draw() {
   textAlign(RIGHT);
   text(current_time + " " + current_date, graph_width + u, 4 * u)
 
+  strokeWeight(1);
   stroke(255, 128, 0);
   line(0, 3 * u, 1.5 * u, 3 * u);
   line(0, 9 * u, 1.5 * u, 9 * u);
@@ -59,11 +61,11 @@ function draw() {
   line(3 * u, 12 * u, 3 * u, 10.5 * u);
   line(width - 3 * u, 12 * u, width - 3 * u, 10.5 * u);
 
-  translate(0, u * 4);
+  translate(0, u * 11);
 
-  toogle("Heater", "temp", 3);
-  toogle("Lamp", "time", 6);
-  toogle("Air pump", "time", 9);
+  toogle("Heater", "temp", 1);
+  toogle("Lamp", "time", 2);
+  toogle("Air pump", "time", 3);
 
 
 
@@ -259,44 +261,50 @@ function axisBottom7() {
 
 function toogle(title, param, order) {
   push();
-  translate(u * 2 * order, u * 10);
+  translate(u * 2, u * 10 * order/3);
   noStroke();
-  textAlign(LEFT);
-  text(title, 0, u / 2);
-  text("off", 0, u * 3)
-  text("on", u * 2, u * 3)
+  textAlign(RIGHT);
+  text(title, 4*u, u / 2);
 
   if (param == "temp") {
+    noFill();
     if (last24[last24.length - 1].temp - last24[last24.length - 2][param] > 0) {
-      fill(255, 128, 0);
+      noFill();
+      if (blink == 1) {
+        fill(255, 128, 0);
+        blink = 0;
+      } else {
+        fill(0);
+        blink = 1;
+      }
       stroke(224, 192, 192)
-      rect(0, u, u * 3, u, u / 2);
-      fill(224, 192, 192)
-      circle(u * 2.5, u * 1.5, u)
+      circle(u * 5, 0, u)
     }
     if (last24[last24.length - 1].temp - last24[last24.length - 2][param] < 0) {
       noFill();
       stroke(224, 192, 192)
-      rect(0, u, u * 3, u, u / 2);
-      fill(224, 192, 192)
-      circle(u / 2, u * 1.5, u)
+      circle(u * 5, 0, u)
     }
   }
 
   if (param == "time") {
     if (hour() > 22 || hour() > 6) {
-      fill(255, 128, 0);
+      if (blink == 1) {
+        fill(255, 128, 0);
+        blink = 0;
+      } else {
+        fill(0);
+        blink = 1;
+      }
       stroke(224, 192, 192)
-      rect(0, u, u * 3, u, u / 2);
-      fill(224, 192, 192)
-      circle(u * 2.5, u * 1.5, u)
+      circle(u * 5, 0, u)
     } else {
       noFill();
       stroke(224, 192, 192)
-      rect(0, u, u * 3, u, u / 2);
-      fill(224, 192, 192)
-      circle(u / 2, u * 1.5, u)
+      circle(u * 5, 0, u)
     }
   }
+
+
   pop();
 }
