@@ -3,8 +3,21 @@ const fs = require('fs');
 let last24_json = fs.readFileSync('./data/last24.json');
 let last24 = JSON.parse(last24_json);
 
+function averageNTU (array) {
+  suma = 0;
+  for (i in array) {
+    suma = suma + array[i]["ntu"];
+  }
+  return suma/array.length;
+}
 
+var yesterday_hour = last24.slice(0, 12);
+var today_hour = last24.slice(last24.length-13,last24.length-1)
 
+var yesterday = averageNTU(yesterday_hour);
+var today = averageNTU(today_hour);
+
+/*
 var yesterday = last24[0].ntu;
 var today = last24[last24.length-1].ntu
 
@@ -20,7 +33,7 @@ for (i in last24) {
       }
     }
 }
-
+*/
 console.log(yesterday);
 console.log(today);
 console.log("różnica = "+ (today-yesterday));

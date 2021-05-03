@@ -21,7 +21,7 @@ body {
 
 main {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 2em;
 }
 
