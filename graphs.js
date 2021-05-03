@@ -1,6 +1,6 @@
 let u = 20;
-let graph_height = 293;
-let graph_width = 520;
+let graph_height = 270;
+let graph_width = 480;
 
 let right_now;
 let last24 = [];
@@ -15,7 +15,7 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(600, graph_height * 7);
+  canvas = createCanvas(560, graph_height * 7);
   canvas.parent("graphs")
   textFont("Helvetica");
   //noLoop();
