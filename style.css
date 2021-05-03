@@ -5,6 +5,10 @@
   src: local("Data"), url('./assets/Data.otf') format('opentype');
 }
 
+#canvas {
+  width:100%
+}
+
 body {
   display: flex;
   flex-flow: column nowrap;
@@ -140,9 +144,7 @@ footer {
   width: 480px;
   height: 360px;
 }*/
-/*
+
 iframe {
-    display:block;
     width:100%;
 }
-*/

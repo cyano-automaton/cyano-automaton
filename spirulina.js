@@ -8,7 +8,7 @@ let last24 = JSON.parse(last24_json);
 var yesterday = last24[0].ntu;
 var today = last24[last24.length-1].ntu
 
-/*
+
 for (i in last24) {
   if (last24[last24.length - 1].day > last24[i].day) {
       if (last24[i].ntu > yesterday) {
@@ -20,7 +20,7 @@ for (i in last24) {
       }
     }
 }
-*/
+
 console.log(yesterday);
 console.log(today);
 console.log("różnica = "+ (today-yesterday));
