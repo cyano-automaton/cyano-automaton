@@ -21,6 +21,8 @@ body {
 
 main {
   display: flex;
+  flex-flow: row;
+  align-items: flex-start;
   justify-content: center;
   margin-top: 2em;
 }
@@ -37,6 +39,7 @@ main.center{
   justify-content: center;
 }
 
+/*
 @media screen and (orientation:portrait) {
   main {
     flex-flow: column;
@@ -48,6 +51,14 @@ main.center{
     flex-flow: row;
     align-items: flex-start;
   }
+}
+*/
+
+@media (max-width: 800px) {
+  main {
+    flex-flow: column;
+    align-items: center;
+    }
 }
 
 body.error {
