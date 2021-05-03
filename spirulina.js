@@ -23,6 +23,7 @@ for (i in last24) {
 */
 console.log(yesterday);
 console.log(today);
+console.log("różnica = "+ (today-yesterday));
 
 function spirulinaProduced(pomiar) {
   //wzór do obliczania przejstysci wyrażonej w zanurzeniu dysku secchiego z pomiaru z fotorezystorów
