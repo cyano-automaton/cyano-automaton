@@ -29,6 +29,12 @@ main.center{
   justify-content: center;
 }
 
+main.center{
+  height: 100%;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 @media (max-width: 600px) {
   main {
     flex-flow: column wrap;
@@ -91,11 +97,6 @@ footer {
   justify-content: space-around;
 }
 
-.thanks {
-  align-self: flex-end;
-  width: 540px;
-}
-
 #twitter {
   filter: brightness(1) contrast(1) grayscale(0) hue-rotate(0deg) invert(1) opacity(1) saturate(1) sepia(0);
 }
@@ -123,8 +124,14 @@ footer {
 }
 
 .opis {
-  width: 540px;
+  width: 400px;
 }
+
+.thanks {
+  align-self: flex-end;
+  font-weight: 300;
+}
+
 /*
 #twitch {
   width: 480px;

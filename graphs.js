@@ -1,6 +1,7 @@
-let u = 20;
-let graph_height = 270;
-let graph_width = 480;
+let u = 15;
+let div_width = 400
+let graph_width = div_width - u*4;
+let graph_height = graph_width*720/1280;
 
 let right_now;
 let last24 = [];
@@ -15,7 +16,7 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(560, graph_height * 8);
+  canvas = createCanvas(div_width, graph_height * 8);
   canvas.parent("graphs")
   textFont("Helvetica");
   //noLoop();
@@ -30,7 +31,7 @@ function setup() {
 }
 
 function draw() {
-  background(255, 0);
+  background(0);
   textSize(u);
 
   current_time = right_now.hour + ":" + right_now.minute;
@@ -62,11 +63,16 @@ function draw() {
   line(width - 3 * u, 12 * u, width - 3 * u, 10.5 * u);
 
   translate(0, u * 11);
-  
+  noStroke();
   toogle("Heater", 1);
-  toogle("Lamp", 2);
+  toogle("Lamp",  2);
   toogle("Air pump", 3);
 
+  noFill();
+  temp = right_now.temp;
+  y =  map (temp, 40, 25, u*5, u*10)
+  rect (u*15, u*5, u, u*5)
+  line (u*14, y, u*17, y)
 
 
   translate(0, graph_height + u * 18);
@@ -123,9 +129,11 @@ function TitleWithTimeOrDate(title, timeordate) {
   text(title, 2 * u, -graph_height - u)
   textAlign(RIGHT);
   if (timeordate == "time") {
+    noStroke();
     text(time24[0] + "—" + time24[1] + " " + date24, graph_width + 2 * u, -graph_height - u)
   }
   if (timeordate == "date") {
+    noStroke();
     text(date7[0] + "—" + date7[1], graph_width + 2 * u, -graph_height - u)
   }
 }
@@ -175,7 +183,7 @@ function axisLeft7(min, max, step, title) {
   podzialka = (max - min) / step
   offset = graph_height / podzialka
   for (i = 0; i <= podzialka; i++) {
-    noStroke(0);
+    noStroke();
     text(min + (step * i), 5, -offset * i - 5);
     stroke(224, 192, 192);
     line(0, -offset * i, u / 2, -offset * i)
@@ -206,7 +214,7 @@ function axisLeft24(min, max, step, title) {
   podzialka = (max - min) / step
   offset = graph_height / podzialka
   for (i = 0; i <= podzialka; i++) {
-    noStroke(0);
+    noStroke();
     text(min + (step * i), 5, -offset * i - 5);
     stroke(224, 192, 192);
     line(0, -offset * i, graph_width, -offset * i)
@@ -225,9 +233,9 @@ function axisBottom24() {
   textSize(u / 2);
   textAlign(LEFT)
   for (i = 0; i < last24.length; i = i + 12) {
-    noStroke(0);
     push();
     rotate(PI / 2);
+    noStroke();
     text(last24[i].hour, u, -i * (graph_width / last24.length));
     pop();
     stroke(224, 192, 192);
@@ -248,9 +256,9 @@ function axisBottom7() {
   textAlign(LEFT)
 
   for (i = 0; i < last7.length; i = i + 24) {
-    noStroke(0);
     push();
     // rotate(PI / 2);
+    noStroke();
     text(last7[i].day + "." + last7[i].month, i * (graph_width / last7.length) - 10, 2 * u / 3);
     pop();
     stroke(224, 192, 192);
@@ -262,8 +270,8 @@ function axisBottom7() {
 function toogle(title, order) {
   push();
   translate(u * 2, u * 10 * order/3);
-  noStroke();
   textAlign(RIGHT);
+  noStroke();
   text(title, 4*u, u / 2);
 
   if (title == "Heater") {
@@ -272,10 +280,8 @@ function toogle(title, order) {
       noFill();
       if (frameCount%3 == 0) {
         fill(255, 128, 0);
-        blink = 0;
       } else {
         fill(0);
-        blink = 1;
       }
       stroke(224, 192, 192)
       circle(u * 5, 0, u)
@@ -292,10 +298,8 @@ function toogle(title, order) {
     if (hour() > 22 || hour() > 6) {
       if (frameCount%3 == 1) {
         fill(255, 128, 0);
-        blink = 0;
       } else {
         fill(0);
-        blink = 1;
       }
       stroke(224, 192, 192)
       circle(u * 5, 0, u)
@@ -310,10 +314,8 @@ function toogle(title, order) {
     if (hour() > 22 || hour() > 6) {
       if (frameCount%3 == 2) {
         fill(255, 128, 0);
-        blink = 0;
       } else {
         fill(0);
-        blink = 1;
       }
       stroke(224, 192, 192)
       circle(u * 5, 0, u)
