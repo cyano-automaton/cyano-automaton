@@ -35,13 +35,13 @@ main.center{
 
 @media screen and (orientation:portrait) {
   main {
-    flex-flow: column wrap;
+    flex-flow: column;
     align-items: center;
     }
 }
 @media screen and (orientation:landscape) {
   main {
-    flex-flow: row wrap;
+    flex-flow: row;
     align-items: flex-start;
   }
 }
@@ -132,7 +132,7 @@ footer {
 
 .thanks {
   align-self: flex-end;
-  font-weight: 300;
+  color: rgb(164, 132, 132);
 }
 
 /*

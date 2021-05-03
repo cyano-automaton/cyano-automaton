@@ -1,5 +1,5 @@
 let u = 15;
-let div_width = 400
+let div_width = 640;
 let graph_width = div_width - u*4;
 let graph_height = graph_width*720/1280;
 
