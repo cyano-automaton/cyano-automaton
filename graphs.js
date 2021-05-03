@@ -1,5 +1,7 @@
 let u = 15;
-let div_width = 400;
+
+let div = document.getElementById("graphs").getBoundingClientRect();
+let div_width = div.width;
 let graph_width = div_width - u*4;
 let graph_height = graph_width*720/1280;
 
@@ -16,7 +18,6 @@ function preload() {
 }
 
 function setup() {
-
   //canvas = createCanvas(windowWidth/3, ((windowWidth/3 - u*4)*720/1280) * 8);
   canvas = createCanvas(div_width, (graph_width*720/1280) * 8);
   canvas.parent("graphs")
@@ -337,9 +338,11 @@ function toogle(title, order) {
 
   pop();
 }
-/*
+
 function windowResized() {
-  resizeCanvas(windowWidth/3,  ((windowWidth/3 - u*4)*720/1280) * 8);
-    let graph_width = width - u*4;
+  let div = document.getElementById("graphs").getBoundingClientRect();
+  let div_width = div.width;
+  let graph_width = div_width - u*4;
   let graph_height = graph_width*720/1280;
-}*/
+  resizeCanvas(div_width, graph_height * 8);
+}
