@@ -19,7 +19,7 @@ function setup() {
   canvas.parent("graphs")
   textFont("Helvetica");
   //noLoop();
-  frameRate(1);
+  frameRate(2);
 
   for (let x in last24_json) {
     last24.push(last24_json[x]);
@@ -304,7 +304,5 @@ function toogle(title, param, order) {
       circle(u * 5, 0, u)
     }
   }
-
-
   pop();
 }
