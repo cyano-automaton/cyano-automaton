@@ -15,7 +15,7 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(560, graph_height * 7);
+  canvas = createCanvas(560, graph_height * 8);
   canvas.parent("graphs")
   textFont("Helvetica");
   //noLoop();
@@ -62,7 +62,7 @@ function draw() {
   line(width - 3 * u, 12 * u, width - 3 * u, 10.5 * u);
 
   translate(0, u * 11);
-
+  
   toogle("Heater", 1);
   toogle("Lamp", 2);
   toogle("Air pump", 3);
