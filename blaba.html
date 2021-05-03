@@ -50,10 +50,10 @@
 </style>
 
 <script>
+let div = document.getElementById("graphs").getBoundingClientRect();
+let div_width = div.width;
 
 function setup() {
-  let div = select('#graphs');
-  let div_width = div.size().width;
   canvas = createCanvas(div_width, 225);
   canvas.parent("graphs")
 }
