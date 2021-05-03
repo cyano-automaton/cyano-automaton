@@ -17,8 +17,6 @@ body {
 
 main {
   display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start;
   justify-content: space-between;
   margin-top: 2em;
 }
@@ -35,11 +33,16 @@ main.center{
   justify-content: center;
 }
 
-@media (max-width: 600px) {
+@media screen and (orientation:portrait) {
   main {
     flex-flow: column wrap;
     align-items: center;
-    justify-content: center;
+    }
+}
+@media screen and (orientation:landscape) {
+  main {
+    flex-flow: row wrap;
+    align-items: flex-start;
   }
 }
 
