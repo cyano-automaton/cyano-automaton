@@ -19,7 +19,7 @@ function setup() {
   canvas.parent("graphs")
   textFont("Helvetica");
   //noLoop();
-  frameRate(2);
+  frameRate(3);
 
   for (let x in last24_json) {
     last24.push(last24_json[x]);
@@ -63,9 +63,9 @@ function draw() {
 
   translate(0, u * 11);
 
-  toogle("Heater", "temp", 1);
-  toogle("Lamp", "time", 2);
-  toogle("Air pump", "time", 3);
+  toogle("Heater", 1);
+  toogle("Lamp", 2);
+  toogle("Air pump", 3);
 
 
 
@@ -259,18 +259,18 @@ function axisBottom7() {
   pop()
 }
 
-function toogle(title, param, order) {
+function toogle(title, order) {
   push();
   translate(u * 2, u * 10 * order/3);
   noStroke();
   textAlign(RIGHT);
   text(title, 4*u, u / 2);
 
-  if (param == "temp") {
+  if (title == "Heater") {
     noFill();
-    if (last24[last24.length - 1].temp - last24[last24.length - 2][param] > 0) {
+    if (last24[last24.length - 1].temp - last24[last24.length - 2].temp > 0) {
       noFill();
-      if (blink == 1) {
+      if (frameCount%3 == 0) {
         fill(255, 128, 0);
         blink = 0;
       } else {
@@ -280,16 +280,17 @@ function toogle(title, param, order) {
       stroke(224, 192, 192)
       circle(u * 5, 0, u)
     }
-    if (last24[last24.length - 1].temp - last24[last24.length - 2][param] < 0) {
+    if (last24[last24.length - 1].temp - last24[last24.length - 2].temp < 0) {
       noFill();
       stroke(224, 192, 192)
       circle(u * 5, 0, u)
     }
   }
 
-  if (param == "time") {
+  if (title == "Lamp") {
+
     if (hour() > 22 || hour() > 6) {
-      if (blink == 1) {
+      if (frameCount%3 == 1) {
         fill(255, 128, 0);
         blink = 0;
       } else {
@@ -304,5 +305,24 @@ function toogle(title, param, order) {
       circle(u * 5, 0, u)
     }
   }
+
+  if (title == "Air pump") {
+    if (hour() > 22 || hour() > 6) {
+      if (frameCount%3 == 2) {
+        fill(255, 128, 0);
+        blink = 0;
+      } else {
+        fill(0);
+        blink = 1;
+      }
+      stroke(224, 192, 192)
+      circle(u * 5, 0, u)
+    } else {
+      noFill();
+      stroke(224, 192, 192)
+      circle(u * 5, 0, u)
+    }
+  }
+
   pop();
 }
