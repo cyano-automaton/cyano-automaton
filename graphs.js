@@ -75,7 +75,7 @@ function draw() {
   translate(0, u * 11);
   noStroke();
 push();
-  translate(u, 0)
+  translate(3*u, 0)
   toogle("Heater", 1);
   toogle("Lamp", 4);
   toogle("Air pump", 7);
