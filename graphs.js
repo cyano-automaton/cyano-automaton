@@ -9,8 +9,6 @@ let right_now;
 let last24 = [];
 let last7 = [];
 
-blink = 0;
-
 function preload() {
   right_now = loadJSON("./data/right_now.json");
   last24_json = loadJSON("./data/last24.json");
@@ -19,7 +17,7 @@ function preload() {
 
 function setup() {
   //canvas = createCanvas(windowWidth/3, ((windowWidth/3 - u*4)*720/1280) * 8);
-  canvas = createCanvas(div_width, (graph_width*720/1280) * 8);
+  canvas = createCanvas(windowWidth/3, (graph_width*720/1280) * 8);
   canvas.parent("graphs")
   textFont("Helvetica");
   //noLoop();
@@ -344,5 +342,5 @@ function windowResized() {
   let div_width = div.width;
   let graph_width = div_width - u*4;
   let graph_height = graph_width*720/1280;
-  resizeCanvas(div_width, graph_height * 8);
+  resizeCanvas(windowWidth/3, graph_height * 8);
 }
