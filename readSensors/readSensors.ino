@@ -56,7 +56,8 @@ float temp = readTemp();
 
 int above = analogRead(abovePin);
 int under = analogRead(underPin);
-int photoresistor = above - under;
+//int photoresistor = above - under;
+int photoresistor = under;
 
 Serial.print(temp);
 Serial.print(", ");
