@@ -4,7 +4,7 @@ let right_now;
 let last24 = [];
 let last7 = [];
 
-let canvas_height = 720;
+let canvas_height = 2000;;
 
 function preload() {
   right_now = loadJSON("./data/right_now.json");
