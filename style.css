@@ -51,6 +51,7 @@ main {
 }
 */
 main.center {
+  align-self: center;
   width: 70vw;
   align-items: center;
   justify-content: center;
