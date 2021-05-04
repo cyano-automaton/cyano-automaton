@@ -116,15 +116,24 @@ footer {
 }
 
 #twitter {
-  width: 100%;
+  max-width: 640px;
   filter: brightness(1) contrast(1) grayscale(0) hue-rotate(0deg) invert(1) opacity(1) saturate(1) sepia(0);
 }
-/*
+
 #graphs {
-  overflow: auto;
-  max-height: 720px;
-  width: 660px;
-}*/
+  max-width: 640px;
+}
+
+#twitch {
+  max-width: 640px;
+}
+/*
+iframe {
+    width:100%;
+}
+*/
+
+
 
 #menu {
   display: flex;
@@ -150,14 +159,3 @@ footer {
   align-self: flex-end;
   color: rgb(164, 132, 132);
 }
-
-/*
-#twitch {
-  width: 480px;
-  height: 360px;
-}*/
-/*
-iframe {
-    width:100%;
-}
-*/
