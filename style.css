@@ -54,6 +54,7 @@ header {
   flex-flow: row wrap;
   justify-content: space-between;
   min-width: 30em;
+  margin-left: 6em;
 }
 
 .opis {
