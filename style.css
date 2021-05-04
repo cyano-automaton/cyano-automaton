@@ -28,6 +28,13 @@ main {
     flex-flow: column;
     align-items: center;
   }
+  .opis {
+    align-self: center;
+  }
+
+  .thanks {
+    align-self: center;
+  }
 }
 
 /*
