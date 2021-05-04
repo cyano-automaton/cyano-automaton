@@ -27,12 +27,15 @@ main {
   main {
     flex-flow: column;
     align-items: center;
+    justify-content: center;
   }
   .opis {
+    max-width: 100%;
     align-self: center;
   }
 
   .thanks {
+    max-width:
     align-self: center;
   }
 }
