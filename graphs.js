@@ -33,6 +33,10 @@ function setup() {
 }
 
 function draw() {
+  var div = select("#graphs");
+  var div_width = div.size().width;
+  var graph_width = div_width - u*4;
+  var graph_height = graph_width*720/1280;
 
   background(0);
   textSize(u);
@@ -339,9 +343,9 @@ function toogle(title, order) {
 }
 
 function windowResized() {
-  let div = document.getElementById("graphs").getBoundingClientRect();
-  let div_width = div.width;
-  let graph_width = div_width - u*4;
-  let graph_height = graph_width*720/1280;
+  var div = document.getElementById("graphs").getBoundingClientRect();
+  var div_width = div.width;
+  var graph_width = div_width - u*4;
+  var graph_height = graph_width*720/1280;
   resizeCanvas(windowWidth/3, graph_height * 8);
 }
