@@ -4,7 +4,7 @@ let right_now;
 let last24 = [];
 let last7 = [];
 
-let canvas_height = 2000;;
+let canvas_height = 2000;
 
 function preload() {
   right_now = loadJSON("./data/right_now.json");
@@ -124,6 +124,8 @@ function draw() {
 }
 
 function TitleWithTimeOrDate(title, timeordate) {
+  let graph_width = width - u*4;
+  let graph_height = graph_width*720/1280;
   fill(255, 128, 0);
   noStroke();
   textAlign(LEFT);
@@ -140,7 +142,8 @@ function TitleWithTimeOrDate(title, timeordate) {
 }
 
 function draw24Graph(param, min, max) {
-
+  let graph_width = width - u*4;
+  let graph_height = graph_width*720/1280;
   push();
   translate(2 * u, 0);
   noFill();
@@ -153,7 +156,8 @@ function draw24Graph(param, min, max) {
 }
 
 function draw7Graph(param, min, max) {
-
+  let graph_width = width - u*4;
+  let graph_height = graph_width*720/1280;
   push();
   translate(2 * u, 0);
   noFill();
@@ -166,6 +170,8 @@ function draw7Graph(param, min, max) {
 }
 
 function axisLeft7(min, max, step, title) {
+  let graph_width = width - u*4;
+  let graph_height = graph_width*720/1280;
   push()
   translate(2 * u, 0);
 
@@ -195,6 +201,8 @@ function axisLeft7(min, max, step, title) {
 }
 
 function axisLeft24(min, max, step, title) {
+  let graph_width = width - u*4;
+  let graph_height = graph_width*720/1280;
 
   push()
   translate(2 * u, 0);
@@ -227,6 +235,8 @@ function axisLeft24(min, max, step, title) {
 }
 
 function axisBottom24() {
+  let graph_width = width - u*4;
+  let graph_height = graph_width*720/1280;
 
   push()
   translate(2 * u, 0);
@@ -250,6 +260,8 @@ function axisBottom24() {
 }
 
 function axisBottom7() {
+  let graph_width = width - u*4;
+  let graph_height = graph_width*720/1280;
 
   push()
   translate(2 * u, 0);
@@ -274,6 +286,8 @@ function axisBottom7() {
 }
 
 function toogle(title, order) {
+  let graph_width = width - u*4;
+  let graph_height = graph_width*720/1280;
 
   push();
   translate(u * 2, u * 10 * order/3);
