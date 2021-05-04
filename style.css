@@ -22,7 +22,7 @@ main {
   margin-top: 2em;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1279px) {
   main {
     flex-flow: column;
     align-items: center;
@@ -90,7 +90,7 @@ header {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  flex-basis: 600px;
+  min-width: 30em;
 }
 
 #twitter {
@@ -108,7 +108,7 @@ header {
 #twitch-iframe {
   position: absolute;
   top: 0;
-  left: 0;  
+  left: 0;
   bottom: 0;
   right: 0;
   width: 100%;

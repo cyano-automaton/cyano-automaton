@@ -351,5 +351,7 @@ function toogle(title, order) {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth/3, canvas_height);
+  if (windowWidth/3 > 426) {
+    resizeCanvas(windowWidth/3, canvas_height);
+  }
 }
