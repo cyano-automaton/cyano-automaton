@@ -14,7 +14,7 @@ function preload() {
 
 function setup() {
 
-  canvas = createCanvas(windowWidth/3, canvas_height);
+  canvas = createCanvas(windowWidth/3, (((windowWidth/3) - u*4)*720/1280)*8);
   canvas.parent("graphs")
   textFont("Helvetica");
   //noLoop();
@@ -31,7 +31,7 @@ function setup() {
 function draw() {
   let graph_width = width - u*4;
   let graph_height = graph_width*720/1280;
-
+  
   background(0);
   textSize(u);
 
@@ -352,6 +352,6 @@ function toogle(title, order) {
 
 function windowResized() {
   if (windowWidth/3 > 426) {
-    resizeCanvas(windowWidth/3, canvas_height);
+    resizeCanvas(windowWidth/3, (((windowWidth/3) - u*4)*720/1280)*8);
   }
 }
