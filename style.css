@@ -23,36 +23,6 @@ main {
   margin-top: 2em;
 }
 
-@media (max-width: 1279px) {
-  main {
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .opis {
-    max-width: 100%;
-    align-self: center;
-  }
-
-  .thanks {
-    max-width:
-    align-self: center;
-  }
-}
-
-/*
-@media screen and (orientation:portrait) {
-  main {
-    flex-flow: column;
-    align-items: center;
-  }
-}
-
-@media screen and (orientation:landscape) {
-  main {
-  }
-}
-*/
 main.center {
   align-self: center;
   width: 70vw;
@@ -63,6 +33,11 @@ main.center {
 main.space-around {
   justify-content: space-around;
   align-items: flex-start;
+}
+
+p {
+  font-size: 1.25em;
+  line-height: 1.5;
 }
 
 h1 {
@@ -84,11 +59,6 @@ a {
 
 .actual-link {
   text-decoration-line: underline;
-}
-
-p {
-  font-size: 1.25em;
-  line-height: 1.5;
 }
 
 header {
@@ -149,3 +119,35 @@ h3 {
   color: #000000;
   font-size: 1.5em;
 }
+
+@media (max-width: 1279px) {
+  main {
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .opis {
+    max-width: 100%;
+    align-self: center;
+  }
+
+  .thanks {
+    max-width:
+      align-self: center;
+  }
+}
+
+/*
+@media screen and (orientation:portrait) {
+  main {
+    flex-flow: column;
+    align-items: center;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  main {
+  }
+}
+*/
