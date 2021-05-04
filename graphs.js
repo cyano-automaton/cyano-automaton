@@ -1,14 +1,10 @@
-let u = 15;
-
-let div = document.getElementById("graphs").getBoundingClientRect();
-let div_width = div.width;
-console.log(div_width);
-let graph_width = div_width - u*4;
-let graph_height = graph_width*720/1280;
+let u = 20;
 
 let right_now;
 let last24 = [];
 let last7 = [];
+
+let canvas_height = 720;
 
 function preload() {
   right_now = loadJSON("./data/right_now.json");
@@ -17,8 +13,8 @@ function preload() {
 }
 
 function setup() {
-  //canvas = createCanvas(windowWidth/3, ((windowWidth/3 - u*4)*720/1280) * 8);
-  canvas = createCanvas(windowWidth/3, (graph_width*720/1280) * 8);
+
+  canvas = createCanvas(windowWidth/3, canvas_height);
   canvas.parent("graphs")
   textFont("Helvetica");
   //noLoop();
@@ -33,10 +29,8 @@ function setup() {
 }
 
 function draw() {
-  var div = select("#graphs");
-  var div_width = div.size().width;
-  var graph_width = div_width - u*4;
-  var graph_height = graph_width*720/1280;
+  let graph_width = width - u*4;
+  let graph_height = graph_width*720/1280;
 
   background(0);
   textSize(u);
@@ -343,9 +337,5 @@ function toogle(title, order) {
 }
 
 function windowResized() {
-  var div = document.getElementById("graphs").getBoundingClientRect();
-  var div_width = div.width;
-  var graph_width = div_width - u*4;
-  var graph_height = graph_width*720/1280;
-  resizeCanvas(windowWidth/3, graph_height * 8);
+  resizeCanvas(windowWidth/3, canvas_height);
 }
