@@ -47,15 +47,15 @@ main.center {
   }
 
   #twitter {
-    width: 33vw;
+    width: 100vw;
   }
 
   #graphs {
-    width: 33vw;
+    width: 100vw;
   }
 
   #twitch {
-    width: 33vw;
+    width: 100vw;
   }
 }
 
@@ -64,8 +64,15 @@ main.center {
     flex-flow: row;
     align-items: flex-start;
   }
+  #twitter {
+    width: 33vw;
+  }
 
-  div {
+  #graphs {
+    width: 33vw;
+  }
+
+  #twitch {
     width: 33vw;
   }
 }
