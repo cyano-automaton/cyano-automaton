@@ -10,11 +10,42 @@ let data = JSON.parse(data_json);
 let year_json = fs.readFileSync('./yearForToday.json');
 let year = JSON.parse(year_json);
 
+let last24_json = fs.readFileSync('./data/last24.json');
+let last24 = JSON.parse(last24_json);
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+function averageNTU (array) {
+  suma = 0;
+  for (i in array) {
+    suma = suma + array[i]["ntu"];
+  }
+  return suma/array.length;
+}
+
+var yesterday_hour = last24.slice(0, 24);
+var today_hour = last24.slice(last24.length-25,last24.length-1)
+
+var yesterday = averageNTU(yesterday_hour);
+var today = averageNTU(today_hour);
+
+function spirulinaProduced(pomiar) {
+  //wzór do obliczania przejstysci wyrażonej w zanurzeniu dysku secchiego z pomiaru z fotorezystorów
+ secchi = 1150/(pomiar^0.7);
+  //wzór do obliczania masy spiruliny w gramach w litrze plynu na bazie zanurzenia deysku secchiego
+   spirulina = 70/secchi;
+  //ilosc litrow wody w zbiorniku = 5 litres
+  volume = 5;
+  return spirulina*volume
+}
+
+spirulina_wczoraj = spirulinaProduced(yesterday);
+spirulina_dzis = spirulinaProduced(today);
+spirulina_produced = spirulina_dzis - spirulina_wczoraj;
 
 const uncji_w_tonie = 31103.4768;
 const co2_tonnes_per_ounce = 0.8
@@ -43,8 +74,6 @@ percentage = Math.round(wydatki_nasa_jako_ulamek_wartosci_zlota*100);
 CO2_produced = Math.round(data[kolejnosc]["production"] * uncji_w_tonie * co2_tonnes_per_ounce);
 
 spirulina_required = Math.round(CO2_produced / tona_spiruliny_pochlania_tyle_ton_CO2);
-
-spirulina_produced = 1;
 
 text="";
 for (i in array) {
