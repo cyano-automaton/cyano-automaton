@@ -14,6 +14,10 @@ function preload() {
 
 function setup() {
 
+  if (windowWidth <= 426) {
+    u = 15;
+  }
+
   canvas = createCanvas(windowWidth / 3, (((windowWidth / 3) - u * 4) * 720 / 1280) * 8);
   canvas.parent("graphs")
   textFont("Helvetica");
@@ -29,6 +33,11 @@ function setup() {
 }
 
 function draw() {
+
+  if (windowWidth <= 426) {
+    u = 15;
+  }
+
   let graph_width = width - u * 4;
   let graph_height = graph_width * 720 / 1280;
 
