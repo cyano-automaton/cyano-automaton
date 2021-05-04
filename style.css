@@ -35,8 +35,8 @@ main {
 }
 
 main.center {
-  height: 100%;
-  align-items: flex-start;
+  height: 80vh;
+  align-items: center;
   justify-content: center;
 }
 
