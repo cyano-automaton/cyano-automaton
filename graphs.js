@@ -2,6 +2,7 @@ let u = 15;
 
 let div = document.getElementById("graphs").getBoundingClientRect();
 let div_width = div.width;
+console.log(div_width;)
 let graph_width = div_width - u*4;
 let graph_height = graph_width*720/1280;
 
