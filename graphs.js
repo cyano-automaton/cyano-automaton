@@ -14,7 +14,7 @@ function preload() {
 
 function setup() {
 
-  canvas = createCanvas(windowWidth/3, (((windowWidth/3) - u*4)*720/1280)*9);
+  canvas = createCanvas(windowWidth / 3, (((windowWidth / 3) - u * 4) * 720 / 1280) * 8);
   canvas.parent("graphs")
   textFont("Helvetica");
   //noLoop();
@@ -29,8 +29,8 @@ function setup() {
 }
 
 function draw() {
-  let graph_width = width - u*4;
-  let graph_height = graph_width*720/1280;
+  let graph_width = width - u * 4;
+  let graph_height = graph_width * 720 / 1280;
 
   background(0);
   textSize(u);
@@ -65,18 +65,21 @@ function draw() {
 
   translate(0, u * 11);
   noStroke();
+push();
+  translate(u, 0)
   toogle("Heater", 1);
-  toogle("Lamp",  2);
-  toogle("Air pump", 3);
+  toogle("Lamp", 4);
+  toogle("Air pump", 7);
+  pop();
 
   noFill();
   temp = right_now.temp;
-  y =  map (temp, 40, 25, u*5, u*10)
-  rect (u*15, u*5, u, u*5)
-  line (u*14, y, u*17, y)
+  y = map(temp, 40, 25, u * 5, u * 10)
+  rect(u * 15, u * 5, u, u * 5)
+  line(u * 14, y, u * 17, y)
 
 
-  translate(0, graph_height + u * 18);
+  translate(0, graph_height + u * 14);
 
   stroke(255, 128, 0);
   line(0, -graph_height - u * 3, u * 10, -graph_height - u * 3);
@@ -124,8 +127,8 @@ function draw() {
 }
 
 function TitleWithTimeOrDate(title, timeordate) {
-  let graph_width = width - u*4;
-  let graph_height = graph_width*720/1280;
+  let graph_width = width - u * 4;
+  let graph_height = graph_width * 720 / 1280;
   fill(255, 128, 0);
   noStroke();
   textAlign(LEFT);
@@ -142,8 +145,8 @@ function TitleWithTimeOrDate(title, timeordate) {
 }
 
 function draw24Graph(param, min, max) {
-  let graph_width = width - u*4;
-  let graph_height = graph_width*720/1280;
+  let graph_width = width - u * 4;
+  let graph_height = graph_width * 720 / 1280;
   push();
   translate(2 * u, 0);
   noFill();
@@ -156,8 +159,8 @@ function draw24Graph(param, min, max) {
 }
 
 function draw7Graph(param, min, max) {
-  let graph_width = width - u*4;
-  let graph_height = graph_width*720/1280;
+  let graph_width = width - u * 4;
+  let graph_height = graph_width * 720 / 1280;
   push();
   translate(2 * u, 0);
   noFill();
@@ -170,8 +173,8 @@ function draw7Graph(param, min, max) {
 }
 
 function axisLeft7(min, max, step, title) {
-  let graph_width = width - u*4;
-  let graph_height = graph_width*720/1280;
+  let graph_width = width - u * 4;
+  let graph_height = graph_width * 720 / 1280;
   push()
   translate(2 * u, 0);
 
@@ -201,8 +204,8 @@ function axisLeft7(min, max, step, title) {
 }
 
 function axisLeft24(min, max, step, title) {
-  let graph_width = width - u*4;
-  let graph_height = graph_width*720/1280;
+  let graph_width = width - u * 4;
+  let graph_height = graph_width * 720 / 1280;
 
   push()
   translate(2 * u, 0);
@@ -235,8 +238,8 @@ function axisLeft24(min, max, step, title) {
 }
 
 function axisBottom24() {
-  let graph_width = width - u*4;
-  let graph_height = graph_width*720/1280;
+  let graph_width = width - u * 4;
+  let graph_height = graph_width * 720 / 1280;
 
   push()
   translate(2 * u, 0);
@@ -260,8 +263,8 @@ function axisBottom24() {
 }
 
 function axisBottom7() {
-  let graph_width = width - u*4;
-  let graph_height = graph_width*720/1280;
+  let graph_width = width - u * 4;
+  let graph_height = graph_width * 720 / 1280;
 
   push()
   translate(2 * u, 0);
@@ -286,72 +289,71 @@ function axisBottom7() {
 }
 
 function toogle(title, order) {
-  let graph_width = width - u*4;
-  let graph_height = graph_width*720/1280;
+  let graph_width = width - u * 4;
+  let graph_height = graph_width * 720 / 1280;
 
   push();
-  translate(u * 2, u * 10 * order/3);
-  textAlign(RIGHT);
+  translate(u * 2 * order, u * 4);
+  textAlign(CENTER);
   noStroke();
-  text(title, 4*u, u / 2);
+  text(title, 4 * u, u / 2);
 
   if (title == "Heater") {
     noFill();
     if (last24[last24.length - 1].temp - last24[last24.length - 2].temp > 0) {
       noFill();
-      if (frameCount%3 == 0) {
+      if (frameCount % 3 == 0) {
         fill(255, 128, 0);
       } else {
         fill(0);
       }
       stroke(224, 192, 192)
-      circle(u * 5, 0, u)
     }
     if (last24[last24.length - 1].temp - last24[last24.length - 2].temp < 0) {
       noFill();
       stroke(224, 192, 192)
-      circle(u * 5, 0, u)
     }
+    circle(u * 4, 2 * u, u)
+
   }
 
   if (title == "Lamp") {
 
-    if (hour() > 22 || hour() > 6) {
-      if (frameCount%3 == 1) {
+    if (hour() < 22 && hour() > 6) {
+      if (frameCount % 3 == 1) {
         fill(255, 128, 0);
       } else {
         fill(0);
       }
       stroke(224, 192, 192)
-      circle(u * 5, 0, u)
     } else {
       noFill();
       stroke(224, 192, 192)
-      circle(u * 5, 0, u)
     }
+    circle(u * 4, 2 * u, u)
+
   }
 
   if (title == "Air pump") {
-    if (hour() > 22 || hour() > 6) {
-      if (frameCount%3 == 2) {
+    if (hour() < 22 && hour() > 6) {
+      if (frameCount % 3 == 2) {
         fill(255, 128, 0);
       } else {
         fill(0);
       }
       stroke(224, 192, 192)
-      circle(u * 5, 0, u)
     } else {
       noFill();
       stroke(224, 192, 192)
-      circle(u * 5, 0, u)
     }
+    circle(u * 4, 2 * u, u)
   }
 
   pop();
 }
 
 function windowResized() {
-  if (windowWidth/3 > 426) {
-    resizeCanvas(windowWidth/3, (((windowWidth/3) - u*4)*720/1280)*8);
+  if (windowWidth / 3 > 426) {
+    resizeCanvas(windowWidth / 3, (((windowWidth / 3) - u * 4) * 720 / 1280) * 8);
   }
 }
