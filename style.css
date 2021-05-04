@@ -15,6 +15,13 @@ body {
   color: rgb(224, 192, 192);
 }
 
+body.error {
+  background-color: #ffffff;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+}
+
 main {
   display: flex;
   flex-flow: row wrap;
@@ -23,36 +30,6 @@ main {
   margin-top: 2em;
 }
 
-@media (max-width: 1279px) {
-  main {
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .opis {
-    max-width: 100%;
-    align-self: center;
-  }
-
-  .thanks {
-    max-width:
-    align-self: center;
-  }
-}
-
-/*
-@media screen and (orientation:portrait) {
-  main {
-    flex-flow: column;
-    align-items: center;
-  }
-}
-
-@media screen and (orientation:landscape) {
-  main {
-  }
-}
-*/
 main.center {
   align-self: center;
   width: 70vw;
@@ -65,32 +42,6 @@ main.space-around {
   align-items: flex-start;
 }
 
-h1 {
-  font-family: "Data";
-  font-size: 3em;
-  color: #ff9200;
-  letter-spacing: 0.4em;
-}
-
-h2 {
-  font-size: 1.5em;
-  color: #ff9200;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.actual-link {
-  text-decoration-line: underline;
-}
-
-p {
-  font-size: 1.25em;
-  line-height: 1.5;
-}
-
 header {
   display: flex;
   flex-flow: row wrap;
@@ -98,11 +49,22 @@ header {
   justify-content: space-around;
 }
 
-#menu {
+.menu {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   min-width: 30em;
+}
+
+.opis {
+  max-width: 426px;
+  margin: 0 2em;
+}
+
+.thanks {
+  min-width: 32em;
+  align-self: flex-end;
+  color: rgb(164, 132, 132);
 }
 
 #twitter {
@@ -127,25 +89,69 @@ header {
   height: 100%;
 }
 
-.opis {
-  max-width: 426px;
-  margin: 0 2em;
+p {
+  font-size: 1.25em;
+  line-height: 1.5;
 }
 
-.thanks {
-  min-width: 32em;
-  align-self: flex-end;
-  color: rgb(164, 132, 132);
+h1 {
+  font-family: "Data";
+  font-size: 3em;
+  color: #ff9200;
+  letter-spacing: 0.4em;
 }
 
-body.error {
-  background-color: #ffffff;
-  align-items: center;
-  justify-content: space-around;
-  height: 100%;
+h2 {
+  font-size: 1.5em;
+  color: #ff9200;
 }
 
 h3 {
   color: #000000;
   font-size: 1.5em;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.actual-link {
+  text-decoration-line: underline;
+}
+
+
+
+
+
+@media (max-width: 1279px) {
+  main {
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .opis {
+    max-width: 100%;
+    align-self: center;
+  }
+
+  .thanks {
+    max-width:
+      align-self: center;
+  }
+}
+
+/*
+@media screen and (orientation:portrait) {
+  main {
+    flex-flow: column;
+    align-items: center;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  main {
+  }
+}
+*/
