@@ -7,6 +7,9 @@ let strings = JSON.parse(strings_json);
 let data_json = fs.readFileSync('./assets/data.json');
 let data = JSON.parse(data_json);
 
+let year_json = fs.readFileSync('./yearForToday.json');
+let year = JSON.parse(year_json);
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -26,7 +29,7 @@ fifth_sentence = strings["fifth_sentence"][getRandomInt(0, 18)];
 content = first_sentence + second_sentence + third_sentence + fourth_sentence + fifth_sentence;
 array = content.split("&");
 
-year = 1961;
+year = year.year;
 kolejnosc= year-1959;
 
 spendings = data[kolejnosc]["spendings"];

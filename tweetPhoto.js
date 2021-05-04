@@ -1,6 +1,11 @@
 const fs = require('fs');
 require('dotenv').config();
 
+let year_json = fs.readFileSync('./yearForToday.json');
+let year_object = JSON.parse(year_json);
+let year = year_object.year;
+
+
 const Twit = require("twit"),
   config = {
     twitter: {
@@ -19,7 +24,7 @@ let listener = app.listen(process.env.PORT, function() {
   console.log("Your bot is running on port " + listener.address().port);
 });
 
-var b64content = fs.readFileSync('/path/to/img', { encoding: 'base64' })
+var b64content = fs.readFileSync('./nasa/'+year+".jpg", { encoding: 'base64' })
 
 // first we must post the media to Twitter
 T.post('media/upload', { media_data: b64content }, function (err, data, response) {
