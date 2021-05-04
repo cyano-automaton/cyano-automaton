@@ -11,8 +11,8 @@ function averageNTU (array) {
   return suma/array.length;
 }
 
-var yesterday_hour = last24.slice(0, 24);
-var today_hour = last24.slice(last24.length-25,last24.length-1)
+var yesterday_hour = last24.slice(0, 36);
+var today_hour = last24.slice(last24.length-37,last24.length-1)
 
 var yesterday = averageNTU(yesterday_hour);
 var today = averageNTU(today_hour);
