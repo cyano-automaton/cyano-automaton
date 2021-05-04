@@ -9,6 +9,7 @@ body {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  align-content: center;
   background-color: #000000;
   font-family: Helvetica, Roboto, "Segoe UI", Calibri, sans-serif;
   color: rgb(224, 192, 192);
