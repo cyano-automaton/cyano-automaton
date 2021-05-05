@@ -1,4 +1,6 @@
-let u = 20;
+w = window.innerWidth;
+
+let u = w/64;
 
 let right_now;
 let last24 = [];
@@ -14,7 +16,7 @@ function preload() {
 
 function setup() {
 
-  if (windowWidth <= 426) {
+  if (windowWidth <= 640) {
     u = 15;
   }
 
@@ -361,7 +363,7 @@ function toogle(title, order) {
 }
 
 function windowResized() {
-  if (windowWidth / 3 > 426) {
+  if (windowWidth > 1280) {
     resizeCanvas(windowWidth / 3, (((windowWidth / 3) - u * 4) * 720 / 1280) * 8);
   }
 }
