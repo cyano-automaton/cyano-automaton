@@ -31,7 +31,7 @@ function setup() {
   } else {
     canvas = createCanvas(windowWidth / 3, (((windowWidth / 3) - u * 4) * 720 / 1280) * 8);
   }
-  
+
   canvas.parent("graphs")
   textFont("Helvetica");
   //noLoop();
@@ -297,7 +297,7 @@ function axisBottom7() {
   textSize(u / 2);
   textAlign(LEFT)
 
-  for (i = 0; i < last7.length; i = i + 24) {
+  for (i = 0; i < last7.length; i = i + 48) {
     push();
     // rotate(PI / 2);
     noStroke();
