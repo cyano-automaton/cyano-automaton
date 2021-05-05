@@ -27,7 +27,7 @@ function setup() {
 
   if (windowWidth < 1280) {
     u = 15;
-    canvas = createCanvas(windowWidth, (((windowWidth / 3) - u * 4) * 720 / 1280) * 8);
+    canvas = createCanvas(windowWidth/2, (((windowWidth / 3) - u * 4) * 720 / 1280) * 8);
   } else {
     canvas = createCanvas(windowWidth / 3, (((windowWidth / 3) - u * 4) * 720 / 1280) * 8);
   }
