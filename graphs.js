@@ -72,10 +72,10 @@ function draw() {
   line(3 * u, 12 * u, 3 * u, 10.5 * u);
   line(width - 3 * u, 12 * u, width - 3 * u, 10.5 * u);
 
-  translate(0, -u * 11);
+  translate(0, u * 11);
   noStroke();
 push();
-  translate(u, 0);
+  translate(-u, 0);
   toogle("Heater", 1);
   toogle("Lamp", 4);
   toogle("Air pump", 7);
