@@ -60,7 +60,7 @@ function draw() {
 
   date7 = [last7[0].day + "." + last7[0].month, last7[last7.length - 1].day + "." + last7[last7.length - 1].month + "." + last7[last7.length - 1].year]
 
-  screen = new ScreenRightNow (0, 0, time_now, date_now, temp_now, ntu_now);
+  screen = new ScreenRightNow (0, 0, graph_width, graph_height, ime_now, date_now, temp_now, ntu_now);
 
   translate(0, u * 11);
   noStroke();
