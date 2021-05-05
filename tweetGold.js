@@ -27,8 +27,8 @@ function averageNTU (array) {
   return suma/array.length;
 }
 
-var yesterday_hour = last24.slice(0, 24);
-var today_hour = last24.slice(last24.length-25,last24.length-1)
+var yesterday_hour = last24.slice(0, 36);
+var today_hour = last24.slice(last24.length-37,last24.length-1)
 
 var yesterday = averageNTU(yesterday_hour);
 var today = averageNTU(today_hour);
@@ -41,11 +41,18 @@ function spirulinaProduced(pomiar) {
   //ilosc litrow wody w zbiorniku = 5 litres
   volume = 5;
   return spirulina*volume
-}
+};
+
+function roundToThree(num) {
+    return +(Math.round(num + "e+3")  + "e-3");
+};
+
+
 
 spirulina_wczoraj = spirulinaProduced(yesterday);
 spirulina_dzis = spirulinaProduced(today);
 spirulina_produced = spirulina_dzis - spirulina_wczoraj;
+spirulina_produced = roundToThree(spirulina_produced);
 
 const uncji_w_tonie = 31103.4768;
 const co2_tonnes_per_ounce = 0.8
