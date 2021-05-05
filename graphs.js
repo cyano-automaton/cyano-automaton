@@ -1,21 +1,24 @@
 w = window.innerWidth;
 h = window.innerHeight;
-/*
-if (w > h) {
-  let u = w/64;
+screen_portion = 0.5;
+panoramic_ratio = 0.5625;
+graph_rows = 7;
+
+if (w < 1280) {
+  canvas_width = w;
+  u = canvas_width / 32;
+  graph_width = canvas_width - u * 4;
+  graph_height = graph_width * panoramic_ratio;
+} else {
+  canvas_width = w*screen_portion;
+  u = canvas_width / 48;
+  graph_width = canvas_width - u * 4;
+  graph_height = graph_width * panoramic_ratio;
 }
-
-if (w < h) {
-  let u = w/30;
-}*/
-
-u = 20;
 
 let right_now;
 let last24 = [];
 let last7 = [];
-
-let canvas_height = 2000;
 
 function preload() {
   right_now = loadJSON("./data/right_now.json");
@@ -25,11 +28,10 @@ function preload() {
 
 function setup() {
 
-  if (windowWidth < 1280) {
-    u = 15;
-    canvas = createCanvas(windowWidth/2, (((windowWidth / 2) - u * 4) * 720 / 1280) * 7.5);
+  if (w < 1280) {
+    canvas = createCanvas(canvas_width, graph_height * graph_rows);
   } else {
-    canvas = createCanvas(windowWidth / 3, (((windowWidth / 3) - u * 4) * 720 / 1280) *  7.5);
+    canvas = createCanvas(canvas_width, graph_height * graph_rows);
   }
 
   canvas.parent("graphs")
@@ -374,7 +376,20 @@ function toogle(title, order) {
 }
 
 function windowResized() {
-  if (windowWidth > 1280) {
-    resizeCanvas(windowWidth / 3, (((windowWidth / 3) - u * 4) * 720 / 1280) * 8);
+  w = window.innerWidth;
+  h = window.innerHeight;
+
+  if (w < 1280) {
+    canvas_width = w;
+    u = canvas_width / 32;
+    graph_width = canvas_width - u * 4;
+    graph_height = graph_width * panoramic_ratio;
+    resizeCanvas(canvas_width, graph_height * graph_rows);
+  } else {
+    canvas_width = w*screen_portion;
+    u = canvas_width / 48;
+    graph_width = canvas_width - u * 4;
+    graph_height = graph_width * panoramic_ratio;
+    resizeCanvas(canvas_width, graph_height * graph_rows);
   }
 }

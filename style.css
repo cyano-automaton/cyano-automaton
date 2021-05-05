@@ -24,7 +24,7 @@ body.error {
 
 main {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row;
   align-items: flex-start;
   justify-content: center;
   margin-top: 2em;
