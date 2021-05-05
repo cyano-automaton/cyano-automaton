@@ -1,6 +1,6 @@
 w = window.innerWidth;
 h = window.innerHeight;
-screen_portion = 0.6;
+screen_portion = 0.4;
 panoramic_ratio = 0.5625;
 graph_rows = 7;
 
