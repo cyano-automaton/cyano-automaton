@@ -69,8 +69,8 @@ function draw() {
   textAlign(LEFT);
   fill(255, 128, 0);
   text("Right now:", 3 * u, 4 * u)
-  text("Temperature: " + right_now.temp + "°C", 3 * u, u * 7)
-  text("Turbidity: " + right_now.ntu, 3 * u, u * 9)
+  text("Temperature: " + round(right_now.temp, 3) + "°C", 3 * u, u * 7)
+  text("Turbidity: " + round(right_now.ntu, 3), 3 * u, u * 9)
   textAlign(RIGHT);
   text(current_time + " " + current_date, graph_width + u, 4 * u)
 
