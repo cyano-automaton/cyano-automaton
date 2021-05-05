@@ -2,13 +2,49 @@ w = window.innerWidth;
 h = window.innerHeight;
 
 if (w < 1280) {
-  u = w / 32;
-  graph_width = w - u * 4;
-  graph_height = graph_width * 720 / 1280;
+  canvas_width = w;
+  u = canvas_width / 32;
+  graph_width = canvas_width - u * 4;
+  graph_height = graph_width * panoramic_ratio;
 } else {
-  u = w / 64;
-  graph_width = w / 2 - u * 4;
-  graph_height = graph_width * 720 / 1280;
+  canvas_width = w*screen_portion;
+  u = canvas_width / 48;
+  graph_width = canvas_width - u * 4;
+  graph_height = graph_width * panoramic_ratio;
+}
+
+function ScreenRightNow (x, y, time_now, date_now, temp_now, ntu_now) {
+  this.x = x;
+  this.y = y;
+  this.time_now = time_now;
+  this.date_now = date_now;
+  this.temp_now  = temp_now;
+  this.ntu_now = ntu_now;
+
+  this.display = function () {
+    translate (this.x, this.y);
+    fill(0, 96, 64);
+    noStroke();
+    rect(2 * u, 2 * u, graph_width, u * 8, 10);
+    textAlign(LEFT);
+    fill(255, 128, 0);
+    text("Right now:", 3 * u, 4 * u)
+    text("Temperature: " + round(this.temp_now, 3) + "°C", 3 * u, u * 7)
+    text("Turbidity: " + round(this.ntu_now, 3), 3 * u, u * 9)
+    textAlign(RIGHT);
+    text(this.time_now + " " + this.date_now, graph_width + u, 4 * u)
+
+    strokeWeight(1);
+    stroke(255, 128, 0);
+    line(0, 3 * u, 1.5 * u, 3 * u);
+    line(0, 9 * u, 1.5 * u, 9 * u);
+    line(canvas_width, 3 * u, canvas_width - 1.5 * u, 3 * u);
+    line(canvas_width, 9 * u, canvas_width - 1.5 * u, 9 * u);
+    line(3 * u, 0, 3 * u, 1.5 * u);
+    line(canvas_width - 3 * u, 0, canvas_width - 3 * u, 1.5 * u);
+    line(3 * u, 12 * u, 3 * u, 10.5 * u);
+    line(canvas_width - 3 * u, 12 * u, canvas_width - 3 * u, 10.5 * u);
+  }
 }
 
 function TitleWithTimeOrDate(title, timeordate) {

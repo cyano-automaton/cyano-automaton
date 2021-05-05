@@ -30,9 +30,6 @@ function preload() {
 }
 
 function setup() {
-
-
-
   if (w < 1280) {
     canvas = createCanvas(canvas_width, graph_height * graph_rows);
   } else {
@@ -51,40 +48,19 @@ function setup() {
 }
 
 function draw() {
-
-  let graph_width = width - u * 4;
-  let graph_height = graph_width * 720 / 1280;
-
   background(0);
   textSize(u);
 
-  current_time = right_now.hour + ":" + right_now.minute;
-  current_date = right_now.day + "." + right_now.month + "." + right_now.year
+  time_now = right_now.hour + ":" + right_now.minute;
+  date_now = right_now.day + "." + right_now.month + "." + right_now.year
+  temp_now =right_now.temp;
+  ntu_now =right_now.ntu;
   time24 = [last24[0].hour + ":" + last24[0].minute, last24[last24.length - 1].hour + ":" + last24[last24.length - 1].minute]
   date24 = last24[0].day + "." + last24[0].month + "." + last24[0].year
+
   date7 = [last7[0].day + "." + last7[0].month, last7[last7.length - 1].day + "." + last7[last7.length - 1].month + "." + last7[last7.length - 1].year]
 
-  fill(0, 96, 64);
-  noStroke();
-  rect(2 * u, 2 * u, graph_width, u * 8, 10);
-  textAlign(LEFT);
-  fill(255, 128, 0);
-  text("Right now:", 3 * u, 4 * u)
-  text("Temperature: " + round(right_now.temp, 3) + "°C", 3 * u, u * 7)
-  text("Turbidity: " + round(right_now.ntu, 3), 3 * u, u * 9)
-  textAlign(RIGHT);
-  text(current_time + " " + current_date, graph_width + u, 4 * u)
-
-  strokeWeight(1);
-  stroke(255, 128, 0);
-  line(0, 3 * u, 1.5 * u, 3 * u);
-  line(0, 9 * u, 1.5 * u, 9 * u);
-  line(width, 3 * u, width - 1.5 * u, 3 * u);
-  line(width, 9 * u, width - 1.5 * u, 9 * u);
-  line(3 * u, 0, 3 * u, 1.5 * u);
-  line(width - 3 * u, 0, width - 3 * u, 1.5 * u);
-  line(3 * u, 12 * u, 3 * u, 10.5 * u);
-  line(width - 3 * u, 12 * u, width - 3 * u, 10.5 * u);
+  screen = new ScreenRightNow (0, 0, time_now, date_now, temp_now, ntu_now);
 
   translate(0, u * 11);
   noStroke();
@@ -95,8 +71,7 @@ function draw() {
   pop();
 
   noFill();
-  temp = right_now.temp;
-  y = map(temp, 40, 25, u * 5, u * 10)
+  y = map(temp_now, 40, 25, u * 5, u * 10)
   rect(u * 15, u * 5, u, u * 5)
   line(u * 14, y, u * 17, y)
 
