@@ -1,13 +1,15 @@
 w = window.innerWidth;
 h = window.innerHeight;
-
+/*
 if (w > h) {
   let u = w/64;
 }
 
-if (h < w) {
+if (w < h) {
   let u = w/30;
-}
+}*/
+
+u = 20;
 
 let right_now;
 let last24 = [];
