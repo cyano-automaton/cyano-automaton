@@ -27,9 +27,9 @@ function setup() {
 
   if (windowWidth < 1280) {
     u = 15;
-    canvas = createCanvas(windowWidth/2, (((windowWidth / 2) - u * 4) * 720 / 1280) * 7.5);
+    canvas = createCanvas(windowWidth, ((windowWidth- u * 4) * 720 / 1280) * 7.5);
   } else {
-    canvas = createCanvas(windowWidth / 3, (((windowWidth / 3) - u * 4) * 720 / 1280) *  7.5);
+    canvas = createCanvas(windowWidth / 0.6, (((windowWidth / 0.6) - u * 4) * 720 / 1280) *  7.5);
   }
   textFont("Helvetica");
   //noLoop();
