@@ -1,21 +1,19 @@
 w = window.innerWidth;
 h = window.innerHeight;
-/*
-if (w > h) {
-  let u = w/64;
+
+if (w < 1280) {
+  u = w / 32;
+  graph_width = w - u * 4;
+  graph_height = graph_width * 720 / 1280;
+} else {
+  u = w / 64;
+  graph_width = w / 2 - u * 4;
+  graph_height = graph_width * 720 / 1280;
 }
-
-if (w < h) {
-  let u = w/30;
-}*/
-
-u = 20;
 
 let right_now;
 let last24 = [];
 let last7 = [];
-
-let canvas_height = 2000;
 
 function preload() {
   right_now = loadJSON("./data/right_now.json");
@@ -25,12 +23,12 @@ function preload() {
 
 function setup() {
 
-  if (windowWidth < 1280) {
-    u = 15;
-    canvas = createCanvas(windowWidth, ((windowWidth- u * 4) * 720 / 1280) * 7.5);
+  if (w < 1280) {
+    canvas = createCanvas(w, ((w - u * 4) * 720 / 1280) * 7.5);
   } else {
-    canvas = createCanvas(windowWidth * 0.6, (((windowWidth * 0.6) - u * 4) * 720 / 1280) *  7.5);
+    canvas = createCanvas(w * 0.6, (((w * 0.6) - u * 4) * 720 / 1280) * 7.5);
   }
+
   canvas.parent("graphs");
   textFont("Helvetica");
   frameRate(3);
@@ -85,7 +83,7 @@ function draw() {
 
   translate(0, u * 11);
   noStroke();
-push();
+  push();
   toogle("Heater", 1);
   toogle("Lamp", 4);
   toogle("Air pump", 7);
@@ -146,7 +144,11 @@ push();
 }
 
 function windowResized() {
-  if (windowWidth > 1280) {
-    resizeCanvas(windowWidth / 3, (((windowWidth / 3) - u * 4) * 720 / 1280) * 8);
+  w = window.innerWidth;
+  h = window.innerHeight;
+  if (w < 1280) {
+    canvas = createCanvas(w, ((w - u * 4) * 720 / 1280) * 7.5);
+  } else {
+    canvas = createCanvas(w * 0.6, (((w * 0.6) - u * 4) * 720 / 1280) * 7.5);
   }
 }

@@ -1,21 +1,15 @@
 w = window.innerWidth;
 h = window.innerHeight;
-/*
-if (w > h) {
-  let u = w/64;
+
+if (w < 1280) {
+  u = w / 32;
+  graph_width = w - u * 4;
+  graph_height = graph_width * 720 / 1280;
+} else {
+  u = w / 64;
+  graph_width = w / 2 - u * 4;
+  graph_height = graph_width * 720 / 1280;
 }
-
-if (w < h) {
-  let u = w/30;
-}*/
-
-u = 20;
-
-let right_now;
-let last24 = [];
-let last7 = [];
-
-let canvas_height = 2000;
 
 function TitleWithTimeOrDate(title, timeordate) {
   let graph_width = width - u * 4;
