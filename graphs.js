@@ -27,9 +27,11 @@ function setup() {
 
   if (windowWidth <= 640) {
     u = 15;
+    canvas = createCanvas(windowWidth, (((windowWidth / 3) - u * 4) * 720 / 1280) * 8);
+  } else {
+    canvas = createCanvas(windowWidth / 3, (((windowWidth / 3) - u * 4) * 720 / 1280) * 8);
   }
-
-  canvas = createCanvas(windowWidth / 3, (((windowWidth / 3) - u * 4) * 720 / 1280) * 8);
+  
   canvas.parent("graphs")
   textFont("Helvetica");
   //noLoop();
