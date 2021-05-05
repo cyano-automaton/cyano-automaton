@@ -1,14 +1,19 @@
 w = window.innerWidth;
 h = window.innerHeight;
+screen_portion = 0.6;
+panoramic_ratio = 0.5625;
+graph_rows = 7;
 
 if (w < 1280) {
-  u = w / 32;
-  graph_width = w - u * 4;
-  graph_height = graph_width * 720 / 1280;
+  canvas_width = w;
+  u = canvas_width / 32;
+  graph_width = canvas_width - u * 4;
+  graph_height = graph_width * panoramic_ratio;
 } else {
-  u = w / 64;
-  graph_width = w / 2 - u * 4;
-  graph_height = graph_width * 720 / 1280;
+  canvas_width = w*screen_portion;
+  u = canvas_width / 48;
+  graph_width = canvas_width - u * 4;
+  graph_height = graph_width * panoramic_ratio;
 }
 
 let right_now;
@@ -16,19 +21,23 @@ let last24 = [];
 let last7 = [];
 
 function preload() {
-  right_now = loadJSON("./data/right_now.json");
-  last24_json = loadJSON("./data/last24.json");
-  last7_json = loadJSON("./data/last7.json");
+  //right_now = loadJSON("./data/right_now.json");
+  //last24_json = loadJSON("./data/last24.json");
+  //last7_json = loadJSON("./data/last7.json");
+  right_now = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/data/right_now.json");
+  last24_json = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/data/last7.json");
+  last7_json = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/14860ff0e9718665d8582c1338b3b3c94cb308bc/data/last7.json");
 }
 
 function setup() {
 
-  if (w < 1280) {
-    canvas = createCanvas(w, ((w - u * 4) * 720 / 1280) * 7.5);
-  } else {
-    canvas = createCanvas(w * 0.6, (((w * 0.6) - u * 4) * 720 / 1280) * 7.5);
-  }
 
+
+  if (w < 1280) {
+    canvas = createCanvas(canvas_width, graph_height * graph_rows);
+  } else {
+    canvas = createCanvas(canvas_width, graph_height * graph_rows);
+  }
   canvas.parent("graphs");
   textFont("Helvetica");
   frameRate(3);
@@ -42,10 +51,6 @@ function setup() {
 }
 
 function draw() {
-
-  if (windowWidth <= 426) {
-    u = 15;
-  }
 
   let graph_width = width - u * 4;
   let graph_height = graph_width * 720 / 1280;
@@ -146,9 +151,18 @@ function draw() {
 function windowResized() {
   w = window.innerWidth;
   h = window.innerHeight;
+
   if (w < 1280) {
-    canvas = createCanvas(w, ((w - u * 4) * 720 / 1280) * 7.5);
+    canvas_width = w;
+    u = canvas_width / 32;
+    graph_width = canvas_width - u * 4;
+    graph_height = graph_width * panoramic_ratio;
+    resizeCanvas(canvas_width, graph_height * graph_rows);
   } else {
-    canvas = createCanvas(w * 0.6, (((w * 0.6) - u * 4) * 720 / 1280) * 7.5);
+    canvas_width = w*screen_portion;
+    u = canvas_width / 48;
+    graph_width = canvas_width - u * 4;
+    graph_height = graph_width * panoramic_ratio;
+    resizeCanvas(canvas_width, graph_height * graph_rows);
   }
 }
