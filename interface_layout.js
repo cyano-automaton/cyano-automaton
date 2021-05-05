@@ -20,6 +20,8 @@ let right_now;
 let last24 = [];
 let last7 = [];
 
+var greenScreen;
+
 function preload() {
   //right_now = loadJSON("./data/right_now.json");
   //last24_json = loadJSON("./data/last24.json");
@@ -45,11 +47,6 @@ function setup() {
   for (let x in last7_json) {
     last7.push(last7_json[x]);
   }
-}
-
-function draw() {
-  background(0);
-  textSize(u);
 
   time_now = right_now.hour + ":" + right_now.minute;
   date_now = right_now.day + "." + right_now.month + "." + right_now.year
@@ -57,10 +54,17 @@ function draw() {
   ntu_now =right_now.ntu;
   time24 = [last24[0].hour + ":" + last24[0].minute, last24[last24.length - 1].hour + ":" + last24[last24.length - 1].minute]
   date24 = last24[0].day + "." + last24[0].month + "." + last24[0].year
-
   date7 = [last7[0].day + "." + last7[0].month, last7[last7.length - 1].day + "." + last7[last7.length - 1].month + "." + last7[last7.length - 1].year]
 
-  screen = new ScreenRightNow (0, 0, graph_width, graph_height, ime_now, date_now, temp_now, ntu_now);
+  greenScreen = new ScreenRightNow (time_now, date_now, temp_now, ntu_now);
+}
+
+function draw() {
+  console.log(greenScreen.time_now)
+  background(0);
+  textSize(u);
+
+  greenScreen.display(0, 0, graph_width, graph_height);
 
   translate(0, u * 11);
   noStroke();

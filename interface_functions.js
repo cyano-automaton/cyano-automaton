@@ -1,5 +1,7 @@
 w = window.innerWidth;
 h = window.innerHeight;
+screen_portion = 0.6;
+panoramic_ratio = 0.5625;
 
 if (w < 1280) {
   canvas_width = w;
@@ -7,23 +9,25 @@ if (w < 1280) {
   graph_width = canvas_width - u * 4;
   graph_height = graph_width * panoramic_ratio;
 } else {
-  canvas_width = w*screen_portion;
+  canvas_width = w*0.6;
   u = canvas_width / 48;
   graph_width = canvas_width - u * 4;
   graph_height = graph_width * panoramic_ratio;
 }
 
-function ScreenRightNow (x, y, width, height, time_now, date_now, temp_now, ntu_now) {
-  this.x = x;
-  this.y = y;
-  this.width = width;
-  this.height = height;
+
+
+function ScreenRightNow ( time_now, date_now, temp_now, ntu_now) {
   this.time_now = time_now;
   this.date_now = date_now;
   this.temp_now  = temp_now;
   this.ntu_now = ntu_now;
 
-  this.display = function () {
+  this.display = function (x, y, width, height) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
     translate (this.x, this.y);
     fill(0, 96, 64);
     noStroke();
@@ -35,7 +39,6 @@ function ScreenRightNow (x, y, width, height, time_now, date_now, temp_now, ntu_
     text("Turbidity: " + round(this.ntu_now, 3), 3 * u, u * 9)
     textAlign(RIGHT);
     text(this.time_now + " " + this.date_now, graph_width + u, 4 * u)
-
     strokeWeight(1);
     stroke(255, 128, 0);
     line(0, 3 * u, 1.5 * u, 3 * u);
