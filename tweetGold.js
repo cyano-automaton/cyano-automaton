@@ -54,8 +54,8 @@ spirulina_dzis = spirulinaProduced(today);
 spirulina_produced = spirulina_dzis - spirulina_wczoraj;
 spirulina_produced = roundToThree(spirulina_produced);
 
-let data = JSON.stringify(spirulina_produced);
-fs.writeFileSync('./spirulinaProduced.json', data);
+let produce = JSON.stringify(spirulina_produced);
+fs.writeFileSync('./spirulinaProduced.json', produce);
 
 const uncji_w_tonie = 31103.4768;
 const co2_tonnes_per_ounce = 0.8
