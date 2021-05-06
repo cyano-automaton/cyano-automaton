@@ -247,18 +247,18 @@ function GoldBars() {
     this.bar(co2_point, co2_produced, u * 1, "down");
 
     this.bar(spendings_point, spendings[index] * 1000000, u * 6, "up");
-    this.bar(value_point, gold_value, u * 7, "down")
+    this.bar(value_point, round(gold_value, 2), u * 7, "down")
 
     this.bar(needed_point, spirulina_needed, u * 12, "up");
-    this.bar(produced_point, spirulina_produced / 1000000, u * 13, "down");
+    this.bar(1, spirulina_produced / 1000000, u * 13, "down");
 
 
     textAlign(RIGHT);
     text("Gold [t]", this.width + this.x, this.y - u/2 );
     text("CO₂ [t]", this.width + this.x, this.y + u * 3);
 
-    text("NASA [$]", this.width + this.x, this.y - u / 2 + u * 6);
-    text("Gold [$]", this.width + this.x, this.y + u * 2 + u * 7);
+    text("NASA [$/year]", this.width + this.x, this.y - u / 2 + u * 6);
+    text("Gold [$/year]", this.width + this.x, this.y + u * 2 + u * 7);
 
     text("Spirulina required [t]", this.width + this.x, this.y - u / 2 + u * 12);
     text("Produced [t]", this.width + this.x, this.y + u * 2 + u * 13);
