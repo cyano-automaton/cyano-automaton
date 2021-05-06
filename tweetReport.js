@@ -7,14 +7,14 @@ let right_now = JSON.parse(right_now_json);
 if (right_now.hour < 15) {
   introduction = "Morning report, " + right_now.hour + ":" + right_now.minute +" "+ right_now.day +"."+ right_now.month +"."+ right_now.year +"\n";
   temperature =  "Temperature: " + right_now.temp + "\n";
-  turbidity = "Transparency: " + right_now.ntu;
+  turbidity = "Turbidity: " + right_now.ntu;
   text = introduction + temperature + turbidity;
 }
 
 if (right_now.hour > 15) {
   introduction = "Evening report, " + right_now.hour + ":" + right_now.minute +" "+ right_now.day +"."+ right_now.month +"."+ right_now.year +"\n";
   temperature =  "Temperature: " + right_now.temp + "°C" +"\n";
-  turbidity = "Transparency: " + right_now.ntu;
+  turbidity = "Turbidity: " + right_now.ntu;
   text = introduction + temperature + turbidity;
 }
 
