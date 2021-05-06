@@ -2,7 +2,7 @@ w = window.innerWidth;
 h = window.innerHeight;
 screen_portion = 0.6;
 panoramic_ratio = 0.5625;
-graph_rows = 7;
+graph_rows = 9.5;
 
 if (w < 1280) {
   canvas_width = w;
@@ -10,9 +10,9 @@ if (w < 1280) {
   graph_width = canvas_width - u * 4;
   graph_height = graph_width * panoramic_ratio;
 } else {
-  canvas_width = w*screen_portion;
+  canvas_width = w * screen_portion;
   u = canvas_width / 48;
-  graph_width = canvas_width - u * 4;
+  graph_width = canvas_width/2;
   graph_height = graph_width * panoramic_ratio;
 }
 
@@ -20,15 +20,18 @@ let right_now;
 let last24 = [];
 let last7 = [];
 
-var greenScreen;
-
 function preload() {
   //right_now = loadJSON("./data/right_now.json");
   //last24_json = loadJSON("./data/last24.json");
   //last7_json = loadJSON("./data/last7.json");
   right_now = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/data/right_now.json");
-  last24_json = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/data/last7.json");
+  last24_json = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/data/last24.json");
   last7_json = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/14860ff0e9718665d8582c1338b3b3c94cb308bc/data/last7.json");
+  year_today = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/yearForToday.json");
+  spendings = loadTable("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/assets/spendings.csv");
+  prices = loadTable("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/assets/prices.csv");
+  production = loadTable("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/assets/production.csv");
+  spirulina_produced = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/spirulinaProduced.json");
 }
 
 function setup() {
@@ -48,83 +51,66 @@ function setup() {
     last7.push(last7_json[x]);
   }
 
-  time_now = right_now.hour + ":" + right_now.minute;
-  date_now = right_now.day + "." + right_now.month + "." + right_now.year
-  temp_now =right_now.temp;
-  ntu_now =right_now.ntu;
+
+
   time24 = [last24[0].hour + ":" + last24[0].minute, last24[last24.length - 1].hour + ":" + last24[last24.length - 1].minute]
   date24 = last24[0].day + "." + last24[0].month + "." + last24[0].year
   date7 = [last7[0].day + "." + last7[0].month, last7[last7.length - 1].day + "." + last7[last7.length - 1].month + "." + last7[last7.length - 1].year]
 
-  greenScreen = new ScreenRightNow (time_now, date_now, temp_now, ntu_now);
+  greenScreen = new ScreenRightNow();
+
+  diodeHeater = new DiodeWithTitle("Heater");
+  diodeLamp = new DiodeWithTitle("Lamp");
+  diodePump = new DiodeWithTitle("Air pump");
+  tempIndicator = new TempIndicator();
+  ntuIndicator = new NTUIndicator();
+
+  timeline = new Timeline();
+  gold = new GoldBars();
+
+  last24Box = new GraphBox("Last 24 hours");
+  last7Box = new GraphBox("Last 7 days");
+
 }
 
 function draw() {
-  console.log(greenScreen.time_now)
   background(0);
   textSize(u);
+  if (windowWidth < 1280) {
+    greenScreen.display(0, 0, canvas_width, u * 9);
 
-  greenScreen.display(0, 0, graph_width, graph_height);
+    diodeHeater.display(canvas_width / 2 - 7 * u, u * 15);
+    tempIndicator.display(canvas_width / 2 - 7.5 * u, u * 18, u, 6 * u)
 
-  translate(0, u * 11);
-  noStroke();
-  push();
-  toogle("Heater", 1);
-  toogle("Lamp", 4);
-  toogle("Air pump", 7);
-  pop();
+    diodeLamp.display(canvas_width / 2 + 4 * u, u * 15);
+    diodePump.display(canvas_width / 2 + 8 * u, u * 15);
+    ntuIndicator.display(canvas_width / 2 + 6 * u, u * 21, 6 * u)
 
-  noFill();
-  y = map(temp_now, 40, 25, u * 5, u * 10)
-  rect(u * 15, u * 5, u, u * 5)
-  line(u * 14, y, u * 17, y)
+    timeline.display(2 * u, graph_height * 2, graph_width + 2 * u)
+    gold.display(2 * u, graph_height * 2 + 6 * u, graph_width, graph_height);
 
+    last24Box.display(0, graph_height * 5, graph_width, graph_height);
 
-  translate(0, graph_height + u * 14);
+    last7Box.display(0, graph_height * 8, graph_width, graph_height);
+  }
 
-  stroke(255, 128, 0);
-  line(0, -graph_height - u * 3, u * 10, -graph_height - u * 3);
+  if (windowWidth >= 1280) {
+    timeline.display(2 * u, 2*u, canvas_width - 2 * u)
+    gold.display(2 * u, 8 * u, canvas_width - 4 * u);
+    greenScreen.display(0, graph_height*2, graph_width, u * 9);
 
+    diodeHeater.display(graph_width+4*u, graph_height*2+2*u);
+    tempIndicator.display(graph_width+3.5*u, graph_height*2+5*u,u, 6 * u)
 
-  TitleWithTimeOrDate("Last 24 hours:", "time")
+    diodeLamp.display(graph_width+12*u, graph_height*2+2*u);
+    diodePump.display(graph_width+16*u, graph_height*2+2*u);
+    ntuIndicator.display(graph_width+14*u, graph_height*2+8*u, 6 * u)
 
-  stroke(255, 0, 255);
-  draw24Graph("temp", 25, 35)
+    last24Box.display(0, graph_height * 4.5, graph_width-4*u, graph_height);
 
-  axisLeft24(25, 35, 1, "Temperature");
-  axisBottom24();
+    last7Box.display(graph_width, graph_height * 4.5, graph_width-4*u, graph_height);
+  }
 
-
-  translate(0, graph_height + u * 4);
-
-  stroke(0, 255, 255);
-  draw24Graph("ntu", 0, 1024);
-
-  axisLeft24(0, 1024, 128, "Turbidity");
-  axisBottom24();
-
-
-  translate(0, graph_height + u * 6);
-
-  stroke(255, 128, 0);
-  line(0, -graph_height - u * 3, u * 10, -graph_height - u * 3);
-
-  TitleWithTimeOrDate("Last 7 days:", "date")
-
-  stroke(255, 0, 255);
-  draw7Graph("temp", 25, 35);
-
-  axisLeft7(25, 35, 1, "Temperature");
-  axisBottom7();
-
-
-  translate(0, graph_height + u * 4);
-
-  stroke(0, 255, 255);
-  draw7Graph("ntu", 0, 1024);
-
-  axisLeft7(0, 1024, 128, "Turbidity");
-  axisBottom7();
 }
 
 function windowResized() {
@@ -138,9 +124,9 @@ function windowResized() {
     graph_height = graph_width * panoramic_ratio;
     resizeCanvas(canvas_width, graph_height * graph_rows);
   } else {
-    canvas_width = w*screen_portion;
+    canvas_width = w * screen_portion;
     u = canvas_width / 48;
-    graph_width = canvas_width - u * 4;
+    graph_width = canvas_width /2;
     graph_height = graph_width * panoramic_ratio;
     resizeCanvas(canvas_width, graph_height * graph_rows);
   }
