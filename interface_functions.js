@@ -226,23 +226,31 @@ function GoldBars() {
 
 
   co2_produced = production[index] * 31103.4768 * 0.8;
+  percentage_gold_co2 = production[index]/co2_produced * 100;
+  console.log(percentage_gold_co2)
+
   gold_value = production[index] * prices[index] * 31103.4768;
+  spendings_total = spendings[index]*1000000
+  percentage_gold_used = (spendings_total/gold_value)
+
   spirulina_needed = co2_produced / 1.8;
-  spirulina_produced = spirulina_produced[0];
+  spirulina_produced_tones = spirulina_produced[0]/1000000;
+  percentage_spirulina =   spirulina_produced_tones/spirulina_needed
 
   this.display = function(x, y, width) {
     this.x = x;
     this.y = y;
     this.width = width;
-    production_point = map(production[index], 0, 82113178.752, this.x, this.width);
     co2_point = map(co2_produced, 0, 82113178.752, this.x, this.width);
+    //production_point = map(production[index], 0, 82113178.752, this.x, this.width);
+    production_point = co2_point * percentage_gold_co2;
 
-    spendings_point_promile = map(spendings[index], 0, 163316, 0, 1000);
-    spendings_point = map(spendings_point_promile, 0, 1000, this.x, this.width);
     value_point = map(gold_value, 0, 163316400407.43457, this.x, this.width);
+    spendings_point = value_point * percentage_gold_used;
 
     needed_point = map(spirulina_needed, 0, 45618432.64, this.x, this.width);
-    produced_point = map(spirulina_produced / 1000000, 0, 45618432.64, this.x, this.width);
+  //  produced_point = map(spirulina_produced / 1000000, 0, 45618432.64, this.x, this.width);
+    produced_point = needed_point * percentage_spirulina;
 
     this.bar(production_point, production[index], 0, "up");
     this.bar(co2_point, co2_produced, u * 1, "down");
@@ -251,7 +259,7 @@ function GoldBars() {
     this.bar(value_point, round(gold_value, 2), u * 7, "down")
 
     this.bar(needed_point, spirulina_needed, u * 12, "up");
-    this.bar(1, spirulina_produced / 1000000, u * 13, "down");
+    this.bar(produced_point, spirulina_produced_tones, u * 13, "down");
 
 
     textAlign(RIGHT);

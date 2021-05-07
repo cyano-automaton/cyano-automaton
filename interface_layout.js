@@ -21,7 +21,7 @@ let last24 = [];
 let last7 = [];
 
 function preload() {
-
+/*
   right_now = loadJSON("./data/right_now.json");
   last24_json = loadJSON("./data/last24.json");
   last7_json = loadJSON("./data/last7.json");
@@ -30,8 +30,8 @@ function preload() {
   prices = loadTable("./assets/prices.csv");
   production = loadTable("./assets/production.csv")
   spirulina_produced = loadJSON("./spirulinaProduced.json")
+  */
 
-/*
   right_now = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/data/right_now.json");
   last24_json = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/data/last24.json");
   last7_json = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/14860ff0e9718665d8582c1338b3b3c94cb308bc/data/last7.json");
@@ -40,7 +40,7 @@ function preload() {
   prices = loadTable("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/assets/prices.csv");
   production = loadTable("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/assets/production.csv");
   spirulina_produced = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/spirulinaProduced.json");
-  */
+
 }
 
 function setup() {
