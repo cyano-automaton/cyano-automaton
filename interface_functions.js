@@ -237,7 +237,8 @@ function GoldBars() {
     production_point = map(production[index], 0, 82113178.752, this.x, this.width);
     co2_point = map(co2_produced, 0, 82113178.752, this.x, this.width);
 
-    spendings_point = map(spendings[index] * 1000000, 0, 163316400407.43457, this.x, this.width);
+    spendings_point_promile = map(spendings[index], 0, 163316, 0, 1000);
+    spendings_point = map(spendings_point_promile, 0, 1000, this.x, this.width);
     value_point = map(gold_value, 0, 163316400407.43457, this.x, this.width);
 
     needed_point = map(spirulina_needed, 0, 45618432.64, this.x, this.width);
