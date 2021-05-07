@@ -263,14 +263,14 @@ function GoldBars() {
 
 
     textAlign(RIGHT);
-    text("Gold [t]", this.width + this.x, this.y - u/2 );
-    text("CO₂ [t]", this.width + this.x, this.y + u * 3);
+    text("Gold [t/year]", this.width + this.x, this.y - u/2 );
+    text("CO₂ [t/year]", this.width + this.x, this.y + u * 3);
 
     text("NASA [$/year]", this.width + this.x, this.y - u / 2 + u * 6);
     text("Gold [$/year]", this.width + this.x, this.y + u * 2 + u * 7);
 
     text("Spirulina required [t]", this.width + this.x, this.y - u / 2 + u * 12);
-    text("Produced [t]", this.width + this.x, this.y + u * 2 + u * 13);
+    text("Produced [t/today]", this.width + this.x, this.y + u * 2 + u * 13);
 
   }
   this.bar = function(x_value, real_value, offset, side) {
