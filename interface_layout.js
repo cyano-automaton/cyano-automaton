@@ -21,14 +21,14 @@ let last24 = [];
 let last7 = [];
 
 function preload() {
-  
+
   right_now = loadJSON("./data/right_now.json");
   last24_json = loadJSON("./data/last24.json");
   last7_json = loadJSON("./data/last7.json");
   year_today = loadJSON("./yearForToday.json");
-  spendings = loadJSON("./assets/spendings.csv");
-  prices = loadJSON("./assets/prices.csv");
-  production = loadJSON("./assets/production.csv")
+  spendings = loadTable("./assets/spendings.csv");
+  prices = loadTable("./assets/prices.csv");
+  production = loadTable("./assets/production.csv")
   spirulina_produced = loadJSON("./spirulinaProduced.json")
 
 /*
