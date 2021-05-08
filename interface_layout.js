@@ -60,9 +60,20 @@ function setup() {
     last7.push(last7_json[x]);
   }
 
+if (last24[0].minute < 10 ) {
+  minutka = "0" + last24[0].minute;
+} else {
+  minutka = last24[0].minute;
+}
+
+if (last24[last24.length - 1].minute < 10) {
+  minutka_ostatnia = "0" + last24[last24.length - 1].minute;
+} else {
+    minutka_ostatnia = last24[last24.length - 1].minute;
+}
 
 
-  time24 = [last24[0].hour + ":" + last24[0].minute, last24[last24.length - 1].hour + ":" + last24[last24.length - 1].minute]
+  time24 = [last24[0].hour + ":" + minutka + "—" last24[last24.length - 1].hour + ":" + minutka_ostatnia;
   date24 = last24[0].day + "." + last24[0].month + "." + last24[0].year
   date7 = [last7[0].day + "." + last7[0].month, last7[last7.length - 1].day + "." + last7[last7.length - 1].month + "." + last7[last7.length - 1].year]
 

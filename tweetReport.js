@@ -5,14 +5,14 @@ let right_now_json = fs.readFileSync('./data/right_now.json');
 let right_now = JSON.parse(right_now_json);
 
 if (right_now.hour < 15) {
-  introduction = "Morning report, " + right_now.hour + ":" + right_now.minute +" "+ right_now.day +"."+ right_now.month +"."+ right_now.year +"\n";
+  introduction = "Morning report, " + right_now.hour + ":" + "00" +" "+ right_now.day +"."+ right_now.month +"."+ right_now.year +"\n";
   temperature =  "Temperature: " + right_now.temp + "\n";
   turbidity = "Turbidity: " + right_now.ntu;
   text = introduction + temperature + turbidity;
 }
 
 if (right_now.hour > 15) {
-  introduction = "Evening report, " + right_now.hour + ":" + right_now.minute +" "+ right_now.day +"."+ right_now.month +"."+ right_now.year +"\n";
+  introduction = "Evening report, " + right_now.hour + ":" + "00" +" "+ right_now.day +"."+ right_now.month +"."+ right_now.year +"\n";
   temperature =  "Temperature: " + right_now.temp + "°C" +"\n";
   turbidity = "Turbidity: " + right_now.ntu;
   text = introduction + temperature + turbidity;
