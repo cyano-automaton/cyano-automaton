@@ -22,8 +22,14 @@ function fillLines(x, y, wi, hi) {
 }
 
 function ScreenRightNow() {
+  if ( right_now.minute < 10 ) {
+    minutka_teraz = "0" + right_now.minute;
+  } else {
+    minutka_teraz =  right_now.minute;
+  }
 
-  this.time_now = right_now.hour + ":" + right_now.minute;
+
+  this.time_now = right_now.hour + ":" + minutka_teraz;
   this.date_now = right_now.day + "." + right_now.month + "." + right_now.year;
   this.temp_now = right_now.temp;
   this.ntu_now = right_now.ntu;
