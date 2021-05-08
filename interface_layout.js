@@ -29,7 +29,7 @@ function preload() {
   prices = loadTable("./assets/prices.csv");
   production = loadTable("./assets/production.csv")
   spirulina_produced = loadJSON("./spirulinaProduced.json")
-  
+
 /*
   right_now = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/data/right_now.json");
   last24_json = loadJSON("https://raw.githubusercontent.com/cyano-automaton/cyano-automaton.github.io/master/data/last24.json");
@@ -71,7 +71,7 @@ if (last24[last24.length - 1].minute < 10) {
     minutka_ostatnia = last24[last24.length - 1].minute;
 }
 
-  time24 = [last24[0].hour + ":" + minutka + "—" last24[last24.length - 1].hour + ":" + minutka_ostatnia;
+  time24 = [last24[0].hour + ":" + minutka, last24[last24.length - 1].hour + ":" + minutka_ostatnia]
   date24 = last24[0].day + "." + last24[0].month + "." + last24[0].year
   date7 = [last7[0].day + "." + last7[0].month, last7[last7.length - 1].day + "." + last7[last7.length - 1].month + "." + last7[last7.length - 1].year]
 
