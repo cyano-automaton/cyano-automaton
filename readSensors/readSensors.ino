@@ -8,8 +8,8 @@
 #define bubblesPin 7
 #define heaterPin 8
 
-#define tempMax 31
-#define tempMin 30
+#define tempMax 29
+#define tempMin 28
 #define tempPin A4
 OneWire oneWire(tempPin);
 DallasTemperature tempSensor(&oneWire);
