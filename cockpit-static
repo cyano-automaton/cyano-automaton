@@ -40,12 +40,6 @@
     </div>
   </header>
 
-  <main class="center">
-    <div id="blueprint"><img src="./assets/diagram.png"></div>
-  </main>
-</body>
-
-</html>
 
   <main class="center">
     <div id="blueprint"><img src="./assets/cockpit-static.png"></div>
